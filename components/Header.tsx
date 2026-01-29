@@ -14,7 +14,7 @@ export default function Header() {
   return (
     <header className="bg-white sticky top-0 z-50 border-b border-gray-100 shadow-sm">
       <div className="max-w-6xl mx-auto px-6">
-        <div className="flex items-center justify-between h-20 max-md:h-16 max-md:px-4">
+        <div className="flex items-center justify-between h-24 max-md:h-20 max-md:px-4">
 
           {/* Logo - Left Aligned */}
           <div className="flex-shrink-0">
@@ -22,9 +22,9 @@ export default function Header() {
               <Image
                 src="/images/ChatGPT Image Jan 29, 2026, 12_41_01 AM.png"
                 alt="AOA Foods - Purely Global. Perfectly Local."
-                width={280}
-                height={84}
-                className="h-12 w-auto sm:h-14 sm:w-auto lg:h-16 lg:w-auto xl:h-18 xl:w-auto max-md:h-10"
+                width={400}
+                height={120}
+                className="h-16 w-auto sm:h-18 sm:w-auto lg:h-20 lg:w-auto xl:h-24 xl:w-auto max-md:h-14"
                 priority
               />
             </Link>
