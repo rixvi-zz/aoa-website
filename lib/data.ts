@@ -6,6 +6,7 @@ export const navigationItems: NavItem[] = [
   { label: 'About Us', href: '/about' },
   { label: 'Services', href: '/services' },
   { label: 'International Markets', href: '/markets' },
+  { label: 'Halaal Export Solutions', href: '/export-halaal-focus' },
   { label: 'Contact Us', href: '/contact' },
 ];
 
@@ -69,12 +70,12 @@ export const services: Service[] = [
 export const markets: Market[] = [
   {
     region: 'Asia',
-    countries: ['China', 'Japan', 'South Korea', 'Singapore', 'Thailand', 'Vietnam', 'Malaysia', 'Indonesia'],
+    countries: ['China', 'Singapore', 'Thailand', 'Vietnam', 'Hong Kong', 'Malaysia', 'Indonesia'],
     description: 'Strong partnerships across Asian markets with deep understanding of regional trade regulations and business practices.'
   },
   {
     region: 'Middle East',
-    countries: ['UAE', 'Saudi Arabia', 'Qatar', 'Kuwait', 'Oman', 'Bahrain', 'Jordan', 'Turkey'],
+    countries: ['UAE', 'Saudi Arabia', 'Qatar', 'Kuwait', 'Oman', 'Bahrain', 'Jordan', 'Turkey', 'Iran', 'Iraq'],
     description: 'Established network in Middle Eastern markets facilitating trade in various sectors including oil & gas, construction, and consumer goods.'
   },
   {

@@ -98,7 +98,7 @@ export const marketsConfig = [
     id: 'asia',
     name: 'Asia',
     description: 'Strong presence in Asian markets with established partnerships across major economies',
-    countries: ['China', 'Japan', 'Singapore', 'Thailand', 'Vietnam', 'South Korea', 'Malaysia', 'Indonesia'],
+    countries: ['China', 'Singapore', 'Thailand', 'Vietnam', 'Hong Kong', 'Malaysia', 'Indonesia'],
     specializations: ['Electronics & Technology', 'Textiles & Apparel', 'Machinery & Equipment', 'Automotive Parts'],
     stats: {
       partnerships: '50+',
@@ -111,7 +111,7 @@ export const marketsConfig = [
     id: 'middle-east',
     name: 'Middle East',
     description: 'Comprehensive coverage across Middle Eastern markets with focus on energy and infrastructure',
-    countries: ['UAE', 'Saudi Arabia', 'Qatar', 'Kuwait', 'Oman', 'Bahrain'],
+    countries: ['UAE', 'Saudi Arabia', 'Qatar', 'Kuwait', 'Oman', 'Bahrain', 'Iran', 'Iraq'],
     specializations: ['Oil & Gas Equipment', 'Construction Materials', 'Food Products', 'Medical Devices'],
     stats: {
       partnerships: '30+',

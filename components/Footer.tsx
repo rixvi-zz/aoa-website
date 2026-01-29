@@ -22,12 +22,15 @@ export default function Footer() {
               />
             </div>
             <p className="text-white mb-8 max-w-md leading-relaxed text-lg">
-              AOA FOODS PRIVATE LIMITED is an IEC and GST registered food import & export company based in India,
-              providing reliable global trade solutions for international food business partnerships.
-              We specialize in food & agri products import/export services, global sourcing, and
-              comprehensive logistics support with full compliance.
+              AOA FOODS PRIVATE LIMITED is an <strong>APEDA registered</strong> food export company with IEC and GST compliance, based in India.
+              We provide reliable global trade solutions for international food business partnerships,
+              specializing in Halaal food & agri products export services, global sourcing, and
+              comprehensive logistics support with full regulatory compliance.
             </p>
             <div className="flex flex-wrap items-center gap-4">
+              <span className="bg-[#2E7D32] text-white px-6 py-3 rounded-xl text-sm font-bold shadow-lg">
+                <strong>APEDA REGISTERED</strong>
+              </span>
               <span className="bg-[#4A90E2] text-white px-6 py-3 rounded-xl text-sm font-bold shadow-lg">
                 IEC REGISTERED
               </span>
@@ -102,6 +105,11 @@ export default function Footer() {
                 <h4 className="font-bold text-white mb-2 text-sm">Legal Name</h4>
                 <p className="text-white/90 text-sm">{companyInfo.legalName}</p>
               </div>
+              <div className="bg-[#2E7D32]/20 backdrop-blur-sm rounded-xl p-6 border border-[#2E7D32]/40">
+                <h4 className="font-bold text-white mb-2 text-sm">APEDA Registration</h4>
+                <p className="text-white/90 text-sm font-bold">CERTIFIED EXPORTER</p>
+                <p className="text-white/70 text-xs">Food & Agri Products</p>
+              </div>
               <div className="bg-white/10 backdrop-blur-sm rounded-xl p-6 border border-white/20">
                 <h4 className="font-bold text-white mb-2 text-sm">IEC Code</h4>
                 <p className="text-white/90 text-sm">{companyInfo.registrations.iec}</p>
@@ -111,11 +119,6 @@ export default function Footer() {
                 <h4 className="font-bold text-white mb-2 text-sm">GSTIN</h4>
                 <p className="text-white/90 text-sm">{companyInfo.registrations.gstin}</p>
                 <p className="text-white/70 text-xs">Registered: {companyInfo.registrations.gstDate}</p>
-              </div>
-              <div className="bg-white/10 backdrop-blur-sm rounded-xl p-6 border border-white/20">
-                <h4 className="font-bold text-white mb-2 text-sm">Authority</h4>
-                <p className="text-white/90 text-sm">DGFT</p>
-                <p className="text-white/70 text-xs">Status: {companyInfo.status}</p>
               </div>
             </div>
           </div>
@@ -148,7 +151,7 @@ export default function Footer() {
           <div className="text-white mb-6 md:mb-0">
             <p className="font-medium max-md:text-center max-md:text-sm">
               © {currentYear} {companyInfo.legalName}. All rights reserved. |
-              <span className="ml-1">IEC & GST Registered</span>
+              <span className="ml-1"><strong>APEDA Registered</strong></span>
             </p>
           </div>
           <div className="flex space-x-8 text-white max-md:flex-col max-md:space-x-0 max-md:space-y-3 max-md:text-center">

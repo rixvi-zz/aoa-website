@@ -36,9 +36,10 @@ export default function MarketsPage() {
                                     "name": "Asia",
                                     "containsPlace": [
                                         { "@type": "Country", "name": "China" },
-                                        { "@type": "Country", "name": "Japan" },
                                         { "@type": "Country", "name": "Singapore" },
-                                        { "@type": "Country", "name": "Thailand" }
+                                        { "@type": "Country", "name": "Thailand" },
+                                        { "@type": "Country", "name": "Hong Kong" },
+                                        { "@type": "Country", "name": "Malaysia" }
                                     ]
                                 },
                                 {
@@ -47,7 +48,9 @@ export default function MarketsPage() {
                                     "containsPlace": [
                                         { "@type": "Country", "name": "UAE" },
                                         { "@type": "Country", "name": "Saudi Arabia" },
-                                        { "@type": "Country", "name": "Qatar" }
+                                        { "@type": "Country", "name": "Qatar" },
+                                        { "@type": "Country", "name": "Iran" },
+                                        { "@type": "Country", "name": "Iraq" }
                                     ]
                                 },
                                 {

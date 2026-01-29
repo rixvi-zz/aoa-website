@@ -29,7 +29,7 @@ export default function Hero() {
               {/* Trust badge */}
               <div className="inline-flex items-center bg-white/80 backdrop-blur-sm border border-[#4A90E2]/20 rounded-full px-6 py-3 shadow-lg max-md:px-4 max-md:py-2">
                 <div className="w-2 h-2 bg-[#2E7D32] rounded-full animate-pulse mr-3"></div>
-                <span className="text-[#1E3A5F] font-semibold text-sm max-md:text-xs">IEC & GST Registered</span>
+                <span className="text-[#1E3A5F] font-semibold text-sm max-md:text-xs"><strong>APEDA Registered</strong></span>
               </div>
 
               {/* Main Headline */}
@@ -51,23 +51,32 @@ export default function Hero() {
               
 
               {/* CTA Buttons */}
-              <div className="flex flex-col sm:flex-row gap-4 pt-4">
+              <div className="flex flex-col sm:flex-row gap-3 pt-4">
                 <CTAButton
                   href="/contact"
                   variant="primary"
                   size="lg"
-                  className="bg-gradient-to-r from-[#1E3A5F] to-[#4A90E2] text-white hover:from-[#4A90E2] hover:to-[#1E3A5F] font-bold px-8 py-4 text-lg rounded-xl shadow-xl hover:shadow-2xl transform hover:-translate-y-1 transition-all duration-300"
+                  className="bg-gradient-to-r from-[#1E3A5F] to-[#4A90E2] text-white hover:from-[#4A90E2] hover:to-[#1E3A5F] font-bold px-6 py-2.5 text-base rounded-lg shadow-lg hover:shadow-xl transform hover:-translate-y-0.5 transition-all duration-300"
                   trackingName="Hero CTA Primary"
                   trackingLocation="Hero Section"
                 >
                   Request Export Quote
                 </CTAButton>
                 <a
+                  href="/export-halaal-focus"
+                  className="inline-flex items-center text-[#1E3A5F] hover:text-[#4A90E2] font-semibold text-base px-6 py-2.5 rounded-lg border-2 border-[#1E3A5F]/20 hover:border-[#4A90E2]/40 hover:bg-[#4A90E2]/5 transition-all duration-300 group"
+                >
+                  Halaal Export Solutions
+                  <svg className="w-4 h-4 ml-2 transform group-hover:translate-x-1 transition-transform duration-300" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
+                  </svg>
+                </a>
+                <a
                   href="/services"
-                  className="inline-flex items-center text-[#1E3A5F] hover:text-[#4A90E2] font-semibold text-lg px-8 py-4 rounded-xl border-2 border-[#1E3A5F]/20 hover:border-[#4A90E2]/40 hover:bg-[#4A90E2]/5 transition-all duration-300 group"
+                  className="inline-flex items-center text-[#1E3A5F] hover:text-[#4A90E2] font-semibold text-base px-6 py-2.5 rounded-lg border-2 border-[#1E3A5F]/20 hover:border-[#4A90E2]/40 hover:bg-[#4A90E2]/5 transition-all duration-300 group"
                 >
                   Explore Our Services
-                  <svg className="w-5 h-5 ml-2 transform group-hover:translate-x-1 transition-transform duration-300" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <svg className="w-4 h-4 ml-2 transform group-hover:translate-x-1 transition-transform duration-300" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
                   </svg>
                 </a>

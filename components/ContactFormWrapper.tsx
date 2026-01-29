@@ -132,8 +132,8 @@ export default function ContactFormWrapper() {
   const countries = [
     'Select Country',
     'United States', 'United Kingdom', 'Germany', 'France', 'Italy', 'Spain',
-    'China', 'Japan', 'South Korea', 'Singapore', 'Thailand', 'Malaysia',
-    'UAE', 'Saudi Arabia', 'Qatar', 'Kuwait', 'Turkey',
+    'China', 'Singapore', 'Thailand', 'Hong Kong', 'Malaysia',
+    'UAE', 'Saudi Arabia', 'Qatar', 'Kuwait', 'Turkey', 'Iran', 'Iraq',
     'South Africa', 'Nigeria', 'Kenya', 'Egypt', 'Morocco',
     'Australia', 'Canada', 'Brazil', 'Mexico', 'Other'
   ];
