@@ -1,6 +1,6 @@
 import Link from 'next/link';
 import Image from 'next/image';
-import { navigationItems, contactInfo } from '@/lib/data';
+import { navigationItems, contactInfo, companyInfo } from '@/lib/data';
 import { getCurrentYear } from '@/lib/utils';
 
 export default function Footer() {
@@ -14,7 +14,7 @@ export default function Footer() {
           <div className="lg:col-span-2">
             <div className="flex items-center space-x-3 mb-6">
               <Image
-                src="/images/ChatGPT Image Jan 29, 2026, 12_41_01 AM.png"
+                src="/images/16.png"
                 alt="AOA Foods - Purely Global. Perfectly Local."
                 width={400}
                 height={120}
@@ -22,19 +22,19 @@ export default function Footer() {
               />
             </div>
             <p className="text-white mb-8 max-w-md leading-relaxed text-lg">
-              AOA Foods is an MSME and APEDA registered food export company based in India,
+              AOA FOODS PRIVATE LIMITED is an IEC and GST registered food import & export company based in India,
               providing reliable global trade solutions for international food business partnerships.
-              We specialize in food export services, global sourcing, and
+              We specialize in food & agri products import/export services, global sourcing, and
               comprehensive logistics support with full compliance.
             </p>
             <div className="flex flex-wrap items-center gap-4">
               <span className="bg-[#4A90E2] text-white px-6 py-3 rounded-xl text-sm font-bold shadow-lg">
-                MSME REGISTERED
+                IEC REGISTERED
               </span>
               <span className="bg-white text-[#1E3A5F] px-6 py-3 rounded-xl text-sm font-bold shadow-lg border-2 border-[#4A90E2]">
-                APEDA REGISTERED EXPORTER
+                GST COMPLIANT
               </span>
-              <span className="text-[#2E7D32] font-semibold">Government Certified</span>
+              <span className="text-[#2E7D32] font-semibold">DGFT Verified</span>
             </div>
           </div>
 
@@ -79,11 +79,43 @@ export default function Footer() {
               </div>
               <div>
                 <p className="font-bold text-white mb-2">Location</p>
-                <p className="font-medium text-white">
-                  {contactInfo.address.city}, {contactInfo.address.state}
+                <p className="font-medium text-white text-sm leading-relaxed">
+                  {contactInfo.address.street}
+                  <br />
+                  {contactInfo.address.area}
+                  <br />
+                  {contactInfo.address.city}, {contactInfo.address.state} - {contactInfo.address.pincode}
                   <br />
                   {contactInfo.address.country}
                 </p>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        {/* Company Legal Information */}
+        <div className="border-t border-white/20 mt-16 pt-16">
+          <div className="text-center mb-12">
+            <h3 className="text-2xl font-bold text-white mb-6">Company Legal Information</h3>
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 text-white">
+              <div className="bg-white/10 backdrop-blur-sm rounded-xl p-6 border border-white/20">
+                <h4 className="font-bold text-white mb-2 text-sm">Legal Name</h4>
+                <p className="text-white/90 text-sm">{companyInfo.legalName}</p>
+              </div>
+              <div className="bg-white/10 backdrop-blur-sm rounded-xl p-6 border border-white/20">
+                <h4 className="font-bold text-white mb-2 text-sm">IEC Code</h4>
+                <p className="text-white/90 text-sm">{companyInfo.registrations.iec}</p>
+                <p className="text-white/70 text-xs">Issued: {companyInfo.registrations.iecDate}</p>
+              </div>
+              <div className="bg-white/10 backdrop-blur-sm rounded-xl p-6 border border-white/20">
+                <h4 className="font-bold text-white mb-2 text-sm">GSTIN</h4>
+                <p className="text-white/90 text-sm">{companyInfo.registrations.gstin}</p>
+                <p className="text-white/70 text-xs">Registered: {companyInfo.registrations.gstDate}</p>
+              </div>
+              <div className="bg-white/10 backdrop-blur-sm rounded-xl p-6 border border-white/20">
+                <h4 className="font-bold text-white mb-2 text-sm">Authority</h4>
+                <p className="text-white/90 text-sm">DGFT</p>
+                <p className="text-white/70 text-xs">Status: {companyInfo.status}</p>
               </div>
             </div>
           </div>
@@ -114,23 +146,20 @@ export default function Footer() {
         {/* Bottom Bar */}
         <div className="border-t border-white mt-12 pt-8 flex flex-col md:flex-row justify-between items-center">
           <div className="text-white mb-6 md:mb-0">
-            <p className="font-medium">
-              © {currentYear} AOA Foods Export. All rights reserved. |
-              <span className="ml-1">MSME & APEDA Registered</span>
+            <p className="font-medium max-md:text-center max-md:text-sm">
+              © {currentYear} {companyInfo.legalName}. All rights reserved. |
+              <span className="ml-1">IEC & GST Registered</span>
             </p>
           </div>
-          <div className="flex space-x-8 text-white">
-            <Link href="/privacy-policy" className="text-white hover:bg-[#4A90E2] hover:text-white px-2 py-1 rounded transition-colors duration-200 font-medium">
+          <div className="flex space-x-8 text-white max-md:flex-col max-md:space-x-0 max-md:space-y-3 max-md:text-center">
+            <Link href="/privacy-policy" className="text-white hover:bg-[#4A90E2] hover:text-white px-2 py-1 rounded transition-colors duration-200 font-medium max-md:text-sm">
               Privacy Policy
             </Link>
-            <Link href="/terms" className="text-white hover:bg-[#4A90E2] hover:text-white px-2 py-1 rounded transition-colors duration-200 font-medium">
+            <Link href="/terms" className="text-white hover:bg-[#4A90E2] hover:text-white px-2 py-1 rounded transition-colors duration-200 font-medium max-md:text-sm">
               Terms of Service
             </Link>
-            <Link href="/disclaimer" className="text-white hover:bg-[#4A90E2] hover:text-white px-2 py-1 rounded transition-colors duration-200 font-medium">
+            <Link href="/disclaimer" className="text-white hover:bg-[#4A90E2] hover:text-white px-2 py-1 rounded transition-colors duration-200 font-medium max-md:text-sm">
               Disclaimer
-            </Link>
-            <Link href="/sitemap" className="text-white hover:bg-[#4A90E2] hover:text-white px-2 py-1 rounded transition-colors duration-200 font-medium">
-              Sitemap
             </Link>
           </div>
         </div>

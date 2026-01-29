@@ -1,25 +1,32 @@
 // Content configuration for scalability and future CMS integration
 
 export const siteConfig = {
-  name: 'AOA Import Export',
-  description: 'MSME-registered import and export company in India providing comprehensive global trade solutions',
-  url: 'https://aoa-trade.com',
-  email: 'info@aoa-trade.com',
-  phone: '+91 98765 43210',
+  name: 'AOA FOODS PRIVATE LIMITED',
+  description: 'IEC and GST registered food import and export company in India providing comprehensive global food & agri products trade solutions',
+  url: 'https://aoa-foods.com',
+  email: 'ahmarabyadtrading@gmail.com',
+  phone: '+91 99714 09567',
   address: {
-    street: '123 Business District',
-    city: 'Delhi',
-    state: 'DELHI',
-    postalCode: '400001',
+    street: 'A-19, 4th Floor, Gali No. 1, Johri Farm',
+    area: 'Noor Nagar Extension, Jamia Nagar',
+    city: 'New Delhi',
+    state: 'Delhi',
+    postalCode: '110025',
     country: 'India',
   },
   social: {
-    linkedin: 'https://linkedin.com/company/aoa-import-export',
-    twitter: 'https://twitter.com/aoa_trade',
+    linkedin: 'https://linkedin.com/company/aoa-foods-private-limited',
+    twitter: 'https://twitter.com/aoa_foods',
   },
-  msme: {
-    registered: true,
-    registrationNumber: 'MSME-REG-2024-001',
+  registrations: {
+    iec: 'ABECA1554F',
+    gstin: '07ABECA1554F1ZZ',
+    gstType: 'Regular',
+    gstDate: '17/12/2025',
+    iecDate: '08/01/2026',
+    authority: 'Directorate General of Foreign Trade (DGFT)',
+    status: 'Active',
+    verified: 'Yes (System Generated Certificate)'
   },
 };
 
@@ -146,39 +153,40 @@ export const companyStats = {
   countriesReached: 25,
   complianceRate: 100,
   supportAvailability: '24/7',
-  msmeStatus: 'Registered & Certified',
+  registrationStatus: 'IEC & GST Registered',
   yearsExperience: 5,
   totalVolume: '$28M+',
+  authority: 'DGFT Verified',
 };
 
 export const differentiators = [
   {
-    id: 'msme-registration',
-    title: 'MSME Registration',
-    description: 'Government-registered MSME company ensuring credibility and compliance with Indian trade regulations',
-    icon: 'msme',
+    id: 'iec-registration',
+    title: 'IEC Registration',
+    description: 'Importer Exporter Code (ABECA1554F) registered with Directorate General of Foreign Trade (DGFT) ensuring legitimate international trade operations',
+    icon: 'iec',
     benefits: ['Government backing', 'Regulatory compliance', 'Trust and credibility'],
+  },
+  {
+    id: 'gst-compliance',
+    title: 'GST Compliance',
+    description: 'GST Registration (07ABECA1554F1ZZ) ensuring full tax compliance and transparent business operations in India',
+    icon: 'gst',
+    benefits: ['Tax compliance', 'Transparent operations', 'Legal assurance'],
   },
   {
     id: 'global-network',
     title: 'Global Network',
-    description: 'Extensive network of trusted partners and suppliers across 4 continents and 25+ countries',
+    description: 'Extensive network of trusted partners and suppliers across 4 continents and 25+ countries specializing in food & agri products',
     icon: 'network',
     benefits: ['Wide market reach', 'Diverse supplier base', 'Risk distribution'],
   },
   {
-    id: 'compliance-expertise',
-    title: 'Compliance Expertise',
-    description: 'Deep understanding of international trade regulations, customs procedures, and documentation requirements',
-    icon: 'compliance',
-    benefits: ['Regulatory expertise', 'Risk mitigation', 'Smooth transactions'],
-  },
-  {
-    id: 'end-to-end-service',
-    title: 'End-to-End Service',
-    description: 'Complete trade facilitation from sourcing to delivery, including logistics, documentation, and support',
-    icon: 'service',
-    benefits: ['Single point of contact', 'Streamlined process', 'Cost efficiency'],
+    id: 'food-expertise',
+    title: 'Food Export Expertise',
+    description: 'Specialized knowledge in food and agri products export with complete regulatory compliance and quality assurance',
+    icon: 'expertise',
+    benefits: ['Industry expertise', 'Quality assurance', 'Regulatory knowledge'],
   },
 ];
 

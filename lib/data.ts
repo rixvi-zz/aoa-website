@@ -15,7 +15,7 @@ export const services: Service[] = [
     id: 'import-services',
     title: 'Import Services',
     description: 'Comprehensive import solutions including global sourcing, compliance management, and customs coordination for seamless international procurement.',
-    icon: '/images/image.png',
+    icon: '/icons/import.svg',
     features: [
       'Global sourcing and supplier identification',
       'Import compliance and documentation',
@@ -116,43 +116,67 @@ export const coreValues = [
 // Why Choose AOA differentiators
 export const differentiators = [
   {
-    title: 'MSME Registered',
-    description: 'Government-recognized MSME registration ensuring credibility and access to special trade benefits.',
+    title: 'IEC Registered',
+    description: 'Importer Exporter Code (ABECA1554F) registered with Directorate General of Foreign Trade (DGFT) for legitimate international trade operations.',
     icon: '/icons/msme.svg'
   },
   {
-    title: 'APEDA Registered Exporter',
-    description: 'Agricultural and Processed Food Products Export Development Authority certification for food trade compliance.',
+    title: 'GST Compliant',
+    description: 'GST Registration (07ABECA1554F1ZZ) ensuring full tax compliance and transparent business operations in India.',
     icon: '/icons/compliance.svg'
   },
   {
     title: 'Global Network',
-    description: 'Extensive international network spanning Asia, Middle East, Europe, and Africa.',
+    description: 'Extensive international network spanning Asia, Middle East, Europe, and Africa for comprehensive food trade solutions.',
     icon: '/icons/network.svg'
   },
   {
-    title: 'Export Compliance',
-    description: 'Deep knowledge of international trade regulations and food export compliance requirements.',
+    title: 'Food Export Expertise',
+    description: 'Specialized knowledge in food and agri products export with complete regulatory compliance and quality assurance.',
     icon: '/icons/expertise.svg'
   }
 ];
 
 // Contact information
 export const contactInfo = {
-  email: 'info@aoa-trade.com',
-  phone: '+91 98765 43210',
+  email: 'ahmarabyadtrading@gmail.com',
+  phone: '+91 99714 09567',
   address: {
-    street: '123 Business District',
-    city: 'Delhi',
+    street: 'A-19, 4th Floor, Gali No. 1, Johri Farm',
+    area: 'Noor Nagar Extension, Jamia Nagar',
+    city: 'New Delhi',
     state: 'Delhi',
     country: 'India',
-    pincode: '400001'
+    pincode: '110025'
   },
   businessHours: {
     weekdays: '9:00 AM - 6:00 PM',
     saturday: '9:00 AM - 2:00 PM',
     sunday: 'Closed'
   }
+};
+
+// Company Legal Information
+export const companyInfo = {
+  legalName: 'AOA FOODS PRIVATE LIMITED',
+  tradeName: 'AOA FOODS PRIVATE LIMITED',
+  businessType: 'Private Limited Company',
+  natureOfBusiness: 'Importer & Exporter (Food & Agri Products)',
+  registrations: {
+    iec: 'ABECA1554F',
+    gstin: '07ABECA1554F1ZZ',
+    gstType: 'Regular',
+    gstDate: '17/12/2025',
+    iecDate: '08/01/2026'
+  },
+  authorizedSignatory: {
+    names: ['Masood Ul Hasan Rizvi', 'Saifur Rehman Khan'],
+    designation: 'Authorized Signatory'
+  },
+  authority: 'Directorate General of Foreign Trade (DGFT)',
+  countryOfRegistration: 'India',
+  status: 'Active',
+  verified: 'Yes (System Generated Certificate)'
 };
 
 // SEO Keywords

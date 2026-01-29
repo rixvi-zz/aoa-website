@@ -1,19 +1,19 @@
 import type { Metadata } from 'next';
 
 export const metadata: Metadata = {
-  title: 'Disclaimer - AOA Import & Export Solutions',
-  description: 'Legal disclaimer for AOA Import Export services, outlining limitations and responsibilities in international trade operations.',
-  keywords: ['Disclaimer', 'Legal notice', 'Service limitations', 'Trade disclaimer', 'AOA legal'],
+  title: 'Disclaimer - AOA FOODS PRIVATE LIMITED',
+  description: 'Legal disclaimer for AOA FOODS PRIVATE LIMITED services, outlining limitations and responsibilities in international food trade operations.',
+  keywords: ['Disclaimer', 'Legal notice', 'Service limitations', 'Food trade disclaimer', 'AOA Foods legal'],
   robots: {
     index: true,
     follow: true,
   },
   alternates: {
-    canonical: 'https://aoa-trade.com/disclaimer',
+    canonical: 'https://aoa-foods.com/disclaimer',
     languages: {
-      'en-IN': 'https://aoa-trade.com/disclaimer',
-      'en-US': 'https://aoa-trade.com/disclaimer',
-      'en': 'https://aoa-trade.com/disclaimer',
+      'en-IN': 'https://aoa-foods.com/disclaimer',
+      'en-US': 'https://aoa-foods.com/disclaimer',
+      'en': 'https://aoa-foods.com/disclaimer',
     },
   },
 };
@@ -36,7 +36,7 @@ export default function DisclaimerPage() {
               <h2 className="text-2xl font-semibold text-gray-900 mb-4">1. General Information</h2>
               <p className="text-gray-700 leading-relaxed mb-4">
                 The information on this website is provided on an "as is" basis. To the 
-                fullest extent permitted by law, AOA Import Export excludes all 
+                fullest extent permitted by law, AOA FOODS PRIVATE LIMITED excludes all 
                 representations, warranties, obligations, and liabilities arising out 
                 of or in connection with the information provided.
               </p>
@@ -46,7 +46,7 @@ export default function DisclaimerPage() {
               <h2 className="text-2xl font-semibold text-gray-900 mb-4">2. Service Accuracy</h2>
               <p className="text-gray-700 leading-relaxed mb-4">
                 While we strive to provide accurate and up-to-date information about 
-                our services, market conditions, and trade regulations, we make no 
+                our food import & export services, market conditions, and trade regulations, we make no 
                 representations or warranties about the accuracy, reliability, 
                 completeness, or timeliness of this information.
               </p>
@@ -60,20 +60,23 @@ export default function DisclaimerPage() {
               <ul className="list-disc pl-6 text-gray-700 mb-4">
                 <li>Currency fluctuations and exchange rate risks</li>
                 <li>Political and economic instability in target markets</li>
-                <li>Changes in trade regulations and tariffs</li>
+                <li>Changes in trade regulations, tariffs, and food safety standards</li>
                 <li>Supply chain disruptions and logistics delays</li>
-                <li>Quality variations and product compliance issues</li>
+                <li>Quality variations and food product compliance issues</li>
                 <li>Force majeure events and natural disasters</li>
+                <li>Seasonal variations in food & agri products availability</li>
+                <li>Perishability and shelf-life considerations for food products</li>
               </ul>
             </section>
 
             <section className="mb-8">
               <h2 className="text-2xl font-semibold text-gray-900 mb-4">4. Regulatory Compliance</h2>
               <p className="text-gray-700 leading-relaxed mb-4">
-                While AOA Import Export maintains MSME registration and strives for 
+                While AOA FOODS PRIVATE LIMITED maintains IEC and GST registration and strives for 
                 full regulatory compliance, clients are ultimately responsible for 
-                ensuring their transactions comply with all applicable laws and 
-                regulations in their respective jurisdictions.
+                ensuring their food trade transactions comply with all applicable laws and 
+                regulations in their respective jurisdictions, including food safety standards,
+                APEDA requirements, and customs regulations.
               </p>
             </section>
 
@@ -89,9 +92,10 @@ export default function DisclaimerPage() {
             <section className="mb-8">
               <h2 className="text-2xl font-semibold text-gray-900 mb-4">6. Market Information</h2>
               <p className="text-gray-700 leading-relaxed mb-4">
-                Market information, pricing data, and trade statistics provided are 
+                Market information, pricing data, and food trade statistics provided are 
                 for general guidance only and should not be relied upon for specific 
-                business decisions without independent verification.
+                business decisions without independent verification. Food prices and 
+                availability can vary significantly due to seasonal and market factors.
               </p>
             </section>
 
@@ -107,7 +111,7 @@ export default function DisclaimerPage() {
             <section className="mb-8">
               <h2 className="text-2xl font-semibold text-gray-900 mb-4">8. Limitation of Liability</h2>
               <p className="text-gray-700 leading-relaxed mb-4">
-                In no event shall AOA Import Export be liable for any direct, indirect, 
+                In no event shall AOA FOODS PRIVATE LIMITED be liable for any direct, indirect, 
                 incidental, special, consequential, or exemplary damages arising from 
                 the use of our services or reliance on information provided.
               </p>
@@ -128,10 +132,13 @@ export default function DisclaimerPage() {
               </p>
               <div className="bg-gray-50 p-4 rounded-lg">
                 <p className="text-gray-700">
-                  <strong>AOA Import Export</strong><br />
-                  Email: legal@aoa-trade.com<br />
-                  Phone: +91 98765 43210<br />
-                  Address: Mumbai, Maharashtra, India
+                  <strong>AOA FOODS PRIVATE LIMITED</strong><br />
+                  Email: ahmarabyadtrading@gmail.com<br />
+                  Phone: +91 99714 09567<br />
+                  Address: A-19, 4th Floor, Gali No. 1, Johri Farm,<br />
+                  Noor Nagar Extension, Jamia Nagar,<br />
+                  New Delhi, Delhi - 110025, India<br />
+                  IEC: ABECA1554F | GSTIN: 07ABECA1554F1ZZ
                 </p>
               </div>
             </section>

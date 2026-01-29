@@ -30,13 +30,13 @@ export default function WhyChooseAOA() {
                   <path fillRule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clipRule="evenodd" />
                 </svg>
               </div>
-              <span className="text-sm font-bold text-[#1E3A5F]">APEDA & MSME Certified Excellence</span>
+              <span className="text-sm font-bold text-[#1E3A5F]">IEC & GST Certified Excellence</span>
             </div>
             <h2 className="text-4xl lg:text-5xl font-bold text-[#1E3A5F] mb-8 leading-tight">
               Why Choose AOA Foods?
             </h2>
             <p className="text-xl text-gray-600 max-w-4xl mx-auto leading-relaxed">
-              As your trusted MSME and APEDA registered food export partner, we bring government-certified credibility, 
+              As your trusted IEC and GST registered food import & export partner, we bring government-certified credibility, 
               international trade expertise, and global sourcing capabilities to every business opportunity.
             </p>
           </div>
@@ -114,25 +114,25 @@ export default function WhyChooseAOA() {
                 </div>
 
                 {/* Enhanced Stats Grid */}
-                <div className="grid grid-cols-2 md:grid-cols-4 gap-8 text-center">
-                  <div className="bg-white/10 backdrop-blur-sm rounded-3xl p-8 border border-white/20 hover:bg-white/20 hover:scale-105 transition-all duration-500 group shadow-xl">
-                    <div className="text-4xl lg:text-5xl font-bold text-white mb-4 group-hover:scale-110 transition-transform duration-300">4+</div>
-                    <div className="text-white font-semibold text-lg mb-2">Continents Served</div>
+                <div className="grid grid-cols-2 md:grid-cols-4 gap-8 text-center max-md:grid-cols-1 max-md:gap-6">
+                  <div className="bg-white/10 backdrop-blur-sm rounded-3xl p-8 border border-white/20 hover:bg-white/20 hover:scale-105 transition-all duration-500 group shadow-xl max-md:p-6 max-md:rounded-2xl">
+                    <div className="text-4xl lg:text-5xl font-bold text-white mb-4 group-hover:scale-110 transition-transform duration-300 max-md:text-3xl">4+</div>
+                    <div className="text-white font-semibold text-lg mb-2 max-md:text-base">Continents Served</div>
                     <div className="text-white/70 text-sm">Active Export Markets</div>
                   </div>
-                  <div className="bg-white/10 backdrop-blur-sm rounded-3xl p-8 border border-white/20 hover:bg-white/20 hover:scale-105 transition-all duration-500 group shadow-xl">
-                    <div className="text-4xl lg:text-5xl font-bold text-white mb-4 group-hover:scale-110 transition-transform duration-300">100%</div>
-                    <div className="text-white font-semibold text-lg mb-2">APEDA Compliance</div>
+                  <div className="bg-white/10 backdrop-blur-sm rounded-3xl p-8 border border-white/20 hover:bg-white/20 hover:scale-105 transition-all duration-500 group shadow-xl max-md:p-6 max-md:rounded-2xl">
+                    <div className="text-4xl lg:text-5xl font-bold text-white mb-4 group-hover:scale-110 transition-transform duration-300 max-md:text-3xl">100%</div>
+                    <div className="text-white font-semibold text-lg mb-2 max-md:text-base">APEDA Compliance</div>
                     <div className="text-white/70 text-sm">Food Export Authority</div>
                   </div>
-                  <div className="bg-white/10 backdrop-blur-sm rounded-3xl p-8 border border-white/20 hover:bg-white/20 hover:scale-105 transition-all duration-500 group shadow-xl">
-                    <div className="text-4xl lg:text-5xl font-bold text-white mb-4 group-hover:scale-110 transition-transform duration-300">24/7</div>
-                    <div className="text-white font-semibold text-lg mb-2">Export Support</div>
+                  <div className="bg-white/10 backdrop-blur-sm rounded-3xl p-8 border border-white/20 hover:bg-white/20 hover:scale-105 transition-all duration-500 group shadow-xl max-md:p-6 max-md:rounded-2xl">
+                    <div className="text-4xl lg:text-5xl font-bold text-white mb-4 group-hover:scale-110 transition-transform duration-300 max-md:text-3xl">24/7</div>
+                    <div className="text-white font-semibold text-lg mb-2 max-md:text-base">Export Support</div>
                     <div className="text-white/70 text-sm">Dedicated Assistance</div>
                   </div>
-                  <div className="bg-white/10 backdrop-blur-sm rounded-3xl p-8 border border-white/20 hover:bg-white/20 hover:scale-105 transition-all duration-500 group shadow-xl">
-                    <div className="text-4xl lg:text-5xl font-bold text-white mb-4 group-hover:scale-110 transition-transform duration-300">MSME</div>
-                    <div className="text-white font-semibold text-lg mb-2">Registered & Certified</div>
+                  <div className="bg-white/10 backdrop-blur-sm rounded-3xl p-8 border border-white/20 hover:bg-white/20 hover:scale-105 transition-all duration-500 group shadow-xl max-md:p-6 max-md:rounded-2xl">
+                    <div className="text-4xl lg:text-5xl font-bold text-white mb-4 group-hover:scale-110 transition-transform duration-300 max-md:text-3xl">MSME</div>
+                    <div className="text-white font-semibold text-lg mb-2 max-md:text-base">Registered & Certified</div>
                     <div className="text-white/70 text-sm">Government Verified</div>
                   </div>
                 </div>

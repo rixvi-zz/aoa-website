@@ -1,19 +1,19 @@
 import type { Metadata } from 'next';
 
 export const metadata: Metadata = {
-  title: 'Privacy Policy - AOA Import & Export Solutions',
-  description: 'Privacy policy for AOA Import Export, detailing how we collect, use, and protect your personal information in compliance with international data protection laws.',
-  keywords: ['Privacy policy', 'Data protection', 'GDPR compliance', 'Personal information', 'AOA privacy'],
+  title: 'Privacy Policy - AOA FOODS PRIVATE LIMITED',
+  description: 'Privacy policy for AOA FOODS PRIVATE LIMITED, detailing how we collect, use, and protect your personal information in compliance with international data protection laws.',
+  keywords: ['Privacy policy', 'Data protection', 'GDPR compliance', 'Personal information', 'AOA Foods privacy'],
   robots: {
     index: true,
     follow: true,
   },
   alternates: {
-    canonical: 'https://aoa-trade.com/privacy-policy',
+    canonical: 'https://aoa-foods.com/privacy-policy',
     languages: {
-      'en-IN': 'https://aoa-trade.com/privacy-policy',
-      'en-US': 'https://aoa-trade.com/privacy-policy',
-      'en': 'https://aoa-trade.com/privacy-policy',
+      'en-IN': 'https://aoa-foods.com/privacy-policy',
+      'en-US': 'https://aoa-foods.com/privacy-policy',
+      'en': 'https://aoa-foods.com/privacy-policy',
     },
   },
 };
@@ -35,9 +35,17 @@ export default function PrivacyPolicyPage() {
             <section className="mb-8">
               <h2 className="text-2xl font-semibold text-gray-900 mb-4">1. Introduction</h2>
               <p className="text-gray-700 leading-relaxed mb-4">
-                AOA Import Export ("we," "our," or "us") is committed to protecting your privacy. 
+                AOA FOODS PRIVATE LIMITED ("we," "our," or "us") is committed to protecting your privacy. 
                 This Privacy Policy explains how we collect, use, disclose, and safeguard your 
-                information when you visit our website or use our services.
+                information when you visit our website or use our food import & export services.
+              </p>
+              <p className="text-gray-700 leading-relaxed mb-4">
+                <strong>Company Details:</strong><br />
+                Legal Name: AOA FOODS PRIVATE LIMITED<br />
+                Business Type: Private Limited Company<br />
+                Nature of Business: Importer & Exporter (Food & Agri Products)<br />
+                IEC: ABECA1554F | GSTIN: 07ABECA1554F1ZZ<br />
+                Registration Authority: Directorate General of Foreign Trade (DGFT)
               </p>
             </section>
 
@@ -62,11 +70,12 @@ export default function PrivacyPolicyPage() {
             <section className="mb-8">
               <h2 className="text-2xl font-semibold text-gray-900 mb-4">3. How We Use Your Information</h2>
               <ul className="list-disc pl-6 text-gray-700 mb-4">
-                <li>Provide and improve our import/export services</li>
+                <li>Provide and improve our food import/export services</li>
                 <li>Respond to inquiries and communicate with you</li>
                 <li>Process transactions and manage business relationships</li>
-                <li>Comply with legal and regulatory requirements</li>
+                <li>Comply with legal and regulatory requirements (DGFT, GST, customs)</li>
                 <li>Send relevant business communications and updates</li>
+                <li>Facilitate international food & agri products trade</li>
               </ul>
             </section>
 
@@ -125,10 +134,13 @@ export default function PrivacyPolicyPage() {
               </p>
               <div className="bg-gray-50 p-4 rounded-lg">
                 <p className="text-gray-700">
-                  <strong>AOA Import Export</strong><br />
-                  Email: privacy@aoa-trade.com<br />
-                  Phone: +91 98765 43210<br />
-                  Address: Mumbai, Maharashtra, India
+                  <strong>AOA FOODS PRIVATE LIMITED</strong><br />
+                  Email: ahmarabyadtrading@gmail.com<br />
+                  Phone: +91 99714 09567<br />
+                  Address: A-19, 4th Floor, Gali No. 1, Johri Farm,<br />
+                  Noor Nagar Extension, Jamia Nagar,<br />
+                  New Delhi, Delhi - 110025, India<br />
+                  IEC: ABECA1554F | GSTIN: 07ABECA1554F1ZZ
                 </p>
               </div>
             </section>

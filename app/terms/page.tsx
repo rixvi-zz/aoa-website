@@ -1,19 +1,19 @@
 import type { Metadata } from 'next';
 
 export const metadata: Metadata = {
-  title: 'Terms of Service - AOA Import & Export Solutions',
-  description: 'Terms of service for AOA Import Export, outlining the terms and conditions for using our international trade services and website.',
-  keywords: ['Terms of service', 'Terms and conditions', 'Service agreement', 'Legal terms', 'AOA terms'],
+  title: 'Terms of Service - AOA FOODS PRIVATE LIMITED',
+  description: 'Terms of service for AOA FOODS PRIVATE LIMITED, outlining the terms and conditions for using our international food import & export services and website.',
+  keywords: ['Terms of service', 'Terms and conditions', 'Service agreement', 'Legal terms', 'AOA Foods terms'],
   robots: {
     index: true,
     follow: true,
   },
   alternates: {
-    canonical: 'https://aoa-trade.com/terms',
+    canonical: 'https://aoa-foods.com/terms',
     languages: {
-      'en-IN': 'https://aoa-trade.com/terms',
-      'en-US': 'https://aoa-trade.com/terms',
-      'en': 'https://aoa-trade.com/terms',
+      'en-IN': 'https://aoa-foods.com/terms',
+      'en-US': 'https://aoa-foods.com/terms',
+      'en': 'https://aoa-foods.com/terms',
     },
   },
 };
@@ -35,7 +35,7 @@ export default function TermsPage() {
             <section className="mb-8">
               <h2 className="text-2xl font-semibold text-gray-900 mb-4">1. Acceptance of Terms</h2>
               <p className="text-gray-700 leading-relaxed mb-4">
-                By accessing and using AOA Import Export's website and services, you accept 
+                By accessing and using AOA FOODS PRIVATE LIMITED's website and services, you accept 
                 and agree to be bound by the terms and provision of this agreement. If you 
                 do not agree to abide by the above, please do not use this service.
               </p>
@@ -44,10 +44,21 @@ export default function TermsPage() {
             <section className="mb-8">
               <h2 className="text-2xl font-semibold text-gray-900 mb-4">2. Company Information</h2>
               <p className="text-gray-700 leading-relaxed mb-4">
-                AOA Import Export is an MSME-registered company based in India, specializing 
-                in international trade services including import, export, global sourcing, 
+                AOA FOODS PRIVATE LIMITED is an IEC and GST registered company based in India, specializing 
+                in international food & agri products trade services including import, export, global sourcing, 
                 and logistics support.
               </p>
+              <div className="bg-gray-50 p-4 rounded-lg mb-4">
+                <p className="text-gray-700">
+                  <strong>Legal Name:</strong> AOA FOODS PRIVATE LIMITED<br />
+                  <strong>Business Type:</strong> Private Limited Company<br />
+                  <strong>Nature of Business:</strong> Importer & Exporter (Food & Agri Products)<br />
+                  <strong>IEC:</strong> ABECA1554F (Issued: 08/01/2026)<br />
+                  <strong>GSTIN:</strong> 07ABECA1554F1ZZ (Registered: 17/12/2025)<br />
+                  <strong>Authority:</strong> Directorate General of Foreign Trade (DGFT)<br />
+                  <strong>Status:</strong> Active | <strong>Verified:</strong> Yes (System Generated Certificate)
+                </p>
+              </div>
             </section>
 
             <section className="mb-8">
@@ -56,11 +67,11 @@ export default function TermsPage() {
                 Our services include but are not limited to:
               </p>
               <ul className="list-disc pl-6 text-gray-700 mb-4">
-                <li>Import and export facilitation</li>
-                <li>Global sourcing and supplier identification</li>
-                <li>Trade documentation and compliance</li>
-                <li>Logistics and supply chain management</li>
-                <li>B2B partnership facilitation</li>
+                <li>Food import and export facilitation</li>
+                <li>Global food & agri products sourcing and supplier identification</li>
+                <li>Trade documentation and compliance (APEDA, FSSAI, customs)</li>
+                <li>Logistics and supply chain management for food products</li>
+                <li>B2B partnership facilitation in food trade</li>
               </ul>
             </section>
 
@@ -130,10 +141,14 @@ export default function TermsPage() {
               </p>
               <div className="bg-gray-50 p-4 rounded-lg">
                 <p className="text-gray-700">
-                  <strong>AOA Import Export</strong><br />
-                  Email: legal@aoa-trade.com<br />
-                  Phone: +91 98765 43210<br />
-                  Address: Mumbai, Maharashtra, India
+                  <strong>AOA FOODS PRIVATE LIMITED</strong><br />
+                  Email: ahmarabyadtrading@gmail.com<br />
+                  Phone: +91 99714 09567<br />
+                  Address: A-19, 4th Floor, Gali No. 1, Johri Farm,<br />
+                  Noor Nagar Extension, Jamia Nagar,<br />
+                  New Delhi, Delhi - 110025, India<br />
+                  IEC: ABECA1554F | GSTIN: 07ABECA1554F1ZZ<br />
+                  Authorized Signatories: Masood Ul Hasan Rizvi, Saifur Rehman Khan
                 </p>
               </div>
             </section>

@@ -49,6 +49,30 @@ button, a, input, textarea, select {
   transition: all 0.2s ease-in-out;
 }
 
+/* Mobile-specific fixes */
+@media (max-width: 768px) {
+  /* Fix any floating badges that might overlap content */
+  .floating-badge {
+    position: relative !important;
+    bottom: auto !important;
+    right: auto !important;
+    transform: none !important;
+    margin: 1rem auto !important;
+    display: block !important;
+  }
+  
+  /* Ensure proper spacing for mobile */
+  .hero-section {
+    padding-top: 2rem !important;
+    padding-bottom: 2rem !important;
+  }
+  
+  /* Ensure cards stack properly */
+  .grid-cols-2 {
+    grid-template-columns: 1fr !important;
+  }
+}
+
 /* Print styles */
 @media print {
   * {

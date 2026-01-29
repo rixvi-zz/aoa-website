@@ -14,7 +14,7 @@ export default function Header() {
   return (
     <header className="bg-white sticky top-0 z-50 border-b border-gray-100 shadow-sm">
       <div className="max-w-6xl mx-auto px-6">
-        <div className="flex items-center justify-between h-20">
+        <div className="flex items-center justify-between h-20 max-md:h-16 max-md:px-4">
 
           {/* Logo - Left Aligned */}
           <div className="flex-shrink-0">
@@ -24,7 +24,7 @@ export default function Header() {
                 alt="AOA Foods - Purely Global. Perfectly Local."
                 width={280}
                 height={84}
-                className="h-12 w-auto sm:h-14 sm:w-auto lg:h-16 lg:w-auto xl:h-18 xl:w-auto"
+                className="h-12 w-auto sm:h-14 sm:w-auto lg:h-16 lg:w-auto xl:h-18 xl:w-auto max-md:h-10"
                 priority
               />
             </Link>
@@ -61,7 +61,7 @@ export default function Header() {
           {/* Mobile Menu Button */}
           <button
             onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
-            className="lg:hidden p-2 text-[#1E3A5F] hover:text-[#4A90E2] transition-colors duration-200"
+            className="lg:hidden p-2 text-[#1E3A5F] hover:text-[#4A90E2] transition-colors duration-200 max-md:p-1"
             aria-label="Toggle menu"
           >
             <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">

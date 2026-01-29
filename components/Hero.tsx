@@ -27,14 +27,14 @@ export default function Hero() {
             {/* Left Column - Content */}
             <div className="text-left space-y-8">
               {/* Trust badge */}
-              <div className="inline-flex items-center bg-white/80 backdrop-blur-sm border border-[#4A90E2]/20 rounded-full px-6 py-3 shadow-lg">
+              <div className="inline-flex items-center bg-white/80 backdrop-blur-sm border border-[#4A90E2]/20 rounded-full px-6 py-3 shadow-lg max-md:px-4 max-md:py-2">
                 <div className="w-2 h-2 bg-[#2E7D32] rounded-full animate-pulse mr-3"></div>
-                <span className="text-[#1E3A5F] font-semibold text-sm">APEDA & MSME Certified</span>
+                <span className="text-[#1E3A5F] font-semibold text-sm max-md:text-xs">IEC & GST Registered</span>
               </div>
 
               {/* Main Headline */}
-              <h1 className="text-5xl sm:text-6xl lg:text-7xl font-bold leading-tight text-[#1E3A5F]">
-                Premium Food Export
+              <h1 className="text-5xl sm:text-6xl lg:text-7xl font-bold leading-tight text-[#1E3A5F] max-md:text-3xl max-md:leading-tight">
+                Premium Food Import & Export
                 <br />
                 <span className="bg-gradient-to-r from-[#4A90E2] to-[#2E7D32] bg-clip-text text-transparent">
                   Solutions for Global Markets
@@ -42,13 +42,13 @@ export default function Hero() {
               </h1>
 
               {/* Subtext */}
-              <p className="text-xl lg:text-2xl text-gray-600 leading-relaxed max-w-2xl">
-                Your trusted MSME and APEDA registered food export company in India, delivering comprehensive international food trade solutions with full compliance.
+              <p className="text-xl lg:text-2xl text-gray-600 leading-relaxed max-w-2xl max-md:text-lg max-md:leading-relaxed">
+                Your trusted IEC and GST registered food import & export company in India, delivering comprehensive international food & agri products trade solutions with full compliance.
               </p>
 
-              <p className="text-lg text-gray-500 leading-relaxed max-w-xl">
-                Serving Asia, Middle East, Europe, and Africa with reliability and transparency.
-              </p>
+              <p className="text-lg text-gray-500 leading-relaxed max-w-xl max-md:text-base max-md:leading-relaxed">
+                Serving Asia, Middle East, Europe, and Africa with reliability and transparency.</p>
+              
 
               {/* CTA Buttons */}
               <div className="flex flex-col sm:flex-row gap-4 pt-4">
@@ -122,8 +122,8 @@ export default function Hero() {
                   </svg>
                 </div>
                 <div>
-                  <div className="text-[#1E3A5F] font-bold text-lg">MSME Registered</div>
-                  <div className="text-gray-500 text-sm">Government Certified</div>
+                  <div className="text-[#1E3A5F] font-bold text-lg">IEC Registered</div>
+                  <div className="text-gray-500 text-sm">DGFT Verified</div>
                 </div>
               </div>
 
@@ -136,8 +136,8 @@ export default function Hero() {
                   </svg>
                 </div>
                 <div>
-                  <div className="text-[#1E3A5F] font-bold text-lg">APEDA Certified</div>
-                  <div className="text-gray-500 text-sm">Export Authority</div>
+                  <div className="text-[#1E3A5F] font-bold text-lg">GST Compliant</div>
+                  <div className="text-gray-500 text-sm">Tax Authority</div>
                 </div>
               </div>
 
@@ -150,7 +150,7 @@ export default function Hero() {
                   </svg>
                 </div>
                 <div>
-                  <div className="text-[#1E3A5F] font-bold text-lg">Export Compliant</div>
+                  <div className="text-[#1E3A5F] font-bold text-lg">Trade Compliant</div>
                   <div className="text-gray-500 text-sm">Quality Assured</div>
                 </div>
               </div>

@@ -22,15 +22,15 @@ export const viewport: Viewport = {
 // Global metadata configuration
 export const metadata: Metadata = {
   title: {
-    default: 'AOA - Reliable Import & Export Solutions for Global Markets',
-    template: '%s | AOA - Import Export Company'
+    default: 'AOA FOODS PRIVATE LIMITED - Reliable Import & Export Solutions for Global Markets',
+    template: '%s | AOA FOODS - Import Export Company'
   },
-  description: 'AOA is an MSME-registered import and export company in India, providing comprehensive global trade solutions including import services, export services, global sourcing, and logistics support for international B2B partnerships.',
+  description: 'AOA FOODS PRIVATE LIMITED is an IEC and GST registered import and export company in India, providing comprehensive global trade solutions including import services, export services, global sourcing, and logistics support for international B2B partnerships.',
   keywords: seoKeywords,
-  authors: [{ name: 'AOA Import Export' }],
-  creator: 'AOA Import Export',
-  publisher: 'AOA Import Export',
-  metadataBase: new URL('https://aoa-trade.com'),
+  authors: [{ name: 'AOA FOODS PRIVATE LIMITED' }],
+  creator: 'AOA FOODS PRIVATE LIMITED',
+  publisher: 'AOA FOODS PRIVATE LIMITED',
+  metadataBase: new URL('https://aoa-foods.com'),
   robots: {
     index: true,
     follow: true,
@@ -45,10 +45,10 @@ export const metadata: Metadata = {
   openGraph: {
     type: 'website',
     locale: 'en_IN',
-    url: 'https://aoa-trade.com',
-    siteName: 'AOA Import Export',
-    title: 'AOA - Reliable Import & Export Solutions for Global Markets',
-    description: 'MSME-registered import and export company in India providing comprehensive global trade solutions for international B2B partnerships.',
+    url: 'https://aoa-foods.com',
+    siteName: 'AOA FOODS PRIVATE LIMITED',
+    title: 'AOA FOODS PRIVATE LIMITED - Reliable Import & Export Solutions for Global Markets',
+    description: 'IEC and GST registered import and export company in India providing comprehensive global trade solutions for international B2B partnerships.',
     images: [
       {
         url: '/images/og-image.svg',
