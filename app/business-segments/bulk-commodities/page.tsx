@@ -17,16 +17,19 @@ export default function BulkCommoditiesPage() {
   return (
     <div className="min-h-screen">
       {/* Hero Section */}
-      <section className="bg-gradient-to-br from-[#1E3A5F] via-[#2E7D32] to-[#1E3A5F] text-white py-20 lg:py-32 relative overflow-hidden">
+      <section className="bg-gradient-to-br from-[#1E3A5F] via-[#2E7D32] to-[#1E3A5F] text-white py-16 sm:py-20 lg:py-32 relative overflow-hidden min-h-[60vh] sm:min-h-[70vh] lg:min-h-[80vh]">
         {/* Hero Background Image */}
         <div className="absolute inset-0">
           <Image
             src="/images/spices-market-morocco.jpg"
             alt="Spices Market Morocco - Bulk Agricultural Commodities & Storage Facilities"
             fill
-            className="object-cover"
-            priority
-            quality={100}
+            className="object-cover object-center"
+            priority={true}
+            quality={85}
+            sizes="100vw"
+            placeholder="blur"
+            blurDataURL="data:image/jpeg;base64,/9j/4AAQSkZJRgABAQAAAQABAAD/2wBDAAYEBQYFBAYGBQYHBwYIChAKCgkJChQODwwQFxQYGBcUFhYaHSUfGhsjHBYWICwgIyYnKSopGR8tMC0oMCUoKSj/2wBDAQcHBwoIChMKChMoGhYaKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCj/wAARCAAIAAoDASIAAhEBAxEB/8QAFQABAQAAAAAAAAAAAAAAAAAAAAv/xAAhEAACAQMDBQAAAAAAAAAAAAABAgMABAUGIWGRkqGx0f/EABUBAQEAAAAAAAAAAAAAAAAAAAMF/8QAGhEAAgIDAAAAAAAAAAAAAAAAAAECEgMRkf/aAAwDAQACEQMRAD8AltJagyeH0AthI5xdrLcNM91BF5pX2HaH9bcfaSXWGaRmknyJckliyjqTzSlT54b6bk+h0R//2Q=="
           />
           <div className="absolute inset-0 bg-black/40"></div>
         </div>
@@ -44,20 +47,20 @@ export default function BulkCommoditiesPage() {
               Large-Scale & Efficient Operations
             </div>
 
-            <h1 className="text-5xl lg:text-6xl font-bold mb-8">
+            <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold mb-6 sm:mb-8">
               Bulk Agricultural <span className="bg-gradient-to-r from-white to-gray-200 bg-clip-text text-transparent">Commodities Export</span>
             </h1>
-            <p className="text-xl text-white/90 leading-relaxed max-w-4xl mx-auto mb-12">
+            <p className="text-lg sm:text-xl text-white/90 leading-relaxed max-w-4xl mx-auto mb-8 sm:mb-12 px-4">
               Large-scale agricultural commodity exports including grains, seeds, and raw materials 
               for industrial and commercial applications with efficient logistics and quality assurance.
             </p>
 
-            <div className="flex flex-col sm:flex-row gap-4 justify-center">
+            <div className="flex flex-col sm:flex-row gap-4 justify-center px-4">
               <CTAButton 
                 href="/contact" 
                 variant="secondary" 
                 size="lg"
-                className="bg-white text-[#1E3A5F] hover:bg-gray-100 font-bold px-8 py-4 text-lg"
+                className="bg-white text-[#1E3A5F] hover:bg-gray-100 font-bold px-6 sm:px-8 py-3 sm:py-4 text-base sm:text-lg"
               >
                 Request Bulk Quote
               </CTAButton>
@@ -65,7 +68,7 @@ export default function BulkCommoditiesPage() {
                 href="/business-segments" 
                 variant="outline" 
                 size="lg"
-                className="border-white text-white hover:bg-white hover:text-[#1E3A5F] font-bold px-8 py-4 text-lg"
+                className="border-white text-white hover:bg-white hover:text-[#1E3A5F] font-bold px-6 sm:px-8 py-3 sm:py-4 text-base sm:text-lg"
               >
                 View All Segments
               </CTAButton>

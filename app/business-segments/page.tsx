@@ -17,16 +17,19 @@ export default function BusinessSegmentsPage() {
     return (
         <div className="min-h-screen">
             {/* 1. Hero Header Section */}
-            <section className="bg-gradient-to-br from-[#1E3A5F] via-[#4A90E2] to-[#1E3A5F] text-white py-20 lg:py-32 relative overflow-hidden">
+            <section className="bg-gradient-to-br from-[#1E3A5F] via-[#4A90E2] to-[#1E3A5F] text-white py-16 sm:py-20 lg:py-32 relative overflow-hidden min-h-[60vh] sm:min-h-[70vh] lg:min-h-[80vh]">
                 {/* Hero Background Image */}
                 <div className="absolute inset-0">
                     <Image
                         src="/images/buisnessseg.png"
                         alt="AOA Foods Business Segments Overview - Comprehensive Food Export Solutions"
                         fill
-                        className="object-cover"
-                        priority
-                        quality={100}
+                        className="object-cover object-center"
+                        priority={true}
+                        quality={85}
+                        sizes="100vw"
+                        placeholder="blur"
+                        blurDataURL="data:image/jpeg;base64,/9j/4AAQSkZJRgABAQAAAQABAAD/2wBDAAYEBQYFBAYGBQYHBwYIChAKCgkJChQODwwQFxQYGBcUFhYaHSUfGhsjHBYWICwgIyYnKSopGR8tMC0oMCUoKSj/2wBDAQcHBwoIChMKChMoGhYaKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCj/wAARCAAIAAoDASIAAhEBAxEB/8QAFQABAQAAAAAAAAAAAAAAAAAAAAv/xAAhEAACAQMDBQAAAAAAAAAAAAABAgMABAUGIWGRkqGx0f/EABUBAQEAAAAAAAAAAAAAAAAAAAMF/8QAGhEAAgIDAAAAAAAAAAAAAAAAAAECEgMRkf/aAAwDAQACEQMRAD8AltJagyeH0AthI5xdrLcNM91BF5pX2HaH9bcfaSXWGaRmknyJckliyjqTzSlT54b6bk+h0R//2Q=="
                     />
                     <div className="absolute inset-0 bg-black/40"></div>
                 </div>
@@ -44,13 +47,13 @@ export default function BusinessSegmentsPage() {
                             APEDA Registered | Comprehensive Food & Agri Export Segments
                         </div>
 
-                        <h1 className="text-5xl lg:text-7xl font-bold mb-6">
+                        <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-7xl font-bold mb-4 sm:mb-6">
                             Business <span className="bg-gradient-to-r from-white to-gray-200 bg-clip-text text-transparent">Segments</span>
                         </h1>
-                        <p className="text-2xl text-white/90 leading-relaxed max-w-4xl mx-auto mb-4">
+                        <p className="text-lg sm:text-xl lg:text-2xl text-white/90 leading-relaxed max-w-4xl mx-auto mb-2 sm:mb-4 px-4">
                             Premium Halaal Export Solutions
                         </p>
-                        <p className="text-lg text-white/80 leading-relaxed max-w-3xl mx-auto mb-12">
+                        <p className="text-base sm:text-lg text-white/80 leading-relaxed max-w-3xl mx-auto mb-8 sm:mb-12 px-4">
                             AOA FOODS PRIVATE LIMITED specializes in premium Halaal food exports with comprehensive
                             business segments covering meat, rice, pulses, animal feed, and bulk commodities for global markets.
                         </p>
