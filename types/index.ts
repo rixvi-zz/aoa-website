@@ -69,6 +69,7 @@ export interface NavItem {
   label: string;
   href: string;
   isExternal?: boolean;
+  children?: NavItem[]; // For dropdown menus
 }
 
 // CTA Button Types

@@ -23,7 +23,7 @@ export default function Hero() {
       <div className="relative min-h-screen flex items-center">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-24 lg:py-32 w-full">
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
-            
+
             {/* Left Column - Content */}
             <div className="text-left space-y-8">
               {/* Trust badge */}
@@ -48,7 +48,7 @@ export default function Hero() {
 
               <p className="text-lg text-gray-500 leading-relaxed max-w-xl max-md:text-base max-md:leading-relaxed">
                 Serving Asia, Middle East, Europe, and Africa with reliability and transparency.</p>
-              
+
 
               {/* CTA Buttons */}
               <div className="flex flex-col sm:flex-row gap-3 pt-4">
@@ -88,16 +88,25 @@ export default function Hero() {
               <div className="relative">
                 {/* Main image container */}
                 <div className="relative bg-white/60 backdrop-blur-sm rounded-3xl p-8 shadow-2xl border border-white/50">
-                  <Image
-                    src="/images/hero-bg.svg"
-                    alt="Premium food export operations - grains, spices, packaged foods, and shipping containers at international port"
-                    width={600}
-                    height={400}
-                    className="rounded-2xl w-full h-auto shadow-lg"
-                    priority
-                    quality={100}
-                  />
-                  
+                  {/* Hero Image Placeholder - Replace with real photo */}
+                  <div className="relative">
+                    <Image
+                      src="/images/hero-bg.svg"
+                      alt="Premium food export operations - grains, spices, packaged foods, and shipping containers at international port"
+                      width={600}
+                      height={400}
+                      className="rounded-2xl w-full h-auto shadow-lg"
+                      priority
+                      quality={100}
+                    />
+                    {/* Overlay for image placeholder indication */}
+                    <div className="absolute inset-0 bg-black/10 rounded-2xl flex items-center justify-center opacity-0 hover:opacity-100 transition-opacity duration-300">
+                      <span className="bg-white/90 text-gray-700 px-4 py-2 rounded-lg text-sm font-medium">
+                        [Replace with: AOA Foods Export Operations Photo]
+                      </span>
+                    </div>
+                  </div>
+
                   {/* Floating stats cards */}
                   <div className="absolute -top-6 -right-6 bg-white rounded-2xl p-4 shadow-xl border border-[#4A90E2]/20">
                     <div className="text-center">
@@ -105,7 +114,7 @@ export default function Hero() {
                       <div className="text-sm text-gray-600">Continents</div>
                     </div>
                   </div>
-                  
+
                   <div className="absolute -bottom-6 -left-6 bg-white rounded-2xl p-4 shadow-xl border border-[#2E7D32]/20">
                     <div className="text-center">
                       <div className="text-2xl font-bold text-[#2E7D32]">100%</div>

@@ -4,9 +4,19 @@ import { Service, Market, NavItem } from '@/types';
 export const navigationItems: NavItem[] = [
   { label: 'Home', href: '/' },
   { label: 'About Us', href: '/about' },
+  { 
+    label: 'Business Segments', 
+    href: '/business-segments',
+    children: [
+      { label: 'Premium Halaal Meat', href: '/business-segments/halaal-meat' },
+      { label: 'Basmati Rice', href: '/business-segments/basmati-rice' },
+      { label: 'Pulses & Cereals', href: '/business-segments/pulses-cereals' },
+      { label: 'Animal Feed', href: '/business-segments/animal-feed' },
+      { label: 'Bulk Commodities', href: '/business-segments/bulk-commodities' },
+    ]
+  },
   { label: 'Services', href: '/services' },
   { label: 'International Markets', href: '/markets' },
-  { label: 'Halaal Export Solutions', href: '/export-halaal-focus' },
   { label: 'Contact Us', href: '/contact' },
 ];
 

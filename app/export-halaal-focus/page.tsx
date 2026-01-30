@@ -3,11 +3,11 @@ import Image from 'next/image';
 import CTAButton from '@/components/CTAButton';
 
 export const metadata: Metadata = {
-  title: 'Halaal Export Solutions - AOA FOODS PRIVATE LIMITED',
-  description: 'AOA Foods specializes in premium Halaal export solutions including meat, rice, pulses, and frozen foods with comprehensive compliance, certification, and quality assurance for international markets.',
+  title: 'Premium Halaal Meat Export - AOA FOODS PRIVATE LIMITED',
+  description: 'AOA Foods specializes in premium Halaal export solutions including meat, rice, pulses, and animal feed with comprehensive compliance, certification, and quality assurance for international markets.',
   keywords: ['Halaal export solutions', 'Halaal meat export', 'Premium Halaal exports', 'Halaal compliance', 'Certified Halaal exporter'],
   openGraph: {
-    title: 'Halaal Export Solutions - AOA FOODS PRIVATE LIMITED',
+    title: 'Premium Halaal Meat Export - AOA FOODS PRIVATE LIMITED',
     description: 'Specialized in premium Halaal export solutions with full compliance and certification support.',
     images: ['/images/halaal-export-og.svg'],
   },
@@ -36,7 +36,7 @@ export default function ExportHalaalFocusPage() {
               Halaal <span className="bg-gradient-to-r from-white to-gray-200 bg-clip-text text-transparent">Export Solutions</span>
             </h1>
             <p className="text-xl text-white/90 leading-relaxed max-w-3xl mx-auto">
-              AOA Foods delivers premium Halaal export solutions specializing in meat, rice, pulses, and frozen foods 
+              AOA Foods delivers premium Halaal export specializing in meat, rice, pulses, and animal feed 
               with complete compliance, certification, and quality assurance for international markets.
             </p>
           </div>
@@ -59,8 +59,7 @@ export default function ExportHalaalFocusPage() {
                   optimized for international trade compliance and market requirements.
                 </p>
                 <p>
-                  With our IEC registration (ABECA1554F) and comprehensive understanding of 
-                  global trade regulations, we facilitate seamless export operations across 
+                   We facilitate seamless export operations across 
                   multiple continents, with particular strength in Asian and Middle Eastern markets.
                 </p>
                 <p>
@@ -106,7 +105,7 @@ export default function ExportHalaalFocusPage() {
               Premium Halaal Export Solutions
             </h2>
             <p className="text-xl text-gray-600 max-w-3xl mx-auto">
-              Comprehensive Halaal-certified export services with specialized focus on meat exports, plus rice, pulses, frozen foods, and cereals
+              Comprehensive Halaal-certified export services with specialized focus on meat exports, plus rice, pulses, animal feed, and cereals
             </p>
           </div>
 
@@ -155,16 +154,16 @@ export default function ExportHalaalFocusPage() {
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 10V3L4 14h7v7l9-11h-7z" />
                 </svg>
               </div>
-              <h3 className="text-xl font-bold text-gray-900 mb-4">Pulses & Frozen Foods</h3>
+              <h3 className="text-xl font-bold text-gray-900 mb-4">Pulses & Animal Feed</h3>
               <p className="text-gray-600 leading-relaxed mb-4">
-                Comprehensive range of pulses, lentils, frozen food products, 
-                and animal feed with specialized handling and export expertise.
+                Comprehensive range of pulses, lentils, animal feed products, 
+                and bulk commodities with specialized handling and export expertise.
               </p>
               <ul className="text-sm text-gray-600 space-y-2">
                 <li>• Various pulses and lentils</li>
-                <li>• Frozen food products</li>
                 <li>• Animal feed and nutrition</li>
-                <li>• Temperature-controlled logistics</li>
+                <li>• Bulk agricultural commodities</li>
+                <li>• Quality assurance systems</li>
               </ul>
             </div>
           </div>
@@ -255,7 +254,7 @@ export default function ExportHalaalFocusPage() {
           </h2>
           <p className="text-xl text-blue-100 mb-8 max-w-3xl mx-auto">
             Partner with AOA Foods for premium Halaal export solutions including meat, rice, pulses, 
-            and frozen foods with complete compliance, certification, and quality assurance.
+            and animal feed with complete compliance, certification, and quality assurance.
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
             <CTAButton href="/contact" variant="secondary" size="lg">

@@ -9,7 +9,12 @@ import { cn } from '@/lib/utils';
 
 export default function Header() {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
+  const [activeDropdown, setActiveDropdown] = useState<string | null>(null);
   const pathname = usePathname();
+
+  const handleDropdownToggle = (label: string) => {
+    setActiveDropdown(activeDropdown === label ? null : label);
+  };
 
   return (
     <header className="bg-white sticky top-0 z-50 border-b border-gray-100 shadow-sm">
@@ -33,18 +38,45 @@ export default function Header() {
           {/* Desktop Navigation - Center */}
           <nav className="hidden lg:flex items-center space-x-10">
             {navigationItems.map((item) => (
-              <Link
-                key={item.href}
-                href={item.href}
-                className={cn(
-                  'text-[#1E3A5F] font-semibold text-sm transition-all duration-200 pb-1 border-b-2 border-transparent',
-                  pathname === item.href
-                    ? 'border-[#4A90E2] text-[#4A90E2]'
-                    : 'hover:border-[#4A90E2] hover:text-[#4A90E2]'
-                )}
+              <div 
+                key={item.href} 
+                className="relative group"
               >
-                {item.label}
-              </Link>
+                <Link
+                  href={item.href}
+                  className={cn(
+                    'text-[#1E3A5F] font-semibold text-sm transition-all duration-200 pb-1 border-b-2 border-transparent flex items-center',
+                    pathname === item.href || (item.children && item.children.some(child => pathname === child.href))
+                      ? 'border-[#4A90E2] text-[#4A90E2]'
+                      : 'hover:border-[#4A90E2] hover:text-[#4A90E2]'
+                  )}
+                >
+                  {item.label}
+                  {item.children && (
+                    <svg className="w-4 h-4 ml-1 transition-transform duration-200 group-hover:rotate-180" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" />
+                    </svg>
+                  )}
+                </Link>
+                
+                {/* Dropdown Menu */}
+                {item.children && (
+                  <div className="absolute top-full left-0 mt-2 w-64 bg-white rounded-lg shadow-lg border border-gray-100 py-2 z-50 opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-200 transform translate-y-2 group-hover:translate-y-0">
+                    {item.children.map((child) => (
+                      <Link
+                        key={child.href}
+                        href={child.href}
+                        className={cn(
+                          'block px-4 py-3 text-sm text-[#1E3A5F] hover:bg-gray-50 hover:text-[#4A90E2] transition-colors duration-200',
+                          pathname === child.href ? 'bg-gray-50 text-[#4A90E2] font-semibold' : ''
+                        )}
+                      >
+                        {child.label}
+                      </Link>
+                    ))}
+                  </div>
+                )}
+              </div>
             ))}
           </nav>
 
@@ -80,17 +112,59 @@ export default function Header() {
         <div className="lg:hidden bg-white border-t border-gray-100">
           <div className="px-6 py-4 space-y-3">
             {navigationItems.map((item) => (
-              <Link
-                key={item.href}
-                href={item.href}
-                onClick={() => setIsMobileMenuOpen(false)}
-                className={cn(
-                  'block text-[#1E3A5F] font-semibold py-2 transition-colors duration-200',
-                  pathname === item.href ? 'text-[#4A90E2]' : 'hover:text-[#4A90E2]'
+              <div key={item.href}>
+                <div className="flex items-center justify-between">
+                  <Link
+                    href={item.href}
+                    onClick={() => !item.children && setIsMobileMenuOpen(false)}
+                    className={cn(
+                      'block text-[#1E3A5F] font-semibold py-2 transition-colors duration-200 flex-1',
+                      pathname === item.href || (item.children && item.children.some(child => pathname === child.href))
+                        ? 'text-[#4A90E2]' 
+                        : 'hover:text-[#4A90E2]'
+                    )}
+                  >
+                    {item.label}
+                  </Link>
+                  {item.children && (
+                    <button
+                      onClick={() => handleDropdownToggle(item.label)}
+                      className="p-2 text-[#1E3A5F] hover:text-[#4A90E2]"
+                    >
+                      <svg 
+                        className={cn(
+                          "w-4 h-4 transition-transform duration-200",
+                          activeDropdown === item.label ? "rotate-180" : ""
+                        )} 
+                        fill="none" 
+                        stroke="currentColor" 
+                        viewBox="0 0 24 24"
+                      >
+                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" />
+                      </svg>
+                    </button>
+                  )}
+                </div>
+                
+                {/* Mobile Dropdown */}
+                {item.children && activeDropdown === item.label && (
+                  <div className="ml-4 mt-2 space-y-2">
+                    {item.children.map((child) => (
+                      <Link
+                        key={child.href}
+                        href={child.href}
+                        onClick={() => setIsMobileMenuOpen(false)}
+                        className={cn(
+                          'block text-sm text-[#1E3A5F] py-2 pl-4 border-l-2 border-gray-200 hover:text-[#4A90E2] hover:border-[#4A90E2] transition-colors duration-200',
+                          pathname === child.href ? 'text-[#4A90E2] border-[#4A90E2] font-semibold' : ''
+                        )}
+                      >
+                        {child.label}
+                      </Link>
+                    ))}
+                  </div>
                 )}
-              >
-                {item.label}
-              </Link>
+              </div>
             ))}
             <div className="pt-4">
               <Link
