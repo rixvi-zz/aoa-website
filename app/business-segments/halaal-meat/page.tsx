@@ -17,22 +17,23 @@ export default function HalaalMeatPage() {
   return (
     <div className="min-h-screen">
       {/* Hero Section */}
-      <section className="bg-gradient-to-br from-[#1E3A5F] via-[#4A90E2] to-[#1E3A5F] text-white py-20 lg:py-32 relative overflow-hidden">
+      <section className="bg-gradient-to-br from-[#1E3A5F] via-[#4A90E2] to-[#1E3A5F] text-white py-16 sm:py-20 lg:py-32 relative overflow-hidden min-h-[60vh] sm:min-h-[70vh] lg:min-h-[80vh]">
         {/* Hero Background Image */}
         <div className="absolute inset-0">
           <Image
-            src="/images/halal-meat.jpg"
+            src="/images/Halal-meat.jpg"
             alt="Premium Halaal Meat Processing Facility - AOA Foods"
             fill
-            className="object-cover"
-            priority
+            priority={true}
             quality={85}
+            sizes="100vw"
+            className="object-cover"
           />
           <div className="absolute inset-0 bg-black/50"></div>
         </div>
         <div className="absolute inset-0 opacity-20">
-          <div className="absolute top-0 right-0 w-96 h-96 bg-gradient-to-bl from-white to-transparent rounded-full translate-x-48 -translate-y-48 blur-3xl"></div>
-          <div className="absolute bottom-0 left-0 w-80 h-80 bg-gradient-to-tr from-[#2E7D32] to-transparent rounded-full -translate-x-40 translate-y-40 blur-3xl"></div>
+          <div className="absolute top-0 right-0 w-64 sm:w-80 lg:w-96 h-64 sm:h-80 lg:h-96 bg-gradient-to-bl from-white to-transparent rounded-full translate-x-32 sm:translate-x-40 lg:translate-x-48 -translate-y-32 sm:-translate-y-40 lg:-translate-y-48 blur-3xl"></div>
+          <div className="absolute bottom-0 left-0 w-56 sm:w-72 lg:w-80 h-56 sm:h-72 lg:h-80 bg-gradient-to-tr from-[#2E7D32] to-transparent rounded-full -translate-x-28 sm:-translate-x-36 lg:-translate-x-40 translate-y-28 sm:translate-y-36 lg:translate-y-40 blur-3xl"></div>
         </div>
 
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative">
@@ -147,7 +148,8 @@ export default function HalaalMeatPage() {
                   height={600}
                   className="w-full h-80 lg:h-96 object-cover"
                   quality={90}
-                  priority
+                  priority={false}
+                  sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 800px"
                 />
               </div>
               <div className="bg-gradient-to-br from-[#2E7D32] to-[#4A90E2] rounded-3xl p-8 text-white">
@@ -300,14 +302,15 @@ export default function HalaalMeatPage() {
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-12">
             <div className="space-y-6">
               {/* Certification Process Image */}
-              <div className="mb-6 rounded-xl overflow-hidden">
+              <div className="mb-6 rounded-xl overflow-hidden shadow-lg bg-gray-50 flex items-center justify-center">
                 <Image
-                  src="/images/halaal-certification-process.jpg"
-                  alt="Halaal Certification Process & Islamic Slaughter - AOA Foods"
-                  width={500}
-                  height={300}
-                  className="w-full h-48 object-cover"
-                  quality={85}
+                  src="/images/image.png"
+                  alt="Halaal Certification Process - Islamic Compliance and Authentication"
+                  width={600}
+                  height={400}
+                  className="w-full h-auto max-h-64 lg:max-h-80 object-contain"
+                  quality={90}
+                  sizes="(max-width: 768px) 100vw, 600px"
                 />
               </div>
               <h3 className="text-2xl font-bold text-gray-900">Certification Process</h3>
@@ -392,12 +395,13 @@ export default function HalaalMeatPage() {
             {/* Cold Chain Management Image */}
             <div className="md:col-span-2 lg:col-span-3 mb-8">
               <Image
-                src="/images/freepik__frozen-meat-in-bulk-with-labeling-of-aoa-foods-in-__9495.png"
+                src="/images/frozen.jpg"
                 alt="Cold Chain Storage & Logistics Solutions for Meat Processing - AOA Foods"
                 width={1200}
                 height={500}
-                className="w-full h-80 md:h-96 lg:h-[28rem] object-cover rounded-xl shadow-2xl"
+                className="w-full h-80 md:h-96 lg:h-[28rem] rounded-xl shadow-2xl object-cover"
                 quality={90}
+                sizes="(max-width: 768px) 100vw, (max-width: 1200px) 80vw, 1200px"
               />
             </div>
 

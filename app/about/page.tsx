@@ -75,13 +75,16 @@ export default function AboutPage() {
             />
             {/* Hero Section */}
             <section className="bg-gradient-to-br from-[#1E3A5F] via-[#4A90E2] to-[#1E3A5F] text-white py-20 lg:py-32 relative overflow-hidden">
-                {/* Hero Background Image Placeholder */}
+                {/* Hero Background Image */}
                 <div className="absolute inset-0 bg-black/40">
-                    <div className="w-full h-full bg-gray-300 flex items-center justify-center">
-                        <span className="text-gray-600 text-lg font-medium">
-                            [Hero Image: AOA Foods Company Overview & Team]
-                        </span>
-                    </div>
+                    <Image
+                        src="/images/about.jpeg"
+                        alt="AOA Foods Company Overview & Team"
+                        fill
+                        className="object-cover"
+                        priority
+                        quality={90}
+                    />
                 </div>
                 {/* Modern background elements */}
                 <div className="absolute inset-0 opacity-20">
@@ -177,11 +180,11 @@ export default function AboutPage() {
 
                         <div className="relative">
                             <Image
-                                src="/images/hero-bg.svg"
-                                alt="AOA Import Export office and operations"
+                                src="/images/about.jpeg"
+                                alt="AOA Foods office and operations - professional team and facilities"
                                 width={500}
                                 height={400}
-                                className="rounded-2xl shadow-xl"
+                                className="rounded-2xl shadow-xl object-cover"
                             />
                             <div className="absolute -bottom-6 -right-6 bg-[#0F2A44] text-white p-6 rounded-xl shadow-xl">
                                 <div className="text-center">

@@ -4,6 +4,7 @@ import "./globals.css";
 import { seoKeywords } from '@/lib/data';
 import Header from '@/components/Header';
 import Footer from '@/components/Footer';
+import PerformanceMonitor from '@/components/PerformanceMonitor';
 
 // Font optimization with next/font
 const inter = Inter({
@@ -153,6 +154,9 @@ export default function RootLayout({
         />
       </head>
       <body className={`${inter.className} antialiased bg-white text-gray-900`}>
+        {/* Performance monitoring */}
+        <PerformanceMonitor />
+        
         <Header />
         <main className="min-h-screen">
           {children}

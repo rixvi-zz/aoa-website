@@ -5,7 +5,6 @@ import Link from 'next/link';
 import Image from 'next/image';
 import { usePathname } from 'next/navigation';
 import { navigationItems } from '@/lib/data';
-import { cn } from '@/lib/utils';
 
 export default function Header() {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
@@ -16,40 +15,41 @@ export default function Header() {
     setActiveDropdown(activeDropdown === label ? null : label);
   };
 
+  const isActive = (item: any) => {
+    return pathname === item.href || (item.children && item.children.some((child: any) => pathname === child.href));
+  };
+
   return (
     <header className="bg-white sticky top-0 z-50 border-b border-gray-100 shadow-sm">
       <div className="max-w-6xl mx-auto px-6">
-        <div className="flex items-center justify-between h-24 max-md:h-20 max-md:px-4">
-
-          {/* Logo - Left Aligned */}
+        <div className="flex items-center justify-between h-24">
+          {/* Logo */}
           <div className="flex-shrink-0">
             <Link href="/" className="block">
               <Image
                 src="/images/ChatGPT Image Jan 29, 2026, 12_41_01 AM.png"
                 alt="AOA Foods - Purely Global. Perfectly Local."
-                width={400}
-                height={120}
-                className="h-16 w-auto sm:h-18 sm:w-auto lg:h-20 lg:w-auto xl:h-24 xl:w-auto max-md:h-14"
+                width={520}
+                height={160}
                 priority
+                quality={90}
+                sizes="(max-width: 640px) 220px, (max-width: 1024px) 300px, 360px"
+                className="h-20 sm:h-24 lg:h-28 xl:h-32 w-auto object-contain"
               />
             </Link>
           </div>
 
-          {/* Desktop Navigation - Center */}
+          {/* Desktop Navigation */}
           <nav className="hidden lg:flex items-center space-x-10">
             {navigationItems.map((item) => (
-              <div 
-                key={item.href} 
-                className="relative group"
-              >
+              <div key={item.href} className="relative group">
                 <Link
                   href={item.href}
-                  className={cn(
-                    'text-[#1E3A5F] font-semibold text-sm transition-all duration-200 pb-1 border-b-2 border-transparent flex items-center',
-                    pathname === item.href || (item.children && item.children.some(child => pathname === child.href))
-                      ? 'border-[#4A90E2] text-[#4A90E2]'
-                      : 'hover:border-[#4A90E2] hover:text-[#4A90E2]'
-                  )}
+                  className={`font-semibold text-sm transition-all duration-200 pb-1 border-b-2 border-transparent flex items-center ${
+                    isActive(item)
+                      ? 'border-blue-500 text-blue-500'
+                      : 'text-gray-800 hover:border-blue-500 hover:text-blue-500'
+                  }`}
                 >
                   {item.label}
                   {item.children && (
@@ -62,14 +62,15 @@ export default function Header() {
                 {/* Dropdown Menu */}
                 {item.children && (
                   <div className="absolute top-full left-0 mt-2 w-64 bg-white rounded-lg shadow-lg border border-gray-100 py-2 z-50 opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-200 transform translate-y-2 group-hover:translate-y-0">
-                    {item.children.map((child) => (
+                    {item.children.map((child: any) => (
                       <Link
                         key={child.href}
                         href={child.href}
-                        className={cn(
-                          'block px-4 py-3 text-sm text-[#1E3A5F] hover:bg-gray-50 hover:text-[#4A90E2] transition-colors duration-200',
-                          pathname === child.href ? 'bg-gray-50 text-[#4A90E2] font-semibold' : ''
-                        )}
+                        className={`block px-4 py-3 text-sm transition-colors duration-200 ${
+                          pathname === child.href 
+                            ? 'bg-gray-50 text-blue-500 font-semibold' 
+                            : 'text-gray-800 hover:bg-gray-50 hover:text-blue-500'
+                        }`}
                       >
                         {child.label}
                       </Link>
@@ -80,11 +81,11 @@ export default function Header() {
             ))}
           </nav>
 
-          {/* CTA Button - Right Aligned */}
+          {/* CTA Button */}
           <div className="hidden lg:block">
             <Link
               href="/contact"
-              className="bg-[#1E3A5F] text-white px-6 py-2 text-sm font-semibold transition-all duration-200 hover:bg-[#4A90E2] rounded"
+              className="bg-gray-800 text-white px-6 py-2.5 text-sm font-semibold transition-all duration-200 hover:bg-blue-500 rounded-lg shadow-md hover:shadow-lg"
             >
               Request a Quote
             </Link>
@@ -93,7 +94,7 @@ export default function Header() {
           {/* Mobile Menu Button */}
           <button
             onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
-            className="lg:hidden p-2 text-[#1E3A5F] hover:text-[#4A90E2] transition-colors duration-200 max-md:p-1"
+            className="lg:hidden p-2 text-gray-800 hover:text-blue-500 transition-colors duration-200"
             aria-label="Toggle menu"
           >
             <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -117,25 +118,21 @@ export default function Header() {
                   <Link
                     href={item.href}
                     onClick={() => !item.children && setIsMobileMenuOpen(false)}
-                    className={cn(
-                      'block text-[#1E3A5F] font-semibold py-2 transition-colors duration-200 flex-1',
-                      pathname === item.href || (item.children && item.children.some(child => pathname === child.href))
-                        ? 'text-[#4A90E2]' 
-                        : 'hover:text-[#4A90E2]'
-                    )}
+                    className={`block font-semibold py-2 transition-colors duration-200 flex-1 ${
+                      isActive(item) ? 'text-blue-500' : 'text-gray-800 hover:text-blue-500'
+                    }`}
                   >
                     {item.label}
                   </Link>
                   {item.children && (
                     <button
                       onClick={() => handleDropdownToggle(item.label)}
-                      className="p-2 text-[#1E3A5F] hover:text-[#4A90E2]"
+                      className="p-2 text-gray-800 hover:text-blue-500"
                     >
                       <svg 
-                        className={cn(
-                          "w-4 h-4 transition-transform duration-200",
+                        className={`w-4 h-4 transition-transform duration-200 ${
                           activeDropdown === item.label ? "rotate-180" : ""
-                        )} 
+                        }`}
                         fill="none" 
                         stroke="currentColor" 
                         viewBox="0 0 24 24"
@@ -149,15 +146,16 @@ export default function Header() {
                 {/* Mobile Dropdown */}
                 {item.children && activeDropdown === item.label && (
                   <div className="ml-4 mt-2 space-y-2">
-                    {item.children.map((child) => (
+                    {item.children.map((child: any) => (
                       <Link
                         key={child.href}
                         href={child.href}
                         onClick={() => setIsMobileMenuOpen(false)}
-                        className={cn(
-                          'block text-sm text-[#1E3A5F] py-2 pl-4 border-l-2 border-gray-200 hover:text-[#4A90E2] hover:border-[#4A90E2] transition-colors duration-200',
-                          pathname === child.href ? 'text-[#4A90E2] border-[#4A90E2] font-semibold' : ''
-                        )}
+                        className={`block text-sm py-2 pl-4 border-l-2 border-gray-200 transition-colors duration-200 ${
+                          pathname === child.href 
+                            ? 'text-blue-500 border-blue-500 font-semibold' 
+                            : 'text-gray-800 hover:text-blue-500 hover:border-blue-500'
+                        }`}
                       >
                         {child.label}
                       </Link>
@@ -170,7 +168,7 @@ export default function Header() {
               <Link
                 href="/contact"
                 onClick={() => setIsMobileMenuOpen(false)}
-                className="block w-full text-center bg-[#1E3A5F] text-white px-6 py-3 text-sm font-semibold transition-all duration-200 hover:bg-[#4A90E2] rounded"
+                className="block w-full text-center bg-gray-800 text-white px-6 py-3 text-sm font-semibold transition-all duration-200 hover:bg-blue-500 rounded"
               >
                 Request a Quote
               </Link>

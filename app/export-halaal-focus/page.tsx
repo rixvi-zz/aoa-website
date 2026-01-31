@@ -36,7 +36,7 @@ export default function ExportHalaalFocusPage() {
               Halaal <span className="bg-gradient-to-r from-white to-gray-200 bg-clip-text text-transparent">Export Solutions</span>
             </h1>
             <p className="text-xl text-white/90 leading-relaxed max-w-3xl mx-auto">
-              AOA Foods delivers premium Halaal export specializing in meat, rice, pulses, and animal feed 
+              AOA Foods delivers premium Halaal export specializing in meat, rice, pulses, and animal feed
               with complete compliance, certification, and quality assurance for international markets.
             </p>
           </div>
@@ -53,18 +53,18 @@ export default function ExportHalaalFocusPage() {
               </h2>
               <div className="space-y-4 text-gray-600 leading-relaxed">
                 <p>
-                  AOA FOODS PRIVATE LIMITED operates with a primary focus on export markets, 
-                  specializing in connecting Indian food producers with international buyers. 
-                  Our export-first approach ensures that every aspect of our operations is 
+                  AOA FOODS PRIVATE LIMITED operates with a primary focus on export markets,
+                  specializing in connecting Indian food producers with international buyers.
+                  Our export-first approach ensures that every aspect of our operations is
                   optimized for international trade compliance and market requirements.
                 </p>
                 <p>
-                   We facilitate seamless export operations across 
+                  We facilitate seamless export operations across
                   multiple continents, with particular strength in Asian and Middle Eastern markets.
                 </p>
                 <p>
-                  Our export-oriented infrastructure includes dedicated compliance teams, 
-                  international logistics partnerships, and specialized documentation processes 
+                  Our export-oriented infrastructure includes dedicated compliance teams,
+                  international logistics partnerships, and specialized documentation processes
                   that ensure smooth customs clearance and delivery to global destinations.
                 </p>
               </div>
@@ -118,7 +118,7 @@ export default function ExportHalaalFocusPage() {
               </div>
               <h3 className="text-xl font-bold text-gray-900 mb-4">Halaal Meat Exports</h3>
               <p className="text-gray-600 leading-relaxed mb-4">
-                Our primary specialization - premium Halaal-certified meat exports with complete 
+                Our primary specialization - premium Halaal-certified meat exports with complete
                 religious compliance and authenticity for Muslim markets worldwide.
               </p>
               <ul className="text-sm text-gray-600 space-y-2">
@@ -137,7 +137,7 @@ export default function ExportHalaalFocusPage() {
               </div>
               <h3 className="text-xl font-bold text-gray-900 mb-4">Premium Rice & Grains</h3>
               <p className="text-gray-600 leading-relaxed mb-4">
-                High-quality Basmati rice, cereals, and grain exports with 
+                High-quality Basmati rice, cereals, and grain exports with
                 complete quality assurance and international standards compliance.
               </p>
               <ul className="text-sm text-gray-600 space-y-2">
@@ -156,7 +156,7 @@ export default function ExportHalaalFocusPage() {
               </div>
               <h3 className="text-xl font-bold text-gray-900 mb-4">Pulses & Animal Feed</h3>
               <p className="text-gray-600 leading-relaxed mb-4">
-                Comprehensive range of pulses, lentils, animal feed products, 
+                Comprehensive range of pulses, lentils, animal feed products,
                 and bulk commodities with specialized handling and export expertise.
               </p>
               <ul className="text-sm text-gray-600 space-y-2">
@@ -253,7 +253,7 @@ export default function ExportHalaalFocusPage() {
             Ready to Export Halaal Products?
           </h2>
           <p className="text-xl text-blue-100 mb-8 max-w-3xl mx-auto">
-            Partner with AOA Foods for premium Halaal export solutions including meat, rice, pulses, 
+            Partner with AOA Foods for premium Halaal export solutions including meat, rice, pulses,
             and animal feed with complete compliance, certification, and quality assurance.
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
