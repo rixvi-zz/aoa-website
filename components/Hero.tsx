@@ -45,18 +45,27 @@ export default function Hero() {
                 Africa, Europe and global markets with complete regulatory compliance.
               </p>
 
-              {/* CTAs (slightly tighter) */}
-              <div className="flex flex-col sm:flex-row gap-3 pt-4">
+              {/* Redesigned CTA Buttons - Better Balance */}
+              <div className="flex flex-col sm:flex-row gap-4 pt-6">
                 <CTAButton
                   href="/business-segments/halaal-meat"
-                  className="bg-[#2E7D32] text-white hover:bg-[#1B5E20] font-semibold px-6 py-3 text-base rounded-lg shadow-md"
+                  variant="primary"
+                  size="lg"
+                  className="bg-[#2E7D32] text-white hover:bg-[#1B5E20] font-bold px-8 py-4 text-base rounded-xl shadow-lg hover:shadow-xl transform hover:-translate-y-1 transition-all duration-300 flex-1 sm:flex-none sm:min-w-[280px] text-center"
+                  trackingName="Hero Primary CTA"
+                  trackingLocation="Hero Section"
                 >
-                  Premium Halaal Meat & Commodity Export
+                  <span className="block sm:hidden">Halaal Export</span>
+                  <span className="hidden sm:block">Premium Halaal Export</span>
                 </CTAButton>
 
                 <CTAButton
                   href="/contact"
-                  className="border-2 border-[#1E3A5F] text-[#1E3A5F] hover:bg-[#1E3A5F] hover:text-white font-semibold px-6 py-3 text-base rounded-lg"
+                  variant="secondary"
+                  size="lg"
+                  className="border-2 border-[#1E3A5F] text-[#1E3A5F] hover:bg-[#1E3A5F] hover:text-white font-bold px-8 py-4 text-base rounded-xl transition-all duration-300 transform hover:-translate-y-1 flex-1 sm:flex-none sm:min-w-[200px] text-center"
+                  trackingName="Hero Secondary CTA"
+                  trackingLocation="Hero Section"
                 >
                   Request Quote
                 </CTAButton>
@@ -76,7 +85,7 @@ export default function Hero() {
 
                 <div className="relative aspect-[4/3]">
                   <Image
-                    src="/images/hero.png"
+                    src="/images/main1.png"
                     alt="Halaal meat and commodity export facility"
                     fill
                     className="object-cover"

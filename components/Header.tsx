@@ -29,12 +29,12 @@ export default function Header() {
               <Image
                 src="/images/ChatGPT Image Jan 29, 2026, 12_41_01 AM.png"
                 alt="AOA Foods - Purely Global. Perfectly Local."
-                width={520}
-                height={160}
+                width={400}
+                height={120}
                 priority
                 quality={90}
-                sizes="(max-width: 640px) 220px, (max-width: 1024px) 300px, 360px"
-                className="h-20 sm:h-24 lg:h-28 xl:h-32 w-auto object-contain"
+                sizes="300px"
+                className="h-16 w-auto"
               />
             </Link>
           </div>
@@ -45,11 +45,10 @@ export default function Header() {
               <div key={item.href} className="relative group">
                 <Link
                   href={item.href}
-                  className={`font-semibold text-sm transition-all duration-200 pb-1 border-b-2 border-transparent flex items-center ${
-                    isActive(item)
-                      ? 'border-blue-500 text-blue-500'
-                      : 'text-gray-800 hover:border-blue-500 hover:text-blue-500'
-                  }`}
+                  className={`font-semibold text-sm transition-all duration-200 pb-1 border-b-2 border-transparent flex items-center ${isActive(item)
+                    ? 'border-blue-500 text-blue-500'
+                    : 'text-gray-800 hover:border-blue-500 hover:text-blue-500'
+                    }`}
                 >
                   {item.label}
                   {item.children && (
@@ -58,7 +57,7 @@ export default function Header() {
                     </svg>
                   )}
                 </Link>
-                
+
                 {/* Dropdown Menu */}
                 {item.children && (
                   <div className="absolute top-full left-0 mt-2 w-64 bg-white rounded-lg shadow-lg border border-gray-100 py-2 z-50 opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-200 transform translate-y-2 group-hover:translate-y-0">
@@ -66,11 +65,10 @@ export default function Header() {
                       <Link
                         key={child.href}
                         href={child.href}
-                        className={`block px-4 py-3 text-sm transition-colors duration-200 ${
-                          pathname === child.href 
-                            ? 'bg-gray-50 text-blue-500 font-semibold' 
-                            : 'text-gray-800 hover:bg-gray-50 hover:text-blue-500'
-                        }`}
+                        className={`block px-4 py-3 text-sm transition-colors duration-200 ${pathname === child.href
+                          ? 'bg-gray-50 text-blue-500 font-semibold'
+                          : 'text-gray-800 hover:bg-gray-50 hover:text-blue-500'
+                          }`}
                       >
                         {child.label}
                       </Link>
@@ -118,9 +116,8 @@ export default function Header() {
                   <Link
                     href={item.href}
                     onClick={() => !item.children && setIsMobileMenuOpen(false)}
-                    className={`block font-semibold py-2 transition-colors duration-200 flex-1 ${
-                      isActive(item) ? 'text-blue-500' : 'text-gray-800 hover:text-blue-500'
-                    }`}
+                    className={`block font-semibold py-2 transition-colors duration-200 flex-1 ${isActive(item) ? 'text-blue-500' : 'text-gray-800 hover:text-blue-500'
+                      }`}
                   >
                     {item.label}
                   </Link>
@@ -129,12 +126,11 @@ export default function Header() {
                       onClick={() => handleDropdownToggle(item.label)}
                       className="p-2 text-gray-800 hover:text-blue-500"
                     >
-                      <svg 
-                        className={`w-4 h-4 transition-transform duration-200 ${
-                          activeDropdown === item.label ? "rotate-180" : ""
-                        }`}
-                        fill="none" 
-                        stroke="currentColor" 
+                      <svg
+                        className={`w-4 h-4 transition-transform duration-200 ${activeDropdown === item.label ? "rotate-180" : ""
+                          }`}
+                        fill="none"
+                        stroke="currentColor"
                         viewBox="0 0 24 24"
                       >
                         <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" />
@@ -142,7 +138,7 @@ export default function Header() {
                     </button>
                   )}
                 </div>
-                
+
                 {/* Mobile Dropdown */}
                 {item.children && activeDropdown === item.label && (
                   <div className="ml-4 mt-2 space-y-2">
@@ -151,11 +147,10 @@ export default function Header() {
                         key={child.href}
                         href={child.href}
                         onClick={() => setIsMobileMenuOpen(false)}
-                        className={`block text-sm py-2 pl-4 border-l-2 border-gray-200 transition-colors duration-200 ${
-                          pathname === child.href 
-                            ? 'text-blue-500 border-blue-500 font-semibold' 
-                            : 'text-gray-800 hover:text-blue-500 hover:border-blue-500'
-                        }`}
+                        className={`block text-sm py-2 pl-4 border-l-2 border-gray-200 transition-colors duration-200 ${pathname === child.href
+                          ? 'text-blue-500 border-blue-500 font-semibold'
+                          : 'text-gray-800 hover:text-blue-500 hover:border-blue-500'
+                          }`}
                       >
                         {child.label}
                       </Link>
