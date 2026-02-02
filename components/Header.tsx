@@ -21,31 +21,37 @@ export default function Header() {
 
   return (
     <header className="bg-white sticky top-0 z-50 border-b border-gray-100 shadow-sm">
-      <div className="max-w-6xl mx-auto px-6">
-        <div className="flex items-center justify-between h-24">
-          {/* Logo */}
-          <div className="flex-shrink-0">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div className="flex items-center justify-between min-h-[96px] h-24">
+          {/* Logo - Increased Size for Better Visibility */}
+          <div className="flex-shrink-0 flex items-center">
             <Link href="/" className="block">
               <Image
                 src="/images/ChatGPT Image Jan 29, 2026, 12_41_01 AM.png"
                 alt="AOA Foods - Purely Global. Perfectly Local."
                 width={400}
                 height={120}
-                priority
+                priority={true}
                 quality={90}
-                sizes="300px"
-                className="h-16 w-auto"
+                sizes="(max-width: 640px) 280px, (max-width: 768px) 320px, (max-width: 1024px) 360px, 400px"
+                className="h-16 sm:h-18 md:h-20 lg:h-22 xl:h-24 w-auto object-contain"
+                style={{
+                  maxWidth: '400px',
+                  height: 'auto',
+                  width: 'auto'
+                }}
               />
             </Link>
           </div>
 
-          {/* Desktop Navigation */}
-          <nav className="hidden lg:flex items-center space-x-10">
+          {/* Desktop Navigation - Centered Alignment */}
+          <nav className="hidden lg:flex items-center justify-center flex-1 mx-8">
+            <div className="flex items-center space-x-8 xl:space-x-10">
             {navigationItems.map((item) => (
               <div key={item.href} className="relative group">
                 <Link
                   href={item.href}
-                  className={`font-semibold text-sm transition-all duration-200 pb-1 border-b-2 border-transparent flex items-center ${isActive(item)
+                  className={`font-semibold text-sm lg:text-base transition-all duration-200 pb-1 border-b-2 border-transparent flex items-center whitespace-nowrap ${isActive(item)
                     ? 'border-blue-500 text-blue-500'
                     : 'text-gray-800 hover:border-blue-500 hover:text-blue-500'
                     }`}
@@ -77,13 +83,15 @@ export default function Header() {
                 )}
               </div>
             ))}
+            </div>
           </nav>
 
-          {/* CTA Button */}
-          <div className="hidden lg:block">
+          {/* CTA Button - Adjusted for Larger Header */}
+          <div className="hidden lg:flex items-center flex-shrink-0">
             <Link
               href="/contact"
-              className="bg-gray-800 text-white px-6 py-2.5 text-sm font-semibold transition-all duration-200 hover:bg-blue-500 rounded-lg shadow-md hover:shadow-lg"
+              className="bg-gray-800 text-white px-6 lg:px-8 py-3 lg:py-4 text-sm lg:text-base font-semibold transition-all duration-200 hover:bg-blue-500 rounded-lg shadow-md hover:shadow-lg whitespace-nowrap inline-flex items-center justify-center"
+              style={{ minHeight: '48px' }}
             >
               Request a Quote
             </Link>
@@ -109,7 +117,7 @@ export default function Header() {
       {/* Mobile Navigation */}
       {isMobileMenuOpen && (
         <div className="lg:hidden bg-white border-t border-gray-100">
-          <div className="px-6 py-4 space-y-3">
+          <div className="px-4 sm:px-6 py-4 space-y-3">
             {navigationItems.map((item) => (
               <div key={item.href}>
                 <div className="flex items-center justify-between">
