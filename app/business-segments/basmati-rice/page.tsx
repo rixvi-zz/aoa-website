@@ -289,7 +289,7 @@ export default function BasmatiRicePage() {
                                 </svg>
                             </div>
                             <h3 className="text-xl font-bold text-gray-900 mb-4">Custom Branding</h3>
-                            <p className="text-gray-600">Private label options with buyer's brand and specifications</p>
+                            <p className="text-gray-600">Private label options with buyer&apos;s brand and specifications</p>
                         </div>
 
                         <div className="text-center">

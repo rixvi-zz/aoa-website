@@ -193,7 +193,7 @@ export default function ContactPage() {
                 <div className="mt-6 p-4 bg-[#1E40AF]/10 rounded-lg">
                   <p className="text-sm text-gray-700">
                     <strong>Note:</strong> For urgent matters outside business hours, 
-                    please send an email and we'll respond as soon as possible.
+                    please send an email and we&apos;ll respond as soon as possible.
                   </p>
                 </div>
               </div>

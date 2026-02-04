@@ -37,7 +37,7 @@ export default function AboutPage() {
                             "logo": "https://aoa-foods.com/images/logo.svg",
                             "address": {
                                 "@type": "PostalAddress",
-                                "streetAddress": "A-19, 4th Floor, Gali No. 1, Johri Farm, Noor Nagar Extension, Jamia Nagar",
+                                "streetAddress": "A-19, Lane 1, Johri Farm, Noor Nagar Extension, Jamia Nagar",
                                 "addressLocality": "New Delhi",
                                 "addressRegion": "Delhi",
                                 "postalCode": "110025",
@@ -256,7 +256,7 @@ export default function AboutPage() {
                             </div>
                             <h3 className="text-2xl font-bold mb-4">Our Vision</h3>
                             <p className="text-blue-100 leading-relaxed mb-6">
-                                To become India's most trusted and preferred IEC & GST registered partner for international
+                                To become India&apos;s most trusted and preferred IEC & GST registered partner for international
                                 food trade, recognized globally for our expertise, integrity, and innovative
                                 solutions. We envision a future where geographical boundaries do not limit
                                 food business growth, and every food enterprise can access global opportunities with confidence.

@@ -120,7 +120,7 @@ export default function ContactFormWrapper() {
         setSubmitStatus({ type: 'error', message: result.message });
         setFormState(prev => ({ ...prev, isSubmitting: false }));
       }
-    } catch (error) {
+    } catch {
       setSubmitStatus({ 
         type: 'error', 
         message: 'An unexpected error occurred. Please try again.' 
@@ -339,7 +339,7 @@ export default function ContactFormWrapper() {
         {/* Privacy Notice */}
         <p className="text-xs text-[#0F2A44] text-center">
           By submitting this form, you agree to our privacy policy. 
-          We'll use your information to respond to your inquiry and may contact you about our services.
+          We&apos;ll use your information to respond to your inquiry and may contact you about our services.
         </p>
       </form>
     </div>

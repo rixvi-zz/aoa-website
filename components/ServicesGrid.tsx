@@ -33,7 +33,7 @@ export default function ServicesGrid() {
 
         {/* Modern Services Grid - Responsive layout */}
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 sm:gap-8 mb-12 sm:mb-16 lg:mb-20">
-          {services.map((service, index) => (
+          {services.map((service) => (
             <div
               key={service.id}
               className="group relative bg-white/80 backdrop-blur-sm rounded-2xl sm:rounded-3xl p-4 sm:p-6 lg:p-8 shadow-lg hover:shadow-2xl transition-all duration-500 transform hover:-translate-y-2 sm:hover:-translate-y-4 border border-gray-100 hover:border-[#4A90E2]/30 overflow-hidden"
@@ -118,7 +118,7 @@ export default function ServicesGrid() {
               </h3>
 
               <p className="text-base sm:text-lg lg:text-xl text-gray-600 mb-6 sm:mb-8 lg:mb-10 max-w-2xl mx-auto leading-relaxed">
-                Let's discuss your export requirements and APEDA compliance needs with our expert team.
+                Let&apos;s discuss your export requirements and APEDA compliance needs with our expert team.
               </p>
 
               <div className="flex flex-col sm:flex-row gap-4 sm:gap-6 justify-center">

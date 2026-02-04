@@ -366,7 +366,7 @@ export default function BusinessSegmentsPage() {
                             Join hundreds of satisfied global partners who trust AOA Foods for their export requirements
                         </p>
                         <p className="text-lg text-white/80 leading-relaxed max-w-3xl mx-auto mb-16">
-                            Whether you're looking for premium Halaal meat, quality Basmati rice, nutritious pulses,
+                            Whether you&apos;re looking for premium Halaal meat, quality Basmati rice, nutritious pulses,
                             or bulk commodities, AOA Foods delivers with complete compliance, quality assurance, and reliable service.
                         </p>
 

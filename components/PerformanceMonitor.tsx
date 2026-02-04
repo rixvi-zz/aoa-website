@@ -10,6 +10,11 @@ interface PerformanceMetrics {
   ttfb?: number;
 }
 
+interface LayoutShift extends PerformanceEntry {
+  value: number;
+  hadRecentInput: boolean;
+}
+
 export default function PerformanceMonitor() {
   useEffect(() => {
     // Only run in development for debugging
@@ -41,7 +46,7 @@ export default function PerformanceMonitor() {
         const observer = new PerformanceObserver((list) => {
           const entries = list.getEntries();
           entries.forEach((entry) => {
-            const fidEntry = entry as any; // Type assertion for FID entry
+            const fidEntry = entry as PerformanceEventTiming; // Type assertion for FID entry
             if (fidEntry.processingStart && fidEntry.startTime) {
               metrics.fid = fidEntry.processingStart - fidEntry.startTime;
               console.log('FID:', metrics.fid);
@@ -61,9 +66,10 @@ export default function PerformanceMonitor() {
         let clsValue = 0;
         const observer = new PerformanceObserver((list) => {
           const entries = list.getEntries();
-          entries.forEach((entry: any) => {
-            if (!entry.hadRecentInput) {
-              clsValue += entry.value;
+          entries.forEach((entry) => {
+            const layoutShiftEntry = entry as LayoutShift;
+            if (!layoutShiftEntry.hadRecentInput) {
+              clsValue += layoutShiftEntry.value;
             }
           });
           

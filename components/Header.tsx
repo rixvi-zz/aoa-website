@@ -5,6 +5,7 @@ import Link from 'next/link';
 import Image from 'next/image';
 import { usePathname } from 'next/navigation';
 import { navigationItems } from '@/lib/data';
+import { cn } from '@/lib/utils';
 
 export default function Header() {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
@@ -15,95 +16,90 @@ export default function Header() {
     setActiveDropdown(activeDropdown === label ? null : label);
   };
 
-  const isActive = (item: any) => {
-    return pathname === item.href || (item.children && item.children.some((child: any) => pathname === child.href));
-  };
-
   return (
     <header className="bg-white sticky top-0 z-50 border-b border-gray-100 shadow-sm">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="flex items-center justify-between min-h-[96px] h-24">
-          {/* Logo - Increased Size for Better Visibility */}
-          <div className="flex-shrink-0 flex items-center">
+      <div className="max-w-6xl mx-auto px-6">
+        <div className="flex items-center justify-between h-24 max-md:h-20 max-md:px-4">
+
+          {/* Logo - Left Aligned */}
+          <div className="flex-shrink-0">
             <Link href="/" className="block">
               <Image
                 src="/images/ChatGPT Image Jan 29, 2026, 12_41_01 AM.png"
                 alt="AOA Foods - Purely Global. Perfectly Local."
                 width={400}
                 height={120}
-                priority={true}
-                quality={90}
-                sizes="(max-width: 640px) 280px, (max-width: 768px) 320px, (max-width: 1024px) 360px, 400px"
-                className="h-16 sm:h-18 md:h-20 lg:h-22 xl:h-24 w-auto object-contain"
-                style={{
-                  maxWidth: '400px',
-                  height: 'auto',
-                  width: 'auto'
-                }}
+                sizes="(max-width: 480px) 200px, (max-width: 768px) 250px, (max-width: 1024px) 300px, 400px"
+                className="h-12 sm:h-14 md:h-16 lg:h-18 xl:h-20 2xl:h-24 w-auto"
+                priority
               />
             </Link>
           </div>
 
-          {/* Desktop Navigation - Centered Alignment */}
-          <nav className="hidden lg:flex items-center justify-center flex-1 mx-8">
-            <div className="flex items-center space-x-8 xl:space-x-10">
-            {navigationItems.map((item) => (
-              <div key={item.href} className="relative group">
-                <Link
-                  href={item.href}
-                  className={`font-semibold text-sm lg:text-base transition-all duration-200 pb-1 border-b-2 border-transparent flex items-center whitespace-nowrap ${isActive(item)
-                    ? 'border-blue-500 text-blue-500'
-                    : 'text-gray-800 hover:border-blue-500 hover:text-blue-500'
-                    }`}
+          {/* Desktop Navigation - Centered */}
+          <nav className="hidden lg:flex items-center justify-center flex-1">
+            <div className="flex items-center space-x-10">
+              {navigationItems.map((item) => (
+                <div
+                  key={item.href}
+                  className="relative group"
                 >
-                  {item.label}
-                  {item.children && (
-                    <svg className="w-4 h-4 ml-1 transition-transform duration-200 group-hover:rotate-180" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" />
-                    </svg>
-                  )}
-                </Link>
+                  <Link
+                    href={item.href}
+                    className={cn(
+                      'text-[#1E3A5F] font-semibold text-sm transition-all duration-300 pb-2 border-b-2 border-transparent flex items-center hover:scale-105',
+                      pathname === item.href || (item.children && item.children.some(child => pathname === child.href))
+                        ? 'border-[#4A90E2] text-[#4A90E2] shadow-sm'
+                        : 'hover:border-[#4A90E2] hover:text-[#4A90E2] hover:shadow-md'
+                    )}
+                  >
+                    {item.label}
+                    {item.children && (
+                      <svg className="w-4 h-4 ml-1 transition-transform duration-300 group-hover:rotate-180" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" />
+                      </svg>
+                    )}
+                  </Link>
 
-                {/* Dropdown Menu */}
-                {item.children && (
-                  <div className="absolute top-full left-0 mt-2 w-64 bg-white rounded-lg shadow-lg border border-gray-100 py-2 z-50 opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-200 transform translate-y-2 group-hover:translate-y-0">
-                    {item.children.map((child: any) => (
-                      <Link
-                        key={child.href}
-                        href={child.href}
-                        className={`block px-4 py-3 text-sm transition-colors duration-200 ${pathname === child.href
-                          ? 'bg-gray-50 text-blue-500 font-semibold'
-                          : 'text-gray-800 hover:bg-gray-50 hover:text-blue-500'
-                          }`}
-                      >
-                        {child.label}
-                      </Link>
-                    ))}
-                  </div>
-                )}
-              </div>
-            ))}
+                  {/* Dropdown Menu */}
+                  {item.children && (
+                    <div className="absolute top-full left-0 mt-2 w-64 bg-white rounded-xl shadow-xl border border-gray-100 py-3 z-50 opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-300 transform translate-y-2 group-hover:translate-y-0">
+                      {item.children.map((child) => (
+                        <Link
+                          key={child.href}
+                          href={child.href}
+                          className={cn(
+                            'block px-5 py-3 text-sm text-[#1E3A5F] hover:bg-gradient-to-r hover:from-gray-50 hover:to-blue-50 hover:text-[#4A90E2] transition-all duration-200 rounded-lg mx-2',
+                            pathname === child.href ? 'bg-gradient-to-r from-blue-50 to-gray-50 text-[#4A90E2] font-semibold shadow-sm' : ''
+                          )}
+                        >
+                          {child.label}
+                        </Link>
+                      ))}
+                    </div>
+                  )}
+                </div>
+              ))}
             </div>
           </nav>
 
-          {/* CTA Button - Adjusted for Larger Header */}
-          <div className="hidden lg:flex items-center flex-shrink-0">
+          {/* CTA Button - Right Aligned */}
+          <div className="hidden lg:block">
             <Link
               href="/contact"
-              className="bg-gray-800 text-white px-6 lg:px-8 py-3 lg:py-4 text-sm lg:text-base font-semibold transition-all duration-200 hover:bg-blue-500 rounded-lg shadow-md hover:shadow-lg whitespace-nowrap inline-flex items-center justify-center"
-              style={{ minHeight: '48px' }}
+              className="bg-[#1E3A5F] text-white px-6 py-2 text-sm font-semibold transition-all duration-200 hover:bg-[#4A90E2] rounded"
             >
-              Request a Quote
+              Request Quote
             </Link>
           </div>
 
-          {/* Mobile Menu Button */}
+          {/* Mobile Menu Button - Enhanced */}
           <button
             onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
-            className="lg:hidden p-2 text-gray-800 hover:text-blue-500 transition-colors duration-200"
+            className="lg:hidden p-3 text-[#1E3A5F] hover:text-[#4A90E2] hover:bg-gray-50 transition-all duration-200 rounded-lg hover:shadow-md max-md:p-2"
             aria-label="Toggle menu"
           >
-            <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <svg className="w-6 h-6 transition-transform duration-200" fill="none" stroke="currentColor" viewBox="0 0 24 24">
               {isMobileMenuOpen ? (
                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
               ) : (
@@ -114,29 +110,35 @@ export default function Header() {
         </div>
       </div>
 
-      {/* Mobile Navigation */}
+      {/* Mobile Navigation - Enhanced */}
       {isMobileMenuOpen && (
-        <div className="lg:hidden bg-white border-t border-gray-100">
-          <div className="px-4 sm:px-6 py-4 space-y-3">
+        <div className="lg:hidden bg-white border-t border-gray-100 shadow-lg">
+          <div className="px-6 py-5 space-y-4">
             {navigationItems.map((item) => (
               <div key={item.href}>
                 <div className="flex items-center justify-between">
                   <Link
                     href={item.href}
                     onClick={() => !item.children && setIsMobileMenuOpen(false)}
-                    className={`block font-semibold py-2 transition-colors duration-200 flex-1 ${isActive(item) ? 'text-blue-500' : 'text-gray-800 hover:text-blue-500'
-                      }`}
+                    className={cn(
+                      'block text-[#1E3A5F] font-semibold py-3 px-2 transition-all duration-200 flex-1 rounded-lg hover:bg-gray-50',
+                      pathname === item.href || (item.children && item.children.some(child => pathname === child.href))
+                        ? 'text-[#4A90E2] bg-blue-50 shadow-sm'
+                        : 'hover:text-[#4A90E2] hover:shadow-sm'
+                    )}
                   >
                     {item.label}
                   </Link>
                   {item.children && (
                     <button
                       onClick={() => handleDropdownToggle(item.label)}
-                      className="p-2 text-gray-800 hover:text-blue-500"
+                      className="p-3 text-[#1E3A5F] hover:text-[#4A90E2] hover:bg-gray-50 rounded-lg transition-all duration-200"
                     >
                       <svg
-                        className={`w-4 h-4 transition-transform duration-200 ${activeDropdown === item.label ? "rotate-180" : ""
-                          }`}
+                        className={cn(
+                          "w-4 h-4 transition-transform duration-300",
+                          activeDropdown === item.label ? "rotate-180" : ""
+                        )}
                         fill="none"
                         stroke="currentColor"
                         viewBox="0 0 24 24"
@@ -147,18 +149,18 @@ export default function Header() {
                   )}
                 </div>
 
-                {/* Mobile Dropdown */}
+                {/* Mobile Dropdown - Enhanced */}
                 {item.children && activeDropdown === item.label && (
-                  <div className="ml-4 mt-2 space-y-2">
-                    {item.children.map((child: any) => (
+                  <div className="ml-6 mt-3 space-y-2 border-l-2 border-gray-100 pl-4">
+                    {item.children.map((child) => (
                       <Link
                         key={child.href}
                         href={child.href}
                         onClick={() => setIsMobileMenuOpen(false)}
-                        className={`block text-sm py-2 pl-4 border-l-2 border-gray-200 transition-colors duration-200 ${pathname === child.href
-                          ? 'text-blue-500 border-blue-500 font-semibold'
-                          : 'text-gray-800 hover:text-blue-500 hover:border-blue-500'
-                          }`}
+                        className={cn(
+                          'block text-sm text-[#1E3A5F] py-3 px-3 rounded-lg hover:text-[#4A90E2] hover:bg-gray-50 transition-all duration-200',
+                          pathname === child.href ? 'text-[#4A90E2] bg-blue-50 font-semibold shadow-sm border-l-2 border-[#4A90E2]' : 'hover:shadow-sm'
+                        )}
                       >
                         {child.label}
                       </Link>
@@ -171,9 +173,9 @@ export default function Header() {
               <Link
                 href="/contact"
                 onClick={() => setIsMobileMenuOpen(false)}
-                className="block w-full text-center bg-gray-800 text-white px-6 py-3 text-sm font-semibold transition-all duration-200 hover:bg-blue-500 rounded"
+                className="block w-full text-center bg-[#1E3A5F] text-white px-6 py-3 text-sm font-semibold transition-all duration-200 hover:bg-[#4A90E2] rounded"
               >
-                Request a Quote
+                Request Quote
               </Link>
             </div>
           </div>

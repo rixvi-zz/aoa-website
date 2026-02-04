@@ -10,6 +10,7 @@ export const navigationItems: NavItem[] = [
     children: [
       { label: 'Premium Halaal Meat', href: '/business-segments/halaal-meat' },
       { label: 'Basmati Rice', href: '/business-segments/basmati-rice' },
+      { label: 'Fruits & Vegetables', href: '/business-segments/fruits-vegetables' },
       { label: 'Pulses & Cereals', href: '/business-segments/pulses-cereals' },
       { label: 'Animal Feed', href: '/business-segments/animal-feed' },
       { label: 'Bulk Commodities', href: '/business-segments/bulk-commodities' },
@@ -153,7 +154,7 @@ export const contactInfo = {
   email: 'ahmarabyadtrading@gmail.com',
   phone: '+91 99714 09567',
   address: {
-    street: 'A-19, 4th Floor, Gali No. 1, Johri Farm',
+    street: 'A-19, Lane 1, Johri Farm',
     area: 'Noor Nagar Extension, Jamia Nagar',
     city: 'New Delhi',
     state: 'Delhi',
