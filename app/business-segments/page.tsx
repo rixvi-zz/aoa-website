@@ -67,7 +67,7 @@ export default function BusinessSegmentsPage() {
                                 Request Export Quote
                             </CTAButton>
                             <CTAButton
-                                href="/services"
+                                href="/contact"
                                 variant="outline"
                                 size="lg"
                                 className="border-2 border-white text-white hover:bg-white hover:text-[#1E3A5F] font-bold px-12 py-5 text-xl rounded-lg"
@@ -172,7 +172,7 @@ export default function BusinessSegmentsPage() {
                         </p>
                     </div>
 
-                    <div className="grid grid-cols-1 lg:grid-cols-3 gap-12">
+                    <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
                         {/* Basmati Rice */}
                         <div className="bg-white rounded-3xl p-10 shadow-xl hover:shadow-2xl transition-all duration-300 transform hover:-translate-y-2">
                             <div className="text-center mb-8">
@@ -281,6 +281,64 @@ export default function BusinessSegmentsPage() {
                             <div className="text-center">
                                 <CTAButton
                                     href="/business-segments/pulses-cereals"
+                                    variant="outline"
+                                    className="border-[#2E7D32] text-[#2E7D32] hover:bg-[#2E7D32] hover:text-white px-8 py-3"
+                                >
+                                    Learn More
+                                </CTAButton>
+                            </div>
+                        </div>
+
+                        {/* Fruits & Vegetables */}
+                        <div className="bg-white rounded-3xl p-10 shadow-xl hover:shadow-2xl transition-all duration-300 transform hover:-translate-y-2">
+                            <div className="text-center mb-8">
+                                <div className="w-24 h-24 bg-gradient-to-br from-[#2E7D32] to-[#4A90E2] rounded-3xl flex items-center justify-center mx-auto mb-6">
+                                    <svg className="w-12 h-12 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z" />
+                                    </svg>
+                                </div>
+                                <h3 className="text-3xl font-bold text-gray-900 mb-4">Fresh Fruits & Vegetables</h3>
+                            </div>
+
+                            {/* Image Placeholder */}
+                            <div className="bg-gradient-to-r from-gray-100 to-gray-200 h-48 rounded-2xl mb-6 flex items-center justify-center">
+                                <div className="text-center text-gray-500">
+                                    <svg className="w-16 h-16 mx-auto mb-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1} d="M4 16l4.586-4.586a2 2 0 012.828 0L16 16m-2-2l1.586-1.586a2 2 0 012.828 0L20 14m-6-6h.01M6 20h12a2 2 0 002-2V6a2 2 0 00-2-2H6a2 2 0 00-2 2v12a2 2 0 002 2z" />
+                                    </svg>
+                                    <p className="text-sm font-medium">Fresh Fruits & Vegetables</p>
+                                </div>
+                            </div>
+
+                            <p className="text-gray-600 leading-relaxed mb-6 text-center">
+                                Premium fresh fruits and vegetables including pomegranate, chilli, onion, and grapes
+                                with quality assurance and reliable delivery to international markets.
+                            </p>
+
+                            <ul className="space-y-3 text-sm text-gray-600 mb-8">
+                                <li className="flex items-center">
+                                    <svg className="w-5 h-5 text-[#2E7D32] mr-3 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20">
+                                        <path fillRule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clipRule="evenodd" />
+                                    </svg>
+                                    Premium pomegranate
+                                </li>
+                                <li className="flex items-center">
+                                    <svg className="w-5 h-5 text-[#2E7D32] mr-3 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20">
+                                        <path fillRule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clipRule="evenodd" />
+                                    </svg>
+                                    Fresh chilli & onion
+                                </li>
+                                <li className="flex items-center">
+                                    <svg className="w-5 h-5 text-[#2E7D32] mr-3 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20">
+                                        <path fillRule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clipRule="evenodd" />
+                                    </svg>
+                                    Quality grapes & more
+                                </li>
+                            </ul>
+
+                            <div className="text-center">
+                                <CTAButton
+                                    href="/business-segments/fruits-vegetables"
                                     variant="outline"
                                     className="border-[#2E7D32] text-[#2E7D32] hover:bg-[#2E7D32] hover:text-white px-8 py-3"
                                 >

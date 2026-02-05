@@ -86,7 +86,7 @@ export default function ServicesGrid() {
 
                 {/* Modern Learn More Link - Responsive */}
                 <Link
-                  href="/services"
+                  href="/contact"
                   className="inline-flex items-center text-[#1E3A5F] font-bold hover:text-[#4A90E2] transition-all duration-300 text-xs sm:text-sm group-hover:bg-gradient-to-r group-hover:from-[#4A90E2]/10 group-hover:to-[#2E7D32]/10 px-3 sm:px-4 py-2 sm:py-3 rounded-lg sm:rounded-xl -mx-3 sm:-mx-4 group"
                 >
                   Learn More
@@ -134,15 +134,15 @@ export default function ServicesGrid() {
                   <span className="hidden sm:inline">Get Started Today</span>
                 </CTAButton>
                 <CTAButton
-                  href="/services"
+                  href="/contact"
                   variant="secondary"
                   size="lg"
                   trackingName="Services CTA Secondary"
                   trackingLocation="Services Section"
                   className="border-2 border-[#1E3A5F] text-[#1E3A5F] hover:bg-[#1E3A5F] hover:text-white px-6 sm:px-8 py-3 sm:py-4 rounded-lg sm:rounded-xl font-bold transition-all duration-300 transform hover:-translate-y-1 text-sm sm:text-base"
                 >
-                  <span className="sm:hidden">All Services</span>
-                  <span className="hidden sm:inline">View All Services</span>
+                  <span className="sm:hidden">Contact Us</span>
+                  <span className="hidden sm:inline">Get In Touch</span>
                 </CTAButton>
               </div>
             </div>

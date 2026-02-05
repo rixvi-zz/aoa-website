@@ -13,16 +13,16 @@ export default function Footer() {
           {/* Company Info - Responsive */}
           <div className="sm:col-span-2 lg:col-span-2">
             <div className="flex items-center space-x-3 mb-4 sm:mb-6">
-            <Image
-  src="/images/16.png"
-  alt="AOA Foods - Purely Global. Perfectly Local."
-  width={520}
-  height={160}
-  priority
-  quality={90}
-  sizes="(max-width: 640px) 220px, (max-width: 1024px) 300px, 360px"
-  className="h-20 sm:h-24 lg:h-28 xl:h-32 w-auto object-contain"
-/>
+              <Image
+                src="/images/16.png"
+                alt="AOA Foods - Purely Global. Perfectly Local."
+                width={520}
+                height={160}
+                priority
+                quality={90}
+                sizes="(max-width: 640px) 220px, (max-width: 1024px) 300px, 360px"
+                className="h-20 sm:h-24 lg:h-28 xl:h-32 w-auto object-contain"
+              />
 
             </div>
             <p className="text-white mb-6 sm:mb-8 max-w-md leading-relaxed text-sm sm:text-base lg:text-lg">

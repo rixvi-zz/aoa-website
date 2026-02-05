@@ -1,6 +1,54 @@
 import type { Metadata } from 'next';
+import Image from 'next/image';
 import { markets } from '@/lib/data';
 import CTAButton from '@/components/CTAButton';
+
+// Country name to code mapping for flag images
+const countryCodeMap: Record<string, string> = {
+  'China': 'cn',
+  'Singapore': 'sg',
+  'Thailand': 'th',
+  'Vietnam': 'vn',
+  'Hong Kong': 'hk',
+  'Malaysia': 'my',
+  'Indonesia': 'id',
+  'Kazakhstan': 'kz',
+  'UAE': 'ae',
+  'Saudi Arabia': 'sa',
+  'Qatar': 'qa',
+  'Kuwait': 'kw',
+  'Oman': 'om',
+  'Bahrain': 'bh',
+  'Jordan': 'jo',
+  'Turkey': 'tr',
+  'Iran': 'ir',
+  'Iraq': 'iq',
+  'Egypt': 'eg',
+  'Lebanon': 'lb',
+  'Algeria': 'dz',
+  'Germany': 'de',
+  'United Kingdom': 'gb',
+  'France': 'fr',
+  'Italy': 'it',
+  'Netherlands': 'nl',
+  'Spain': 'es',
+  'Belgium': 'be',
+  'Poland': 'pl',
+  'Armenia': 'am',
+  'Georgia': 'ge',
+  'South Africa': 'za',
+  'Nigeria': 'ng',
+  'Kenya': 'ke',
+  'Morocco': 'ma',
+  'Ghana': 'gh',
+  'Tanzania': 'tz',
+  'Ethiopia': 'et',
+  'Angola': 'ao',
+  'Congo': 'cg',
+  'Gabon': 'ga',
+  'Equatorial Guinea': 'gq',
+  'Ivory Coast': 'ci'
+};
 
 export const metadata: Metadata = {
     title: 'International Markets - Global Trade Presence by AOA',
@@ -159,18 +207,33 @@ export default function MarketsPage() {
                                 {/* Key Countries */}
                                 <div className="mb-6">
                                     <h4 className="text-lg font-semibold text-gray-900 mb-3">Key Markets:</h4>
-                                    <div className="grid grid-cols-2 gap-2">
-                                        {market.countries.map((country, countryIndex) => (
-                                            <div
-                                                key={countryIndex}
-                                                className="flex items-center bg-white rounded-lg p-3 shadow-sm"
-                                            >
-                                                <div className="w-6 h-6 bg-[#0F2A44] rounded-full flex items-center justify-center mr-3">
-                                                    <div className="w-2 h-2 bg-white rounded-full"></div>
+                                    <div className="grid grid-cols-1 gap-2">
+                                        {market.countries.map((country, countryIndex) => {
+                                            const countryCode = countryCodeMap[country];
+                                            return (
+                                                <div
+                                                    key={countryIndex}
+                                                    className="flex items-center bg-white rounded-lg p-3 shadow-sm hover:shadow-md transition-shadow duration-200"
+                                                >
+                                                    {countryCode ? (
+                                                        <div className="w-8 h-6 mr-3 rounded overflow-hidden border border-gray-200 flex-shrink-0">
+                                                            <Image
+                                                                src={`/flags/${countryCode}.png`}
+                                                                alt={`${country} flag`}
+                                                                width={32}
+                                                                height={24}
+                                                                className="w-full h-full object-cover"
+                                                            />
+                                                        </div>
+                                                    ) : (
+                                                        <div className="w-8 h-6 bg-gray-200 rounded mr-3 flex items-center justify-center flex-shrink-0">
+                                                            <div className="w-2 h-2 bg-gray-400 rounded-full"></div>
+                                                        </div>
+                                                    )}
+                                                    <span className="text-gray-700 font-medium">{country}</span>
                                                 </div>
-                                                <span className="text-gray-700 font-medium">{country}</span>
-                                            </div>
-                                        ))}
+                                            );
+                                        })}
                                     </div>
                                 </div>
 
@@ -406,8 +469,8 @@ export default function MarketsPage() {
                         <CTAButton href="/contact" variant="secondary" size="lg">
                             Discuss Market Entry
                         </CTAButton>
-                        <CTAButton href="/services" variant="outline" size="lg" className="border-white text-white hover:bg-white hover:text-[#0F2A44]">
-                            View Our Services
+                        <CTAButton href="/contact" variant="outline" size="lg" className="border-white text-white hover:bg-white hover:text-[#0F2A44]">
+                            Contact Us
                         </CTAButton>
                     </div>
                 </div>

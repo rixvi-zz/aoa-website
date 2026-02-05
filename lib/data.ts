@@ -4,8 +4,8 @@ import { Service, Market, NavItem } from '@/types';
 export const navigationItems: NavItem[] = [
   { label: 'Home', href: '/' },
   { label: 'About Us', href: '/about' },
-  { 
-    label: 'Business Segments', 
+  {
+    label: 'Business Segments',
     href: '/business-segments',
     children: [
       { label: 'Premium Halaal Meat', href: '/business-segments/halaal-meat' },
@@ -16,7 +16,6 @@ export const navigationItems: NavItem[] = [
       { label: 'Bulk Commodities', href: '/business-segments/bulk-commodities' },
     ]
   },
-  { label: 'Services', href: '/services' },
   { label: 'International Markets', href: '/markets' },
   { label: 'Contact Us', href: '/contact' },
 ];
@@ -81,23 +80,23 @@ export const services: Service[] = [
 export const markets: Market[] = [
   {
     region: 'Asia',
-    countries: ['China', 'Singapore', 'Thailand', 'Vietnam', 'Hong Kong', 'Malaysia', 'Indonesia'],
+    countries: ['China', 'Singapore', 'Thailand', 'Vietnam', 'Hong Kong', 'Malaysia', 'Indonesia', 'Kazakhstan'],
     description: 'Strong partnerships across Asian markets with deep understanding of regional trade regulations and business practices.'
   },
   {
-    region: 'Middle East',
-    countries: ['UAE', 'Saudi Arabia', 'Qatar', 'Kuwait', 'Oman', 'Bahrain', 'Jordan', 'Turkey', 'Iran', 'Iraq'],
-    description: 'Established network in Middle Eastern markets facilitating trade in various sectors including oil & gas, construction, and consumer goods.'
+    region: 'Middle East & North Africa',
+    countries: ['UAE', 'Saudi Arabia', 'Qatar', 'Kuwait', 'Oman', 'Bahrain', 'Jordan', 'Turkey', 'Iran', 'Iraq', 'Egypt', 'Lebanon', 'Algeria'],
+    description: 'Established network in Middle Eastern and North African markets facilitating trade in various sectors including oil & gas, construction, and consumer goods.'
   },
   {
-    region: 'Europe',
-    countries: ['Germany', 'United Kingdom', 'France', 'Italy', 'Netherlands', 'Spain', 'Belgium', 'Poland'],
-    description: 'Comprehensive European market coverage with expertise in EU regulations, standards, and compliance requirements.'
+    region: 'Europe & Caucasus',
+    countries: ['Germany', 'United Kingdom', 'France', 'Italy', 'Netherlands', 'Spain', 'Belgium', 'Poland', 'Armenia', 'Georgia'],
+    description: 'Comprehensive European market coverage with expertise in EU regulations, standards, and compliance requirements, extending to Caucasus region.'
   },
   {
     region: 'Africa',
-    countries: ['South Africa', 'Nigeria', 'Kenya', 'Egypt', 'Morocco', 'Ghana', 'Tanzania', 'Ethiopia'],
-    description: 'Growing presence in African markets with focus on infrastructure development, mining, and agricultural trade opportunities.'
+    countries: ['South Africa', 'Nigeria', 'Kenya', 'Morocco', 'Ghana', 'Tanzania', 'Ethiopia', 'Angola', 'Congo', 'Gabon', 'Equatorial Guinea', 'Ivory Coast'],
+    description: 'Growing presence in African markets with focus on infrastructure development, mining, and agricultural trade opportunities across diverse economies.'
   }
 ];
 

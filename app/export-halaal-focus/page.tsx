@@ -259,8 +259,8 @@ export default function ExportHalaalFocusPage() {
             <CTAButton href="/contact" variant="secondary" size="lg">
               Get Export Quote
             </CTAButton>
-            <CTAButton href="/services" variant="outline" size="lg" className="border-white text-white hover:bg-white hover:text-primary-900">
-              View All Services
+            <CTAButton href="/contact" variant="outline" size="lg" className="border-white text-white hover:bg-white hover:text-primary-900">
+              Contact Us
             </CTAButton>
           </div>
         </div>

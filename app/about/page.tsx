@@ -391,8 +391,8 @@ export default function AboutPage() {
                         <CTAButton href="/contact" variant="secondary" size="lg">
                             Start Your Journey
                         </CTAButton>
-                        <CTAButton href="/services" variant="outline" size="lg" className="border-white text-white hover:bg-white hover:text-primary-900">
-                            Explore Our Services
+                        <CTAButton href="/contact" variant="outline" size="lg" className="border-white text-white hover:bg-white hover:text-primary-900">
+                            Contact Us
                         </CTAButton>
                     </div>
                 </div>

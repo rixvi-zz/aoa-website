@@ -49,7 +49,6 @@ export const SEO_KEYWORDS = [
 export const NAVIGATION_ITEMS = [
   { label: 'Home', href: '/' },
   { label: 'About Us', href: '/about' },
-  { label: 'Services', href: '/services' },
   { label: 'International Markets', href: '/markets' },
   { label: 'Contact Us', href: '/contact' },
 ] as const;

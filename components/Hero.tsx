@@ -53,7 +53,7 @@ export default function Hero() {
               {/* CTA Buttons */}
               <div className="flex flex-col sm:flex-row gap-6 pt-4">
                 <a
-                  href="/export-halaal-focus"
+                  href="/business-segments/halaal-meat"
                   className="group relative inline-flex items-center justify-center bg-gradient-to-r from-[#1E3A5F] to-[#4A90E2] text-white font-bold px-8 py-4 text-lg rounded-xl shadow-xl hover:shadow-2xl transform hover:-translate-y-1 transition-all duration-300 overflow-hidden"
                 >
                   <div className="absolute inset-0 bg-gradient-to-r from-[#4A90E2] to-[#1E3A5F] opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
