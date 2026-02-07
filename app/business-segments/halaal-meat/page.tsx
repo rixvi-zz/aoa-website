@@ -102,38 +102,18 @@ export default function HalaalMeatPage() {
                       <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
                     </svg>
                   </div>
-                  <h4 className="font-bold text-gray-900 mb-2">Fresh Halaal Meat</h4>
+                  <h4 className="font-bold text-gray-900 mb-2">Fresh & Frozen Products</h4>
                   <p className="text-gray-600 text-sm">Premium cuts with complete certification</p>
                 </div>
 
                 <div className="bg-gray-50 rounded-xl p-6">
                   <div className="w-12 h-12 bg-[#4A90E2] rounded-lg flex items-center justify-center mb-4">
                     <svg className="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 10V3L4 14h7v7l9-11h-7z" />
-                    </svg>
-                  </div>
-                  <h4 className="font-bold text-gray-900 mb-2">Frozen Products</h4>
-                  <p className="text-gray-600 text-sm">Temperature-controlled processing</p>
-                </div>
-
-                <div className="bg-gray-50 rounded-xl p-6">
-                  <div className="w-12 h-12 bg-[#1E3A5F] rounded-lg flex items-center justify-center mb-4">
-                    <svg className="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                       <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2" />
                     </svg>
                   </div>
-                  <h4 className="font-bold text-gray-900 mb-2">Processed Products</h4>
-                  <p className="text-gray-600 text-sm">Value-added preparations</p>
-                </div>
-
-                <div className="bg-gray-50 rounded-xl p-6">
-                  <div className="w-12 h-12 bg-[#2E7D32] rounded-lg flex items-center justify-center mb-4">
-                    <svg className="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 6V4m0 2a2 2 0 100 4m0-4a2 2 0 110 4m-6 8a2 2 0 100-4m0 4a2 2 0 100 4m0-4v2m0-6V4m6 6v10m6-2a2 2 0 100-4m0 4a2 2 0 100 4m0-4v2m0-6V4" />
-                    </svg>
-                  </div>
-                  <h4 className="font-bold text-gray-900 mb-2">Specialty Cuts</h4>
-                  <p className="text-gray-600 text-sm">Custom cuts for specific markets</p>
+                  <h4 className="font-bold text-gray-900 mb-2">Specialty Processing</h4>
+                  <p className="text-gray-600 text-sm">Custom cuts and value-added preparations</p>
                 </div>
               </div>
             </div>
@@ -186,6 +166,128 @@ export default function HalaalMeatPage() {
         </div>
       </section>
 
+      {/* Premium Livestock Section */}
+      <section className="py-16 lg:py-24 bg-gradient-to-br from-gray-50 to-white">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+            <div className="relative">
+              <div className="rounded-2xl overflow-hidden shadow-2xl">
+                <Image
+                  src="/images/type cow.png"
+                  alt="Premium Livestock - Quality Cattle for Halaal Meat Production"
+                  width={600}
+                  height={400}
+                  className="w-full h-80 lg:h-96 object-cover"
+                  quality={90}
+                  priority={false}
+                  sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 600px"
+                />
+              </div>
+              <div className="absolute -bottom-6 -right-6 bg-[#2E7D32] text-white p-6 rounded-xl shadow-xl">
+                <div className="text-2xl font-bold">100%</div>
+                <div className="text-sm">Halaal Certified</div>
+              </div>
+            </div>
+
+            <div>
+              <div className="inline-flex items-center bg-[#2E7D32] text-white px-6 py-3 rounded-full text-sm font-bold mb-6">
+                <svg className="w-5 h-5 mr-2" fill="currentColor" viewBox="0 0 20 20">
+                  <path fillRule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clipRule="evenodd" />
+                </svg>
+                PREMIUM LIVESTOCK
+              </div>
+              <h2 className="text-4xl lg:text-5xl font-bold text-gray-900 mb-6">
+                Quality Livestock Sourcing
+              </h2>
+              <p className="text-lg text-gray-700 leading-relaxed mb-8">
+                Our commitment to premium Halaal meat begins with carefully selected livestock from trusted farms.
+                We ensure the highest standards of animal welfare and quality throughout the sourcing process.
+              </p>
+
+              <div className="space-y-4">
+                <div className="flex items-center">
+                  <div className="w-3 h-3 bg-[#2E7D32] rounded-full mr-4"></div>
+                  <span className="text-gray-700">Certified organic and grass-fed livestock</span>
+                </div>
+                <div className="flex items-center">
+                  <div className="w-3 h-3 bg-[#2E7D32] rounded-full mr-4"></div>
+                  <span className="text-gray-700">Strict animal welfare standards</span>
+                </div>
+                <div className="flex items-center">
+                  <div className="w-3 h-3 bg-[#2E7D32] rounded-full mr-4"></div>
+                  <span className="text-gray-700">Regular health monitoring and veterinary care</span>
+                </div>
+                <div className="flex items-center">
+                  <div className="w-3 h-3 bg-[#2E7D32] rounded-full mr-4"></div>
+                  <span className="text-gray-700">Complete traceability from farm to table</span>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* Premium Mutton Section */}
+      <section className="py-16 lg:py-24 bg-white">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+            <div>
+              <div className="inline-flex items-center bg-[#4A90E2] text-white px-6 py-3 rounded-full text-sm font-bold mb-6">
+                <svg className="w-5 h-5 mr-2" fill="currentColor" viewBox="0 0 20 20">
+                  <path fillRule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clipRule="evenodd" />
+                </svg>
+                PREMIUM MUTTON
+              </div>
+              <h2 className="text-4xl lg:text-5xl font-bold text-gray-900 mb-6">
+                Fresh Halaal Mutton
+              </h2>
+              <p className="text-lg text-gray-700 leading-relaxed mb-8">
+                Our premium mutton selection features the finest cuts from carefully selected sheep,
+                processed with complete Halaal compliance and delivered with optimal freshness and flavor.
+              </p>
+
+              <div className="space-y-4">
+                <div className="flex items-center">
+                  <div className="w-3 h-3 bg-[#4A90E2] rounded-full mr-4"></div>
+                  <span className="text-gray-700">Premium shoulder and leg cuts</span>
+                </div>
+                <div className="flex items-center">
+                  <div className="w-3 h-3 bg-[#4A90E2] rounded-full mr-4"></div>
+                  <span className="text-gray-700">Fresh and frozen options available</span>
+                </div>
+                <div className="flex items-center">
+                  <div className="w-3 h-3 bg-[#4A90E2] rounded-full mr-4"></div>
+                  <span className="text-gray-700">Vacuum-packed for extended freshness</span>
+                </div>
+                <div className="flex items-center">
+                  <div className="w-3 h-3 bg-[#4A90E2] rounded-full mr-4"></div>
+                  <span className="text-gray-700">Complete Halaal certification</span>
+                </div>
+              </div>
+            </div>
+
+            <div className="relative">
+              <div className="rounded-2xl overflow-hidden shadow-2xl">
+                <Image
+                  src="/images/type mutton.png"
+                  alt="Premium Fresh Halaal Mutton Cuts - Quality Sheep Meat"
+                  width={600}
+                  height={400}
+                  className="w-full h-80 lg:h-96 object-cover"
+                  quality={90}
+                  priority={false}
+                  sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 600px"
+                />
+              </div>
+              <div className="absolute -bottom-6 -left-6 bg-[#4A90E2] text-white p-6 rounded-xl shadow-xl">
+                <div className="text-2xl font-bold">Fresh</div>
+                <div className="text-sm">Daily Processing</div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
       {/* Premium Product Range Section */}
       <section className="py-16 lg:py-24 bg-white">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -197,7 +299,7 @@ export default function HalaalMeatPage() {
               PREMIUM PRODUCT RANGE
             </div>
             <h2 className="text-4xl lg:text-5xl font-bold text-gray-900 mb-6">
-              Premium Halaal Meat Export List
+              Premium Halaal Meat Products
             </h2>
             <p className="text-xl text-gray-600 max-w-3xl mx-auto">
               Comprehensive range of certified Halaal meat products for international markets
@@ -215,27 +317,18 @@ export default function HalaalMeatPage() {
                 </div>
                 <h3 className="text-2xl font-bold text-gray-900">Fresh Chilled Products</h3>
               </div>
-              <ul className="space-y-4">
+              <ul className="space-y-3">
                 <li className="flex items-start">
                   <div className="w-2 h-2 bg-[#2E7D32] rounded-full mt-2 mr-3 flex-shrink-0"></div>
-                  <div>
-                    <h4 className="font-semibold text-gray-900">Fresh Chilled Sheep</h4>
-                    <p className="text-gray-600 text-sm">Premium quality sheep meat with complete Halaal certification</p>
-                  </div>
+                  <span className="text-gray-700">Fresh Chilled Sheep & Buffalo Meat</span>
                 </li>
                 <li className="flex items-start">
                   <div className="w-2 h-2 bg-[#2E7D32] rounded-full mt-2 mr-3 flex-shrink-0"></div>
-                  <div>
-                    <h4 className="font-semibold text-gray-900">Fresh Chilled Buffalo Leg / Shoulder Meat</h4>
-                    <p className="text-gray-600 text-sm">High-quality buffalo cuts with optimal freshness and flavor</p>
-                  </div>
+                  <span className="text-gray-700">Vacuum-Packed Boneless Cuts</span>
                 </li>
                 <li className="flex items-start">
                   <div className="w-2 h-2 bg-[#2E7D32] rounded-full mt-2 mr-3 flex-shrink-0"></div>
-                  <div>
-                    <h4 className="font-semibold text-gray-900">Fresh Vacuum-Packed Boneless Buffalo</h4>
-                    <p className="text-gray-600 text-sm">Vacuum-sealed boneless buffalo meat for extended freshness</p>
-                  </div>
+                  <span className="text-gray-700">Premium Leg & Shoulder Cuts</span>
                 </li>
               </ul>
             </div>
@@ -250,27 +343,18 @@ export default function HalaalMeatPage() {
                 </div>
                 <h3 className="text-2xl font-bold text-gray-900">Frozen Products</h3>
               </div>
-              <ul className="space-y-4">
+              <ul className="space-y-3">
                 <li className="flex items-start">
                   <div className="w-2 h-2 bg-[#4A90E2] rounded-full mt-2 mr-3 flex-shrink-0"></div>
-                  <div>
-                    <h4 className="font-semibold text-gray-900">Frozen Sheep Meat</h4>
-                    <p className="text-gray-600 text-sm">Premium frozen sheep meat with advanced cold chain management</p>
-                  </div>
+                  <span className="text-gray-700">Frozen Sheep & Buffalo Meat</span>
                 </li>
                 <li className="flex items-start">
                   <div className="w-2 h-2 bg-[#4A90E2] rounded-full mt-2 mr-3 flex-shrink-0"></div>
-                  <div>
-                    <h4 className="font-semibold text-gray-900">Frozen Boneless Buffalo</h4>
-                    <p className="text-gray-600 text-sm">High-quality boneless buffalo meat processed and frozen to perfection</p>
-                  </div>
+                  <span className="text-gray-700">Frozen Boneless Cuts</span>
                 </li>
                 <li className="flex items-start">
                   <div className="w-2 h-2 bg-[#4A90E2] rounded-full mt-2 mr-3 flex-shrink-0"></div>
-                  <div>
-                    <h4 className="font-semibold text-gray-900">Frozen Offals</h4>
-                    <p className="text-gray-600 text-sm">Specialized organ meat products with complete Halaal compliance</p>
-                  </div>
+                  <span className="text-gray-700">Frozen Offals & Specialty Products</span>
                 </li>
               </ul>
             </div>
@@ -280,8 +364,7 @@ export default function HalaalMeatPage() {
           <div className="mt-12 bg-gradient-to-r from-[#1E3A5F] to-[#4A90E2] rounded-2xl p-8 text-white text-center">
             <h3 className="text-2xl font-bold mb-4">Quality Assurance Guarantee</h3>
             <p className="text-lg text-white/90 max-w-3xl mx-auto">
-              All our premium Halaal meat products undergo rigorous quality testing, maintain complete cold chain integrity,
-              and come with authentic Halaal certification from recognized Islamic authorities.
+              All our premium Halaal meat products undergo rigorous quality testing and come with authentic Halaal certification.
             </p>
           </div>
         </div>
@@ -514,8 +597,8 @@ export default function HalaalMeatPage() {
                   <span>ahmarabyadtrading@gmail.com</span>
                 </div>
                 <div className="flex items-center">
-                  <svg className="w-5 h-5 mr-3" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z" />
+                  <svg className="w-5 h-5 mr-3" fill="currentColor" viewBox="0 0 24 24">
+                    <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893A11.821 11.821 0 0020.885 3.488" />
                   </svg>
                   <span>+91 99714 09567</span>
                 </div>

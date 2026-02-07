@@ -70,7 +70,7 @@ export default function Footer() {
                 <p className="font-bold text-white mb-1 sm:mb-2 text-sm sm:text-base">Email</p>
                 <a
                   href={`mailto:${contactInfo.email}`}
-                  className="text-white hover:bg-[#4A90E2] hover:text-white px-2 py-1 rounded transition-colors duration-200 font-medium text-sm sm:text-base break-all"
+                  className="text-white hover:bg-[#4A90E2] hover:text-white px-2 py-1 rounded transition-colors duration-200 font-medium text-sm sm:text-base whitespace-nowrap"
                 >
                   {contactInfo.email}
                 </a>
