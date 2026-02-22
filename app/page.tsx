@@ -16,11 +16,11 @@ export const metadata: Metadata = {
     images: ['/images/home-og.svg'],
   },
   alternates: {
-    canonical: 'https://aoa-foods.com',
+    canonical: 'https://www.aoafoods.com',
     languages: {
-      'en-IN': 'https://aoa-foods.com',
-      'en-US': 'https://aoa-foods.com',
-      'en': 'https://aoa-foods.com',
+      'en-IN': 'https://www.aoafoods.com',
+      'en-US': 'https://www.aoafoods.com',
+      'en': 'https://www.aoafoods.com',
     },
   },
 };
@@ -37,13 +37,13 @@ export default function Home() {
             "@type": "WebPage",
             "name": "AOA Foods - Premium Food Export Solutions for Global Markets",
             "description": "MSME and APEDA registered food export company in India providing comprehensive global food trade solutions for international business partnerships.",
-            "url": "https://aoa-foods.com",
+            "url": "https://www.aoafoods.com",
             "mainEntity": {
               "@type": "Organization",
               "name": "AOA Foods",
               "description": "MSME and APEDA registered food export company in India",
-              "url": "https://aoa-foods.com",
-              "logo": "https://aoa-foods.com/images/ChatGPT Image Jan 29, 2026, 12_41_01 AM.png",
+              "url": "https://www.aoafoods.com",
+              "logo": "https://www.aoafoods.com/images/ChatGPT Image Jan 29, 2026, 12_41_01 AM.png",
               "address": {
                 "@type": "PostalAddress",
                 "addressCountry": "IN",
@@ -53,7 +53,7 @@ export default function Home() {
               "contactPoint": {
                 "@type": "ContactPoint",
                 "contactType": "business",
-                "email": "info@aoa-foods.com",
+                "email": "info@aoafoods.com",
                 "availableLanguage": ["English", "Hindi"]
               },
               "areaServed": [

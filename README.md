@@ -168,7 +168,7 @@ SMTP_USER=your-email
 SMTP_PASS=your-password
 
 # Site URL
-NEXT_PUBLIC_SITE_URL=https://aoa-trade.com
+NEXT_PUBLIC_SITE_URL=https://www.aoafoods.com
 ```
 
 ### Customization
@@ -216,7 +216,7 @@ This project is proprietary to AOA Import Export.
 ## 📞 Support
 
 For technical support or questions:
-- Email: info@aoa-trade.com
+- Email: info@aoafoods.com
 - Phone: +91 98765 43210
 
 ---

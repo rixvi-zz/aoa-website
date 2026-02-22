@@ -26,15 +26,15 @@ export default function AboutPage() {
                         "@type": "AboutPage",
                         "name": "About AOA - MSME Registered Import Export Company",
                         "description": "Learn about AOA Import Export, an MSME-registered company in India providing reliable international trade solutions",
-                        "url": "https://aoa-trade.com/about",
+                        "url": "https://www.aoafoods.com/about",
                         "mainEntity": {
                             "@type": "Organization",
                             "name": "AOA FOODS PRIVATE LIMITED",
                             "legalName": "AOA FOODS PRIVATE LIMITED",
                             "foundingDate": "2025",
                             "description": "IEC and GST registered food import and export company specializing in comprehensive international food & agri products trade solutions",
-                            "url": "https://aoa-foods.com",
-                            "logo": "https://aoa-foods.com/images/logo.svg",
+                            "url": "https://www.aoafoods.com",
+                            "logo": "https://www.aoafoods.com/images/logo.svg",
                             "address": {
                                 "@type": "PostalAddress",
                                 "streetAddress": "A-19, Lane 1, Johri Farm, Noor Nagar Extension, Jamia Nagar",

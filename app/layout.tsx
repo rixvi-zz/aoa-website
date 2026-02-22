@@ -31,7 +31,7 @@ export const metadata: Metadata = {
   authors: [{ name: 'AOA FOODS PRIVATE LIMITED' }],
   creator: 'AOA FOODS PRIVATE LIMITED',
   publisher: 'AOA FOODS PRIVATE LIMITED',
-  metadataBase: new URL('https://aoa-foods.com'),
+  metadataBase: new URL('https://www.aoafoods.com'),
   robots: {
     index: true,
     follow: true,
@@ -46,7 +46,7 @@ export const metadata: Metadata = {
   openGraph: {
     type: 'website',
     locale: 'en_IN',
-    url: 'https://aoa-foods.com',
+    url: 'https://www.aoafoods.com',
     siteName: 'AOA FOODS PRIVATE LIMITED',
     title: 'AOA FOODS PRIVATE LIMITED - Reliable Import & Export Solutions for Global Markets',
     description: 'IEC and GST registered import and export company in India providing comprehensive global trade solutions for international B2B partnerships.',
@@ -66,11 +66,11 @@ export const metadata: Metadata = {
     images: ['/images/twitter-image.svg'],
   },
   alternates: {
-    canonical: 'https://aoa-trade.com',
+    canonical: 'https://www.aoafoods.com',
     languages: {
-      'en-IN': 'https://aoa-trade.com',
-      'en-US': 'https://aoa-trade.com',
-      'en': 'https://aoa-trade.com',
+      'en-IN': 'https://www.aoafoods.com',
+      'en-US': 'https://www.aoafoods.com',
+      'en': 'https://www.aoafoods.com',
     },
   },
   verification: {
@@ -150,8 +150,8 @@ export default function RootLayout({
               "@type": "Organization",
               "name": "AOA Import Export",
               "description": "MSME-registered import and export company in India providing comprehensive global trade solutions",
-              "url": "https://aoa-trade.com",
-              "logo": "https://aoa-trade.com/images/logo.svg",
+              "url": "https://www.aoafoods.com",
+              "logo": "https://www.aoafoods.com/images/logo.svg",
               "address": {
                 "@type": "PostalAddress",
                 "addressCountry": "IN",
@@ -161,12 +161,12 @@ export default function RootLayout({
               "contactPoint": {
                 "@type": "ContactPoint",
                 "contactType": "business",
-                "email": "info@aoa-trade.com",
+                "email": "info@aoafoods.com",
                 "availableLanguage": ["English", "Hindi"]
               },
               "sameAs": [
-                "https://linkedin.com/company/aoa-import-export",
-                "https://twitter.com/aoa_trade"
+                "https://linkedin.com/company/aoafoods",
+                "https://twitter.com/aoafoods"
               ]
             })
           }}

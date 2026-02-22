@@ -73,11 +73,11 @@ export default function MarketsPage() {
                         "@type": "WebPage",
                         "name": "International Markets - Global Trade Presence by AOA",
                         "description": "AOA serves international markets across Asia, Middle East, Europe, and Africa with comprehensive trade solutions",
-                        "url": "https://aoa-trade.com/markets",
+                        "url": "https://www.aoafoods.com/markets",
                         "mainEntity": {
                             "@type": "Organization",
                             "name": "AOA Import Export",
-                            "url": "https://aoa-trade.com",
+                            "url": "https://www.aoafoods.com",
                             "areaServed": [
                                 {
                                     "@type": "Place",

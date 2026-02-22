@@ -52,7 +52,7 @@ export async function POST(request: NextRequest) {
     // Example with Resend, SendGrid, or other email service:
     /*
     await sendEmail({
-      to: 'info@aoa-trade.com',
+      to: 'info@aoafoods.com',
       subject: `New Contact Form Submission from ${sanitizedData.name}`,
       html: `
         <h2>New Contact Form Submission</h2>

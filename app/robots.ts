@@ -7,6 +7,6 @@ export default function robots(): MetadataRoute.Robots {
       allow: '/',
       disallow: ['/api/', '/_next/'],
     },
-    sitemap: 'https://aoa-trade.com/sitemap.xml',
+    sitemap: 'https://www.aoafoods.com/sitemap.xml',
   }
 }

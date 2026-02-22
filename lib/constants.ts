@@ -3,8 +3,8 @@ export const SITE_CONFIG = {
   name: 'AOA',
   fullName: 'AOA Import Export',
   description: 'MSME-registered import and export company in India providing comprehensive global trade solutions',
-  url: 'https://aoa-trade.com',
-  email: 'info@aoa-trade.com',
+  url: 'https://www.aoafoods.com',
+  email: 'info@aoafoods.com',
   phone: '+91 98765 43210',
 } as const;
 

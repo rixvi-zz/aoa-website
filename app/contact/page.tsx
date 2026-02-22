@@ -25,15 +25,15 @@ export default function ContactPage() {
             "@type": "ContactPage",
             "name": "Contact Us - AOA Import & Export Solutions",
             "description": "Get in touch with AOA for your import and export requirements. MSME-registered team provides reliable international trade solutions",
-            "url": "https://aoa-trade.com/contact",
+            "url": "https://www.aoafoods.com/contact",
             "mainEntity": {
               "@type": "Organization",
               "name": "AOA Import Export",
-              "url": "https://aoa-trade.com",
+              "url": "https://www.aoafoods.com",
               "contactPoint": {
                 "@type": "ContactPoint",
                 "contactType": "business",
-                "email": "info@aoa-trade.com",
+                "email": "info@aoafoods.com",
                 "telephone": "+91 98765 43210",
                 "availableLanguage": ["English", "Hindi"],
                 "hoursAvailable": [

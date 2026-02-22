@@ -25,7 +25,7 @@
 
 3. **Domain Configuration**
    - Go to Project Settings > Domains
-   - Add your custom domain (e.g., aoa-foods.com)
+   - Add your custom domain (e.g., www.aoafoods.com)
    - Configure DNS records as instructed by Vercel
 
 4. **Build Settings**
