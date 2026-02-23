@@ -46,7 +46,7 @@ export default function AboutPage() {
                             "contactPoint": {
                                 "@type": "ContactPoint",
                                 "contactType": "business",
-                                "email": "Aoafoods.ind@gmail.com",
+                                "email": "aoafoodsind@gmail.com",
                                 "telephone": "+91-99714-09567"
                             },
                             "identifier": [

@@ -150,7 +150,7 @@ export const differentiators = [
 
 // Contact information
 export const contactInfo = {
-  email: 'Aoafoods.ind@gmail.com',
+  email: 'aoafoodsind@gmail.com',
   phone: '+91 99714 09567',
   address: {
     street: 'A-19, Lane 1, Johri Farm',
