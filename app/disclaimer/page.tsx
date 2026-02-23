@@ -81,7 +81,7 @@ export default function DisclaimerPage() {
               </p>
               <div className="bg-gray-50 p-4 rounded-lg mt-4">
                 <p><strong>AOA FOODS PRIVATE LIMITED</strong></p>
-                <p>Email: ahmarabyadtrading@gmail.com</p>
+                <p>Email: Aoafoods.ind@gmail.com</p>
                 <p>Phone: +91 99714 09567</p>
                 <p>Address: A-19, Lane 1, Johri Farm, Noor Nagar Extension, Jamia Nagar, New Delhi - 110025, India</p>
               </div>

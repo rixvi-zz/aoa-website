@@ -31,10 +31,10 @@ export default function AboutPage() {
                             "@type": "Organization",
                             "name": "AOA FOODS PRIVATE LIMITED",
                             "legalName": "AOA FOODS PRIVATE LIMITED",
-                            "foundingDate": "2025",
+                            "foundingDate": "2026",
                             "description": "IEC and GST registered food import and export company specializing in comprehensive international food & agri products trade solutions",
                             "url": "https://www.aoafoods.com",
-                            "logo": "https://www.aoafoods.com/images/logo.svg",
+                            "logo": "https://www.aoafoods.com/images/mainlogo.png",
                             "address": {
                                 "@type": "PostalAddress",
                                 "streetAddress": "A-19, Lane 1, Johri Farm, Noor Nagar Extension, Jamia Nagar",
@@ -46,7 +46,7 @@ export default function AboutPage() {
                             "contactPoint": {
                                 "@type": "ContactPoint",
                                 "contactType": "business",
-                                "email": "ahmarabyadtrading@gmail.com",
+                                "email": "Aoafoods.ind@gmail.com",
                                 "telephone": "+91-99714-09567"
                             },
                             "identifier": [
@@ -188,7 +188,7 @@ export default function AboutPage() {
                             />
                             <div className="absolute -bottom-6 -right-6 bg-[#0F2A44] text-white p-6 rounded-xl shadow-xl">
                                 <div className="text-center">
-                                    <div className="text-2xl font-bold text-white mb-1">Est. 2025</div>
+                                    <div className="text-2xl font-bold text-white mb-1">Est. 2026</div>
                                     <div className="text-sm text-blue-200">Years of Excellence</div>
                                 </div>
                             </div>

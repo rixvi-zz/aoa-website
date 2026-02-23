@@ -19,18 +19,18 @@ export default function Header() {
   return (
     <header className="bg-white sticky top-0 z-50 border-b border-gray-100 shadow-sm">
       <div className="max-w-6xl mx-auto px-6">
-        <div className="flex items-center justify-between h-24 max-md:h-20 max-md:px-4">
+        <div className="flex items-center justify-between h-28 max-md:h-24 max-md:px-4">
 
           {/* Logo - Left Aligned */}
           <div className="flex-shrink-0">
             <Link href="/" className="block">
               <Image
-                src="/images/ChatGPT Image Jan 29, 2026, 12_41_01 AM.png"
+                src="/images/mainlogo.png"
                 alt="AOA Foods - Purely Global. Perfectly Local."
-                width={400}
-                height={120}
-                sizes="(max-width: 480px) 200px, (max-width: 768px) 250px, (max-width: 1024px) 300px, 400px"
-                className="h-12 sm:h-14 md:h-16 lg:h-18 xl:h-20 2xl:h-24 w-auto"
+                width={500}
+                height={150}
+                sizes="(max-width: 480px) 280px, (max-width: 768px) 350px, (max-width: 1024px) 420px, 500px"
+                className="h-16 sm:h-18 md:h-20 lg:h-24 xl:h-28 2xl:h-32 w-auto"
                 priority
               />
             </Link>

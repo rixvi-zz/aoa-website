@@ -43,7 +43,7 @@ export default function Home() {
               "name": "AOA Foods",
               "description": "MSME and APEDA registered food export company in India",
               "url": "https://www.aoafoods.com",
-              "logo": "https://www.aoafoods.com/images/ChatGPT Image Jan 29, 2026, 12_41_01 AM.png",
+              "logo": "https://www.aoafoods.com/images/mainlogo.png",
               "address": {
                 "@type": "PostalAddress",
                 "addressCountry": "IN",
