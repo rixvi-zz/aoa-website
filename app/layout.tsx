@@ -77,30 +77,9 @@ export const metadata: Metadata = {
     google: 'your-google-verification-code',
   },
   icons: {
-    icon: [
-      { url: '/images/mainlogo.png', type: 'image/png', sizes: '32x32' },
-      { url: '/images/mainlogo.png', type: 'image/png', sizes: '16x16' },
-      { url: '/favicon.ico', sizes: 'any' },
-    ],
-    shortcut: '/images/mainlogo.png',
-    apple: [
-      { url: '/images/mainlogo.png', sizes: '180x180' },
-      { url: '/images/mainlogo.png', sizes: '152x152' },
-      { url: '/images/mainlogo.png', sizes: '144x144' },
-      { url: '/images/mainlogo.png', sizes: '120x120' },
-      { url: '/images/mainlogo.png', sizes: '114x114' },
-      { url: '/images/mainlogo.png', sizes: '76x76' },
-      { url: '/images/mainlogo.png', sizes: '72x72' },
-      { url: '/images/mainlogo.png', sizes: '60x60' },
-      { url: '/images/mainlogo.png', sizes: '57x57' },
-    ],
-    other: [
-      {
-        rel: 'mask-icon',
-        url: '/images/mainlogo.png',
-        color: '#2E7D32',
-      },
-    ],
+    icon: '/favicon.ico',
+    apple: '/favicon.ico',
+    shortcut: '/favicon.ico',
   },
   manifest: '/site.webmanifest',
 };
@@ -113,19 +92,6 @@ export default function RootLayout({
   return (
     <html lang="en" className={inter.variable}>
       <head>
-        {/* Favicon - Explicit links for better browser support */}
-        <link rel="icon" type="image/png" sizes="32x32" href="/images/mainlogo.png" />
-        <link rel="icon" type="image/png" sizes="16x16" href="/images/mainlogo.png" />
-        <link rel="shortcut icon" href="/images/mainlogo.png" />
-        
-        {/* Microsoft Tiles */}
-        <meta name="msapplication-TileImage" content="/images/mainlogo.png" />
-        <meta name="msapplication-TileColor" content="#2E7D32" />
-
-        {/* Preload critical resources */}
-        <link rel="preload" href="/images/mainlogo.png" as="image" type="image/png" />
-        <link rel="preload" href="/images/hero-bg.svg" as="image" type="image/svg+xml" />
-
         {/* DNS prefetch for external resources */}
         <link rel="dns-prefetch" href="//fonts.googleapis.com" />
         <link rel="dns-prefetch" href="//fonts.gstatic.com" />
