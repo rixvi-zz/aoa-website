@@ -78,11 +78,11 @@ export const metadata: Metadata = {
   },
   icons: {
     icon: [
-      { url: '/favicon.ico', sizes: 'any' },
       { url: '/images/mainlogo.png', type: 'image/png', sizes: '32x32' },
       { url: '/images/mainlogo.png', type: 'image/png', sizes: '16x16' },
+      { url: '/favicon.ico', sizes: 'any' },
     ],
-    shortcut: '/favicon.ico',
+    shortcut: '/images/mainlogo.png',
     apple: [
       { url: '/images/mainlogo.png', sizes: '180x180' },
       { url: '/images/mainlogo.png', sizes: '152x152' },
@@ -113,6 +113,11 @@ export default function RootLayout({
   return (
     <html lang="en" className={inter.variable}>
       <head>
+        {/* Favicon - Explicit links for better browser support */}
+        <link rel="icon" type="image/png" sizes="32x32" href="/images/mainlogo.png" />
+        <link rel="icon" type="image/png" sizes="16x16" href="/images/mainlogo.png" />
+        <link rel="shortcut icon" href="/images/mainlogo.png" />
+        
         {/* Microsoft Tiles */}
         <meta name="msapplication-TileImage" content="/images/mainlogo.png" />
         <meta name="msapplication-TileColor" content="#2E7D32" />
