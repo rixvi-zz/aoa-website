@@ -1,0 +1,23 @@
+{
+  "name": "AOA FOODS PRIVATE LIMITED",
+  "short_name": "AOA Foods",
+  "description": "MSME and APEDA registered food export company in India providing comprehensive global trade solutions",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#ffffff",
+  "theme_color": "#2E7D32",
+  "icons": [
+    {
+      "src": "/images/mainlogo.png",
+      "sizes": "192x192",
+      "type": "image/png",
+      "purpose": "any maskable"
+    },
+    {
+      "src": "/images/mainlogo.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "any maskable"
+    }
+  ]
+}

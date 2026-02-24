@@ -76,6 +76,33 @@ export const metadata: Metadata = {
   verification: {
     google: 'your-google-verification-code',
   },
+  icons: {
+    icon: [
+      { url: '/favicon.ico', sizes: 'any' },
+      { url: '/images/mainlogo.png', type: 'image/png', sizes: '32x32' },
+      { url: '/images/mainlogo.png', type: 'image/png', sizes: '16x16' },
+    ],
+    shortcut: '/favicon.ico',
+    apple: [
+      { url: '/images/mainlogo.png', sizes: '180x180' },
+      { url: '/images/mainlogo.png', sizes: '152x152' },
+      { url: '/images/mainlogo.png', sizes: '144x144' },
+      { url: '/images/mainlogo.png', sizes: '120x120' },
+      { url: '/images/mainlogo.png', sizes: '114x114' },
+      { url: '/images/mainlogo.png', sizes: '76x76' },
+      { url: '/images/mainlogo.png', sizes: '72x72' },
+      { url: '/images/mainlogo.png', sizes: '60x60' },
+      { url: '/images/mainlogo.png', sizes: '57x57' },
+    ],
+    other: [
+      {
+        rel: 'mask-icon',
+        url: '/images/mainlogo.png',
+        color: '#2E7D32',
+      },
+    ],
+  },
+  manifest: '/site.webmanifest',
 };
 
 export default function RootLayout({
@@ -86,21 +113,6 @@ export default function RootLayout({
   return (
     <html lang="en" className={inter.variable}>
       <head>
-        {/* Favicon - Using AOA Logo as Website Identity */}
-        <link rel="icon" href="/favicon.ico" sizes="any" />
-        <link rel="icon" href="/images/mainlogo.png" type="image/png" sizes="32x32" />
-        <link rel="icon" href="/images/mainlogo.png" type="image/png" sizes="16x16" />
-        <link rel="shortcut icon" href="/favicon.ico" />
-        <link rel="apple-touch-icon" href="/images/mainlogo.png" sizes="180x180" />
-        <link rel="apple-touch-icon" href="/images/mainlogo.png" sizes="152x152" />
-        <link rel="apple-touch-icon" href="/images/mainlogo.png" sizes="144x144" />
-        <link rel="apple-touch-icon" href="/images/mainlogo.png" sizes="120x120" />
-        <link rel="apple-touch-icon" href="/images/mainlogo.png" sizes="114x114" />
-        <link rel="apple-touch-icon" href="/images/mainlogo.png" sizes="76x76" />
-        <link rel="apple-touch-icon" href="/images/mainlogo.png" sizes="72x72" />
-        <link rel="apple-touch-icon" href="/images/mainlogo.png" sizes="60x60" />
-        <link rel="apple-touch-icon" href="/images/mainlogo.png" sizes="57x57" />
-
         {/* Microsoft Tiles */}
         <meta name="msapplication-TileImage" content="/images/mainlogo.png" />
         <meta name="msapplication-TileColor" content="#2E7D32" />
