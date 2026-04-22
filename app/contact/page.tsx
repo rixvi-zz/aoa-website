@@ -53,10 +53,10 @@ export default function ContactPage() {
               },
               "address": {
                 "@type": "PostalAddress",
-                "streetAddress": "123 Business District",
-                "addressLocality": "Mumbai",
-                "addressRegion": "Maharashtra",
-                "postalCode": "400001",
+                "streetAddress": "84 MAIN ROAD ZAKIR NAGAR, Okhla",
+                "addressLocality": "New Delhi",
+                "addressRegion": "Delhi",
+                "postalCode": "110025",
                 "addressCountry": "IN"
               }
             }

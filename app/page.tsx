@@ -1,15 +1,28 @@
 import type { Metadata } from 'next';
 import Hero from '@/components/Hero';
 import ServicesGrid from '@/components/ServicesGrid';
+import PremiumProcess from '@/components/PremiumProcess';
+import IndustriesServed from '@/components/IndustriesServed';
 import WhyChooseAOA from '@/components/WhyChooseAOA';
 
 // Enable ISR with 1 hour revalidation
 export const revalidate = 3600;
 
 export const metadata: Metadata = {
-  title: 'AOA Foods - Premium Food Export Solutions for Global Markets',
-  description: 'AOA Foods is an MSME and APEDA registered food export company in India, providing comprehensive global food trade solutions including export services, global sourcing, and logistics support for international food business partnerships.',
-  keywords: ['Food export company in India', 'APEDA registered exporter', 'MSME food export business', 'International food trade company', 'Global food sourcing services', 'Food export services India'],
+  title: 'AOA Foods - Halaal Certified | Premium Halaal Meat & Food Export Excellence India',
+  description: 'AOA Foods (Halaal Certified) - APEDA certified premium food export company specializing in Halaal meat export, organic Basmati rice, and authentic agricultural commodities. IEC & GST registered for global trade excellence from Delhi, India.',
+  keywords: [
+    'AOA Foods Halaal Certified India',
+    'Premium Halaal meat exporter APEDA certified',
+    'Organic Basmati rice export company Delhi',
+    'Halaal certified agricultural commodities exporter',
+    'APEDA registered premium food export business',
+    'IEC GST certified halaal food trading',
+    'Halaal certified organic spices pulses exporter India',
+    'Premium Halaal certified meat products export',
+    'AOA Foods Delhi halaal certified agriculture',
+    'Halaal certified food export solutions global markets'
+  ],
   openGraph: {
     title: 'AOA Foods - Premium Food Export Solutions for Global Markets',
     description: 'MSME and APEDA registered food export company in India providing comprehensive global food trade solutions for international business partnerships.',
@@ -47,8 +60,8 @@ export default function Home() {
               "address": {
                 "@type": "PostalAddress",
                 "addressCountry": "IN",
-                "addressRegion": "Maharashtra",
-                "addressLocality": "Mumbai"
+                "addressRegion": "Delhi",
+                "addressLocality": "New Delhi"
               },
               "contactPoint": {
                 "@type": "ContactPoint",
@@ -78,6 +91,8 @@ export default function Home() {
       />
       <Hero />
       <ServicesGrid />
+      <PremiumProcess />
+      <IndustriesServed />
       <WhyChooseAOA />
     </>
   );

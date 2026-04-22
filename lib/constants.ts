@@ -14,10 +14,10 @@ export const COMPANY_INFO = {
     registrationNumber: 'MSME-REG-2024-001',
   },
   address: {
-    street: '123 Business District',
-    city: 'Mumbai',
-    state: 'Maharashtra',
-    postalCode: '400001',
+    street: '84 MAIN ROAD ZAKIR NAGAR, Okhla',
+    city: 'New Delhi',
+    state: 'Delhi',
+    postalCode: '110025',
     country: 'India',
   },
   businessHours: {

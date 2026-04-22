@@ -37,7 +37,7 @@ export default function AboutPage() {
                             "logo": "https://www.aoafoods.com/images/mainlogo.png",
                             "address": {
                                 "@type": "PostalAddress",
-                                "streetAddress": "A-19, Lane 1, Johri Farm, Noor Nagar Extension, Jamia Nagar",
+                                "streetAddress": "84 MAIN ROAD ZAKIR NAGAR, Okhla",
                                 "addressLocality": "New Delhi",
                                 "addressRegion": "Delhi",
                                 "postalCode": "110025",

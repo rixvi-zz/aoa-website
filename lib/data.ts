@@ -20,58 +20,62 @@ export const navigationItems: NavItem[] = [
   { label: 'Contact Us', href: '/contact' },
 ];
 
-// Services data
+// Services data - Enhanced with premium positioning
 export const services: Service[] = [
   {
-    id: 'import-services',
-    title: 'Import Services',
-    description: 'Comprehensive import solutions including global sourcing, compliance management, and customs coordination for seamless international procurement.',
-    icon: '/icons/import.svg',
+    id: 'halaal-meat-export',
+    title: 'Premium Halaal Meat Export',
+    description: 'APEDA certified Halaal meat export services with complete Islamic compliance, cold chain management, and international quality standards for Middle East, Asia, and European markets.',
+    icon: '/icons/halaal.svg',
     features: [
-      'Global sourcing and supplier identification',
-      'Import compliance and documentation',
-      'Customs clearance coordination',
-      'Quality assurance and inspection',
-      'Logistics and supply chain management'
+      'APEDA registered Halaal meat exporter',
+      'Islamic compliance and certification management',
+      'Cold chain logistics and temperature control',
+      'International quality standards (HACCP, ISO)',
+      'Middle East and Asian market expertise',
+      'Complete documentation and customs clearance'
     ]
   },
   {
-    id: 'export-services',
-    title: 'Export Services',
-    description: 'End-to-end export services helping Indian manufacturers and suppliers reach global markets with complete regulatory compliance.',
-    icon: '/icons/export.svg',
+    id: 'basmati-rice-export',
+    title: 'Premium Basmati Rice Export',
+    description: 'Authentic Indian Basmati rice export with complete grain quality assurance, aging verification, and premium packaging for discerning international markets.',
+    icon: '/icons/rice.svg',
     features: [
-      'Export market research and analysis',
-      'International buyer connections',
+      'Authentic aged Basmati rice varieties',
+      'Quality testing and grain analysis',
+      'Premium packaging and branding options',
       'Export documentation and compliance',
-      'Shipping and logistics coordination',
-      'Trade finance assistance'
+      'International market distribution',
+      'Bulk and retail packaging solutions'
     ]
   },
   {
-    id: 'global-sourcing',
-    title: 'Global Sourcing',
-    description: 'Strategic sourcing solutions connecting businesses with reliable international suppliers while ensuring quality and cost-effectiveness.',
-    icon: '/icons/sourcing.svg',
+    id: 'organic-commodities',
+    title: 'Organic Agricultural Commodities',
+    description: 'Certified organic spices, pulses, cereals, and agricultural products with complete traceability, organic certification, and sustainable sourcing practices.',
+    icon: '/icons/organic.svg',
     features: [
-      'Supplier identification and verification',
-      'Price negotiation and contract management',
-      'Quality control and inspection services',
-      'Supply chain risk management',
-      'Vendor relationship management'
+      'Certified organic product sourcing',
+      'Complete farm-to-fork traceability',
+      'International organic standards compliance',
+      'Sustainable agriculture partnerships',
+      'Quality testing and contamination screening',
+      'Custom packaging and private labeling'
     ]
   },
   {
-    id: 'logistics-support',
-    title: 'Logistics & Supply Chain',
-    description: 'Comprehensive logistics support ensuring efficient movement of goods from origin to destination with full tracking and transparency.',
-    icon: '/icons/logistics.svg',
+    id: 'trade-compliance',
+    title: 'International Trade Compliance',
+    description: 'Comprehensive trade compliance services ensuring seamless international transactions with complete regulatory adherence and risk management.',
+    icon: '/icons/compliance.svg',
     features: [
-      'International freight forwarding',
-      'Warehousing and distribution',
-      'Supply chain optimization',
-      'Cargo insurance and risk management',
-      'Real-time shipment tracking'
+      'IEC and GST registration compliance',
+      'APEDA export documentation',
+      'International trade regulations',
+      'Customs clearance and logistics',
+      'Trade finance and payment solutions',
+      'Risk management and insurance'
     ]
   }
 ];
@@ -153,8 +157,8 @@ export const contactInfo = {
   email: 'aoafoodsind@gmail.com',
   phone: '+91 99714 09567',
   address: {
-    street: 'A-19, Lane 1, Johri Farm',
-    area: 'Noor Nagar Extension, Jamia Nagar',
+    street: '84 MAIN ROAD ZAKIR NAGAR',
+    area: 'Okhla',
     city: 'New Delhi',
     state: 'Delhi',
     country: 'India',
@@ -190,16 +194,47 @@ export const companyInfo = {
   verified: 'Yes (System Generated Certificate)'
 };
 
-// SEO Keywords
+// SEO Keywords - Long-tail strategy for AOA Foods differentiation
 export const seoKeywords = [
-  'Import export company in India',
-  'MSME import export business',
-  'International trade company',
-  'Global sourcing services',
-  'Import services India',
-  'Export services India',
-  'International logistics',
-  'Trade compliance services',
-  'B2B trade partnerships',
-  'Global supply chain management'
+  // Primary Brand Keywords
+  'AOA Foods India halaal certified',
+  'AOA Foods Delhi premium food exporter',
+  'Halaal Certified AOA Foods',
+  
+  // Halaal Meat Export (High-value niche)
+  'Premium Halaal meat exporter India APEDA certified',
+  'Halaal beef mutton export company Delhi',
+  'APEDA registered Halaal meat export services',
+  'Islamic compliant meat products exporter India',
+  'Halaal meat export Middle East Asia Europe',
+  
+  // Basmati Rice Export (Competitive advantage)
+  'Premium aged Basmati rice exporter India',
+  'Authentic Indian Basmati rice export company',
+  'APEDA certified Basmati rice export Delhi',
+  'Premium Basmati rice international markets',
+  
+  // Organic Agricultural Products
+  'Certified organic spices pulses exporter India',
+  'Organic agricultural commodities export company',
+  'Sustainable organic food products exporter',
+  'Farm to fork organic food export services',
+  
+  // Compliance & Certification (Trust factors)
+  'IEC GST registered food export company Delhi',
+  'APEDA certified food exporter New Delhi',
+  'Government registered food export business India',
+  'Compliant food export services India',
+  
+  // Geographic & Market Specific
+  'Food export company Zakir Nagar Delhi',
+  'Delhi based premium food exporter',
+  'North India food export services',
+  'Indian food products international markets',
+  
+  // Service-specific Long-tail
+  'Cold chain Halaal meat export services',
+  'Organic certification food export compliance',
+  'International food trade documentation services',
+  'Premium food packaging export solutions'
 ];

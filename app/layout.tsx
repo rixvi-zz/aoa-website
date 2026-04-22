@@ -5,12 +5,14 @@ import { seoKeywords } from '@/lib/data';
 import Header from '@/components/Header';
 import Footer from '@/components/Footer';
 import PerformanceMonitor from '@/components/PerformanceMonitor';
+import BraveCompatibility from '@/components/BraveCompatibility';
 
-// Font optimization with next/font
+// Font optimization with next/font and system fallbacks
 const inter = Inter({
   subsets: ['latin'],
   display: 'swap',
   variable: '--font-inter',
+  fallback: ['system-ui', '-apple-system', 'BlinkMacSystemFont', 'Segoe UI', 'Roboto', 'sans-serif'],
 });
 
 // Viewport configuration
@@ -23,10 +25,10 @@ export const viewport: Viewport = {
 // Global metadata configuration
 export const metadata: Metadata = {
   title: {
-    default: 'AOA FOODS PRIVATE LIMITED - Reliable Import & Export Solutions for Global Markets',
-    template: '%s | AOA FOODS - Import Export Company'
+    default: 'AOA Foods - Halaal Certified | Premium Halaal Meat & Food Export Company India',
+    template: '%s | AOA Foods - Halaal Certified Export Solutions'
   },
-  description: 'AOA FOODS PRIVATE LIMITED is an IEC and GST registered import and export company in India, providing comprehensive global trade solutions including import services, export services, global sourcing, and logistics support for international B2B partnerships.',
+  description: 'AOA Foods (Halaal Certified) - APEDA certified premium food export company in Delhi. Specializing in Halaal meat export, Basmati rice, organic spices & agricultural commodities. IEC & GST registered for global trade excellence.',
   keywords: seoKeywords,
   authors: [{ name: 'AOA FOODS PRIVATE LIMITED' }],
   creator: 'AOA FOODS PRIVATE LIMITED',
@@ -92,13 +94,23 @@ export default function RootLayout({
   return (
     <html lang="en" className={inter.variable}>
       <head>
-        {/* DNS prefetch for external resources */}
+        {/* DNS prefetch for external resources - with fallbacks */}
         <link rel="dns-prefetch" href="//fonts.googleapis.com" />
         <link rel="dns-prefetch" href="//fonts.gstatic.com" />
         <link rel="dns-prefetch" href="//www.googletagmanager.com" />
         <link rel="dns-prefetch" href="//www.google-analytics.com" />
+        
+        {/* Preconnect for critical resources */}
+        <link rel="preconnect" href="https://fonts.googleapis.com" crossOrigin="" />
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="" />
+        
+        {/* Font loading with system fallback */}
+        <link 
+          href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" 
+          rel="stylesheet"
+        />
 
-        {/* Google Analytics */}
+        {/* Google Analytics with Brave-friendly fallback */}
         {process.env.NEXT_PUBLIC_GA_ID && (
           <>
             <script
@@ -111,10 +123,19 @@ export default function RootLayout({
                   window.dataLayer = window.dataLayer || [];
                   function gtag(){dataLayer.push(arguments);}
                   gtag('js', new Date());
-                  gtag('config', '${process.env.NEXT_PUBLIC_GA_ID}', {
-                    page_title: document.title,
-                    page_location: window.location.href,
-                  });
+                  
+                  // Brave-friendly analytics with error handling
+                  try {
+                    gtag('config', '${process.env.NEXT_PUBLIC_GA_ID}', {
+                      page_title: document.title,
+                      page_location: window.location.href,
+                      anonymize_ip: true,
+                      allow_google_signals: false,
+                      allow_ad_personalization_signals: false
+                    });
+                  } catch (e) {
+                    console.log('Analytics initialization blocked - site continues normally');
+                  }
                 `,
               }}
             />
@@ -138,8 +159,8 @@ export default function RootLayout({
               "address": {
                 "@type": "PostalAddress",
                 "addressCountry": "IN",
-                "addressRegion": "Maharashtra",
-                "addressLocality": "Mumbai"
+                "addressRegion": "Delhi",
+                "addressLocality": "New Delhi"
               },
               "contactPoint": {
                 "@type": "ContactPoint",
@@ -156,6 +177,9 @@ export default function RootLayout({
         />
       </head>
       <body className={`${inter.className} antialiased bg-white text-gray-900`}>
+        {/* Brave browser compatibility */}
+        <BraveCompatibility />
+        
         {/* Performance monitoring */}
         <PerformanceMonitor />
 

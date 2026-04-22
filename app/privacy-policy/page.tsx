@@ -84,7 +84,7 @@ export default function PrivacyPolicyPage() {
                 <p><strong>AOA FOODS PRIVATE LIMITED</strong></p>
                 <p>Email: aoafoodsind@gmail.com</p>
                 <p>Phone: +91 99714 09567</p>
-                <p>Address: A-19, Lane 1, Johri Farm, Noor Nagar Extension, Jamia Nagar, New Delhi - 110025, India</p>
+                <p>Address: 84 MAIN ROAD ZAKIR NAGAR, Okhla, New Delhi, Delhi 110025, India</p>
               </div>
             </section>
 
