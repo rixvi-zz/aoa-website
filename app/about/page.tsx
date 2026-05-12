@@ -75,24 +75,28 @@ export default function AboutPage() {
             />
             {/* Hero Section */}
             <section className="bg-gradient-to-br from-[#1E3A5F] via-[#4A90E2] to-[#1E3A5F] text-white py-20 lg:py-32 relative overflow-hidden">
-                {/* Hero Background Image */}
-                <div className="absolute inset-0 bg-black/40">
-                    <Image
-                        src="/images/about.jpeg"
-                        alt="AOA Foods Company Overview & Team"
-                        fill
-                        className="object-cover"
-                        priority
-                        quality={90}
+                {/* Video Background */}
+                <div className="absolute inset-0 z-0">
+                    <video
+                        autoPlay
+                        loop
+                        muted
+                        playsInline
+                        className="absolute inset-0 w-full h-full object-cover"
+                        src="/images/hero2-video.mp4"
                     />
+                    {/* Dark overlay to ensure text remains readable over the video */}
+                    <div className="absolute inset-0 bg-black/50"></div>
+                    <div className="absolute inset-0 bg-gradient-to-br from-[#1E3A5F]/60 via-[#4A90E2]/40 to-[#1E3A5F]/60"></div>
                 </div>
+                
                 {/* Modern background elements */}
-                <div className="absolute inset-0 opacity-20">
+                <div className="absolute inset-0 opacity-20 z-10">
                     <div className="absolute top-0 right-0 w-96 h-96 bg-gradient-to-bl from-white to-transparent rounded-full translate-x-48 -translate-y-48 blur-3xl"></div>
                     <div className="absolute bottom-0 left-0 w-80 h-80 bg-gradient-to-tr from-[#2E7D32] to-transparent rounded-full -translate-x-40 translate-y-40 blur-3xl"></div>
                 </div>
 
-                <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative">
+                <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-20">
                     <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
                         <div>
                             {/* IEC & GST Badge */}

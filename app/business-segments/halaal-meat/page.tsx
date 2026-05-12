@@ -18,16 +18,15 @@ export default function HalaalMeatPage() {
     <div className="min-h-screen">
       {/* Hero Section */}
       <section className="bg-gradient-to-br from-[#1E3A5F] via-[#4A90E2] to-[#1E3A5F] text-white py-16 sm:py-20 lg:py-32 relative overflow-hidden min-h-[60vh] sm:min-h-[70vh] lg:min-h-[80vh]">
-        {/* Hero Background Image */}
+        {/* Hero Background Video */}
         <div className="absolute inset-0">
-          <Image
-            src="/images/Halal-meat.jpg"
-            alt="Premium Halaal Meat Processing Facility - AOA Foods"
-            fill
-            priority={true}
-            quality={85}
-            sizes="100vw"
-            className="object-cover"
+          <video
+            autoPlay
+            loop
+            muted
+            playsInline
+            className="absolute inset-0 w-full h-full object-cover"
+            src="/images/hero-video.mp4"
           />
           <div className="absolute inset-0 bg-black/50"></div>
         </div>

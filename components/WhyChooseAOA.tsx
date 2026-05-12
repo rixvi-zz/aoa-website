@@ -1,4 +1,7 @@
+'use client';
+
 import Image from 'next/image';
+import { motion } from 'framer-motion';
 import { differentiators } from '@/lib/data';
 import EnhancedMarkets from './EnhancedMarkets';
 
@@ -24,7 +27,13 @@ export default function WhyChooseAOA() {
 
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative">
           {/* Premium Section Header */}
-          <div className="text-center mb-24">
+          <motion.div 
+            className="text-center mb-24"
+            initial={{ opacity: 0, y: 50 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.8 }}
+          >
             <div className="inline-flex items-center bg-white/80 backdrop-blur-sm px-8 py-4 rounded-full shadow-xl mb-8 border border-white/50">
               <div className="w-8 h-8 bg-gradient-to-r from-[#4A90E2] to-[#1E3A5F] rounded-full flex items-center justify-center mr-3">
                 <svg className="w-4 h-4 text-white" fill="currentColor" viewBox="0 0 20 20">
@@ -40,12 +49,25 @@ export default function WhyChooseAOA() {
               As your trusted IEC and GST registered food import & export partner, we bring government-certified credibility,
               international trade expertise, and global sourcing capabilities to every business opportunity.
             </p>
-          </div>
+          </motion.div>
 
           {/* Enhanced Differentiators Grid */}
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 mb-24">
             {differentiators.map((item, index) => (
-              <div key={index} className="text-center group bg-white/80 backdrop-blur-sm p-10 rounded-3xl shadow-xl hover:shadow-2xl transition-all duration-500 border border-white/50 hover:border-[#4A90E2]/30 transform hover:-translate-y-3 hover:scale-105 relative overflow-hidden">
+              <motion.div 
+                key={index} 
+                className="text-center group bg-white/80 backdrop-blur-sm p-10 rounded-3xl shadow-xl hover:shadow-2xl transition-all duration-500 border border-white/50 hover:border-[#4A90E2]/30 transform hover:-translate-y-3 hover:scale-105 relative overflow-hidden"
+                initial={{ opacity: 0, y: 50 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ duration: 0.6, delay: index * 0.1 }}
+                whileHover={{ 
+                  scale: 1.05,
+                  rotateY: 5,
+                  rotateX: 5,
+                  transition: { duration: 0.3 }
+                }}
+              >
                 {/* Subtle background gradient on hover */}
                 <div className="absolute inset-0 bg-gradient-to-br from-[#4A90E2]/5 to-[#1E3A5F]/5 opacity-0 group-hover:opacity-100 transition-opacity duration-500 rounded-3xl"></div>
 
@@ -74,12 +96,18 @@ export default function WhyChooseAOA() {
                   {/* Subtle accent line */}
                   <div className="w-12 h-1 bg-gradient-to-r from-[#4A90E2] to-[#1E3A5F] rounded-full mx-auto mt-6 group-hover:w-16 transition-all duration-300"></div>
                 </div>
-              </div>
+              </motion.div>
             ))}
           </div>
 
           {/* Premium Stats Section with Advanced Visual Design */}
-          <div className="relative">
+          <motion.div 
+            className="relative"
+            initial={{ opacity: 0, scale: 0.9 }}
+            whileInView={{ opacity: 1, scale: 1 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.8 }}
+          >
             {/* Background container with multiple layers */}
             <div className="bg-gradient-to-br from-[#1E3A5F] via-[#4A90E2] to-[#1E3A5F] rounded-3xl p-12 lg:p-20 text-white relative overflow-hidden shadow-2xl">
               {/* Animated background pattern */}
@@ -116,26 +144,26 @@ export default function WhyChooseAOA() {
 
                 {/* Enhanced Stats Grid */}
                 <div className="grid grid-cols-2 md:grid-cols-4 gap-8 text-center max-md:grid-cols-1 max-md:gap-6">
-                  <div className="bg-white/10 backdrop-blur-sm rounded-3xl p-8 border border-white/20 hover:bg-white/20 hover:scale-105 transition-all duration-500 group shadow-xl max-md:p-6 max-md:rounded-2xl">
-                    <div className="text-4xl lg:text-5xl font-bold text-white mb-4 group-hover:scale-110 transition-transform duration-300 max-md:text-3xl">4+</div>
-                    <div className="text-white font-semibold text-lg mb-2 max-md:text-base">Continents Served</div>
-                    <div className="text-white/70 text-sm">Active Export Markets</div>
-                  </div>
-                  <div className="bg-white/10 backdrop-blur-sm rounded-3xl p-8 border border-white/20 hover:bg-white/20 hover:scale-105 transition-all duration-500 group shadow-xl max-md:p-6 max-md:rounded-2xl">
-                    <div className="text-4xl lg:text-5xl font-bold text-white mb-4 group-hover:scale-110 transition-transform duration-300 max-md:text-3xl">100%</div>
-                    <div className="text-white font-semibold text-lg mb-2 max-md:text-base">APEDA Compliance</div>
-                    <div className="text-white/70 text-sm">Food Export Authority</div>
-                  </div>
-                  <div className="bg-white/10 backdrop-blur-sm rounded-3xl p-8 border border-white/20 hover:bg-white/20 hover:scale-105 transition-all duration-500 group shadow-xl max-md:p-6 max-md:rounded-2xl">
-                    <div className="text-4xl lg:text-5xl font-bold text-white mb-4 group-hover:scale-110 transition-transform duration-300 max-md:text-3xl">24/7</div>
-                    <div className="text-white font-semibold text-lg mb-2 max-md:text-base">Export Support</div>
-                    <div className="text-white/70 text-sm">Dedicated Assistance</div>
-                  </div>
-                  <div className="bg-white/10 backdrop-blur-sm rounded-3xl p-8 border border-white/20 hover:bg-white/20 hover:scale-105 transition-all duration-500 group shadow-xl max-md:p-6 max-md:rounded-2xl">
-                    <div className="text-4xl lg:text-5xl font-bold text-white mb-4 group-hover:scale-110 transition-transform duration-300 max-md:text-3xl">MSME</div>
-                    <div className="text-white font-semibold text-lg mb-2 max-md:text-base">Registered & Certified</div>
-                    <div className="text-white/70 text-sm">Government Verified</div>
-                  </div>
+                  {[
+                    { value: '4+', label: 'Continents Served', sublabel: 'Active Export Markets' },
+                    { value: '100%', label: 'APEDA Compliance', sublabel: 'Food Export Authority' },
+                    { value: '24/7', label: 'Export Support', sublabel: 'Dedicated Assistance' },
+                    { value: 'MSME', label: 'Registered & Certified', sublabel: 'Government Verified' }
+                  ].map((stat, index) => (
+                    <motion.div 
+                      key={index}
+                      className="bg-white/10 backdrop-blur-sm rounded-3xl p-8 border border-white/20 hover:bg-white/20 hover:scale-105 transition-all duration-500 group shadow-xl max-md:p-6 max-md:rounded-2xl"
+                      initial={{ opacity: 0, y: 30 }}
+                      whileInView={{ opacity: 1, y: 0 }}
+                      viewport={{ once: true }}
+                      transition={{ duration: 0.6, delay: index * 0.1 }}
+                      whileHover={{ scale: 1.05 }}
+                    >
+                      <div className="text-4xl lg:text-5xl font-bold text-white mb-4 group-hover:scale-110 transition-transform duration-300 max-md:text-3xl">{stat.value}</div>
+                      <div className="text-white font-semibold text-lg mb-2 max-md:text-base">{stat.label}</div>
+                      <div className="text-white/70 text-sm">{stat.sublabel}</div>
+                    </motion.div>
+                  ))}
                 </div>
 
                 {/* Additional trust indicators */}
@@ -151,7 +179,7 @@ export default function WhyChooseAOA() {
                 </div>
               </div>
             </div>
-          </div>
+          </motion.div>
         </div>
       </section>
 

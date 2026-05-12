@@ -1,9 +1,31 @@
+'use client';
+
 import Image from 'next/image';
 import Link from 'next/link';
+import { motion } from 'framer-motion';
+import { useState } from 'react';
 import { services } from '@/lib/data';
 import CTAButton from './CTAButton';
 
 export default function ServicesGrid() {
+  const [hoveredCard, setHoveredCard] = useState<number | null>(null);
+
+  const handleMouseMove = (e: React.MouseEvent<HTMLDivElement>, index: number) => {
+    const rect = e.currentTarget.getBoundingClientRect();
+    const x = e.clientX - rect.left;
+    const y = e.clientY - rect.top;
+    const centerX = rect.width / 2;
+    const centerY = rect.height / 2;
+    const rotateX = (y - centerY) / 10;
+    const rotateY = (centerX - x) / 10;
+
+    e.currentTarget.style.transform = `perspective(1000px) rotateX(${rotateX}deg) rotateY(${rotateY}deg) translateZ(20px)`;
+  };
+
+  const handleMouseLeave = (e: React.MouseEvent<HTMLDivElement>) => {
+    e.currentTarget.style.transform = 'perspective(1000px) rotateX(0deg) rotateY(0deg) translateZ(0px)';
+  };
+
   return (
     <section className="py-16 sm:py-20 lg:py-24 xl:py-32 bg-white relative overflow-hidden">
       {/* Modern background elements */}
@@ -31,12 +53,20 @@ export default function ServicesGrid() {
           </p>
         </div>
 
-        {/* Modern Services Grid - Responsive layout */}
+        {/* Modern Services Grid - Responsive layout with 3D Tilt */}
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 sm:gap-8 mb-12 sm:mb-16 lg:mb-20">
-          {services.map((service) => (
-            <div
+          {services.map((service, index) => (
+            <motion.div
               key={service.id}
-              className="group relative bg-white/80 backdrop-blur-sm rounded-2xl sm:rounded-3xl p-4 sm:p-6 lg:p-8 shadow-lg hover:shadow-2xl transition-all duration-500 transform hover:-translate-y-2 sm:hover:-translate-y-4 border border-gray-100 hover:border-[#4A90E2]/30 overflow-hidden"
+              className="group relative bg-white/80 backdrop-blur-sm rounded-2xl sm:rounded-3xl p-4 sm:p-6 lg:p-8 shadow-lg hover:shadow-2xl transition-all duration-500 transform hover:-translate-y-2 sm:hover:-translate-y-4 border border-gray-100 hover:border-[#4A90E2]/30 overflow-hidden cursor-pointer"
+              onMouseMove={(e: any) => handleMouseMove(e as any, index)}
+              onMouseLeave={handleMouseLeave}
+              onMouseEnter={() => setHoveredCard(index)}
+              whileHover={{ scale: 1.02 }}
+              initial={{ opacity: 0, y: 50 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.6, delay: index * 0.1 }}
             >
               {/* Gradient background on hover */}
               <div className="absolute inset-0 bg-gradient-to-br from-[#4A90E2]/5 via-transparent to-[#2E7D32]/5 opacity-0 group-hover:opacity-100 transition-opacity duration-500 rounded-2xl sm:rounded-3xl"></div>
@@ -95,7 +125,7 @@ export default function ServicesGrid() {
                   </svg>
                 </Link>
               </div>
-            </div>
+            </motion.div>
           ))}
         </div>
 

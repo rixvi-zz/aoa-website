@@ -1,6 +1,7 @@
 'use client';
 
 import { useEffect, useState } from 'react';
+import { motion } from 'framer-motion';
 import GlassmorphismCard from './GlassmorphismCard';
 
 export default function BrandStory() {
@@ -31,7 +32,13 @@ export default function BrandStory() {
       </div>
 
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative">
-        <div className={`text-center mb-20 ${isVisible ? 'animate-fade-in-up' : 'opacity-0'}`}>
+        <motion.div 
+          className={`text-center mb-20 ${isVisible ? 'animate-fade-in-up' : 'opacity-0'}`}
+          initial={{ opacity: 0, y: 50 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.8 }}
+        >
           <div className="inline-flex items-center bg-white/80 backdrop-blur-sm px-8 py-4 rounded-full shadow-xl mb-8 border border-emerald-200/50">
             <div className="w-8 h-8 bg-gradient-to-r from-emerald-500 to-blue-600 rounded-full flex items-center justify-center mr-3">
               <span className="text-white text-sm font-bold">AOA</span>
@@ -47,7 +54,7 @@ export default function BrandStory() {
             <strong>Authentic Organic Agriculture</strong> represents our commitment to genuine, sustainable, and premium food export solutions.
             We don't just trade commodities – we cultivate trust, authenticity, and organic excellence in every shipment.
           </p>
-        </div>
+        </motion.div>
 
         <div className="grid grid-cols-1 lg:grid-cols-3 gap-8 mb-20">
           {[
@@ -73,11 +80,22 @@ export default function BrandStory() {
               gradient: 'from-purple-500 to-blue-500'
             }
           ].map((item, index) => (
-            <GlassmorphismCard
+            <motion.div
               key={index}
-              className={`p-8 text-center ${isVisible ? 'animate-fade-in-up' : 'opacity-0'}`}
-              style={{ animationDelay: `${index * 0.2}s` }}
+              initial={{ opacity: 0, y: 50, rotateY: -15 }}
+              whileInView={{ opacity: 1, y: 0, rotateY: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.8, delay: index * 0.2 }}
+              whileHover={{ 
+                scale: 1.05,
+                rotateY: 5,
+                transition: { duration: 0.3 }
+              }}
             >
+              <GlassmorphismCard
+                className={`p-8 text-center ${isVisible ? 'animate-fade-in-up' : 'opacity-0'}`}
+                style={{ animationDelay: `${index * 0.2}s` }}
+              >
               <div className={`w-20 h-20 bg-gradient-to-br ${item.gradient} rounded-3xl flex items-center justify-center mx-auto mb-6 shadow-2xl`}>
                 <span className="text-3xl font-black text-white">{item.letter}</span>
               </div>
@@ -90,11 +108,18 @@ export default function BrandStory() {
 
               <div className="w-16 h-1 bg-gradient-to-r from-emerald-500 to-blue-500 rounded-full mx-auto mt-6" />
             </GlassmorphismCard>
+            </motion.div>
           ))}
         </div>
 
         {/* Premium Value Proposition */}
-        <GlassmorphismCard className={`p-12 text-center ${isVisible ? 'animate-fade-in-up' : 'opacity-0'}`} style={{ animationDelay: '0.8s' }}>
+        <motion.div
+          initial={{ opacity: 0, scale: 0.9 }}
+          whileInView={{ opacity: 1, scale: 1 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.8, delay: 0.3 }}
+        >
+          <GlassmorphismCard className={`p-12 text-center ${isVisible ? 'animate-fade-in-up' : 'opacity-0'}`} style={{ animationDelay: '0.8s' }}>
           <div className="max-w-4xl mx-auto">
             <h3 className="text-3xl font-bold text-slate-800 mb-6">
               Why Global Businesses Choose AOA Foods
@@ -107,15 +132,24 @@ export default function BrandStory() {
                 { stat: 'GST', label: 'Compliant Business', icon: '✅' },
                 { stat: '4+', label: 'Continents Served', icon: '🌍' }
               ].map((item, index) => (
-                <div key={index} className="text-center">
+                <motion.div 
+                  key={index} 
+                  className="text-center"
+                  initial={{ opacity: 0, y: 20 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  viewport={{ once: true }}
+                  transition={{ duration: 0.6, delay: index * 0.1 }}
+                  whileHover={{ scale: 1.1 }}
+                >
                   <div className="text-4xl mb-2">{item.icon}</div>
                   <div className="text-2xl font-black text-slate-800">{item.stat}</div>
                   <div className="text-sm text-slate-600 font-semibold">{item.label}</div>
-                </div>
+                </motion.div>
               ))}
             </div>
           </div>
         </GlassmorphismCard>
+        </motion.div>
       </div>
 
       <style jsx>{`
