@@ -53,7 +53,7 @@ export default function ServicesGrid() {
           </p>
         </div>
 
-        {/* Modern Services Grid - Responsive layout with 3D Tilt */}
+        {/* Enhanced Services Grid with Expanded Features - Responsive layout with 3D Tilt */}
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 sm:gap-8 mb-12 sm:mb-16 lg:mb-20">
           {services.map((service, index) => (
             <motion.div
@@ -88,7 +88,6 @@ export default function ServicesGrid() {
                       className="w-6 sm:w-8 lg:w-10 h-6 sm:h-8 lg:h-10 group-hover:scale-110 transition-transform duration-300"
                     />
                   </div>
-
                 </div>
 
                 {/* Service Content - Responsive typography */}
@@ -100,9 +99,9 @@ export default function ServicesGrid() {
                   {service.description}
                 </p>
 
-                {/* Modern Key Features - Responsive spacing */}
+                {/* Expanded Key Features - All features displayed - Responsive spacing */}
                 <ul className="space-y-2 sm:space-y-3 mb-4 sm:mb-6 lg:mb-8">
-                  {service.features.slice(0, 3).map((feature, featureIndex) => (
+                  {service.features.map((feature, featureIndex) => (
                     <li key={featureIndex} className="flex items-start text-gray-700 group-hover:text-gray-800 transition-colors duration-300">
                       <div className="w-3 sm:w-4 lg:w-5 h-3 sm:h-4 lg:h-5 bg-gradient-to-br from-[#4A90E2] to-[#2E7D32] rounded-full flex items-center justify-center mr-2 sm:mr-3 mt-0.5 flex-shrink-0 group-hover:scale-110 transition-transform duration-300">
                         <svg className="w-2 sm:w-2.5 lg:w-3 h-2 sm:h-2.5 lg:h-3 text-white" fill="currentColor" viewBox="0 0 20 20">

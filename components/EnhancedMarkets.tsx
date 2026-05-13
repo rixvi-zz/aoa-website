@@ -246,7 +246,7 @@ export default function EnhancedMarkets() {
               state.theta = 0.3 + Math.sin(phi * 0.3) * 0.05;
             }
           });
-          
+
           console.log('🌍 Globe initialized successfully');
         } catch (error) {
           console.error('❌ Globe initialization failed:', error);
@@ -338,7 +338,7 @@ export default function EnhancedMarkets() {
 
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative">
           {/* Premium Section Header */}
-          <motion.div 
+          <motion.div
             className={`text-center mb-24 ${isVisible ? 'animate-slide-in' : 'opacity-0'}`}
             initial={{ opacity: 0, y: 50 }}
             whileInView={{ opacity: 1, y: 0 }}
@@ -363,7 +363,7 @@ export default function EnhancedMarkets() {
           </motion.div>
 
           {/* Interactive Globe Section */}
-          <motion.div 
+          <motion.div
             className="flex justify-center mb-16"
             initial={{ opacity: 0, scale: 0.8 }}
             whileInView={{ opacity: 1, scale: 1 }}
@@ -383,11 +383,11 @@ export default function EnhancedMarkets() {
                   }}
                   className="rounded-full shadow-inner bg-gradient-to-br from-blue-900/10 to-indigo-900/10"
                 />
-                
+
                 {/* Enhanced Glow Effect Overlay */}
                 <div className="absolute inset-6 rounded-full bg-gradient-to-t from-blue-500/5 via-transparent to-blue-300/5 pointer-events-none"></div>
                 <div className="absolute inset-4 rounded-full border border-blue-300/20 pointer-events-none"></div>
-                
+
                 {/* Floating Labels for Key Markets */}
                 <div className="absolute -top-2 left-8 bg-white/95 backdrop-blur-sm px-4 py-2 rounded-xl shadow-lg border border-blue-200/50 transform -rotate-3">
                   <div className="text-xs font-bold text-blue-900 flex items-center">
@@ -395,46 +395,46 @@ export default function EnhancedMarkets() {
                     India (HQ)
                   </div>
                 </div>
-                
+
                 <div className="absolute top-4 -right-4 bg-white/95 backdrop-blur-sm px-4 py-2 rounded-xl shadow-lg border border-blue-200/50 transform rotate-2">
                   <div className="text-xs font-bold text-blue-900 flex items-center">
                     <span className="mr-1">🌍</span>
                     Global Network
                   </div>
                 </div>
-                
+
                 <div className="absolute -bottom-2 left-1/2 transform -translate-x-1/2 rotate-1 bg-white/95 backdrop-blur-sm px-4 py-2 rounded-xl shadow-lg border border-blue-200/50">
                   <div className="text-xs font-bold text-blue-900 flex items-center">
                     <span className="mr-1">📍</span>
                     4+ Continents
                   </div>
                 </div>
-                
+
                 {/* Connection Lines */}
                 <div className="absolute inset-0 pointer-events-none">
                   <svg className="w-full h-full" viewBox="0 0 400 400">
                     <defs>
                       <linearGradient id="connectionGradient" x1="0%" y1="0%" x2="100%" y2="100%">
-                        <stop offset="0%" stopColor="#3B82F6" stopOpacity="0.3"/>
-                        <stop offset="100%" stopColor="#1E40AF" stopOpacity="0.1"/>
+                        <stop offset="0%" stopColor="#3B82F6" stopOpacity="0.3" />
+                        <stop offset="100%" stopColor="#1E40AF" stopOpacity="0.1" />
                       </linearGradient>
                     </defs>
-                    <path d="M200,200 Q150,100 100,150" stroke="url(#connectionGradient)" strokeWidth="2" fill="none" className="animate-pulse"/>
-                    <path d="M200,200 Q300,120 350,180" stroke="url(#connectionGradient)" strokeWidth="2" fill="none" className="animate-pulse" style={{ animationDelay: '1s' }}/>
-                    <path d="M200,200 Q180,300 120,280" stroke="url(#connectionGradient)" strokeWidth="2" fill="none" className="animate-pulse" style={{ animationDelay: '2s' }}/>
+                    <path d="M200,200 Q150,100 100,150" stroke="url(#connectionGradient)" strokeWidth="2" fill="none" className="animate-pulse" />
+                    <path d="M200,200 Q300,120 350,180" stroke="url(#connectionGradient)" strokeWidth="2" fill="none" className="animate-pulse" style={{ animationDelay: '1s' }} />
+                    <path d="M200,200 Q180,300 120,280" stroke="url(#connectionGradient)" strokeWidth="2" fill="none" className="animate-pulse" style={{ animationDelay: '2s' }} />
                   </svg>
                 </div>
               </div>
-              
+
               {/* Enhanced Orbiting Elements */}
               <div className="absolute inset-0 animate-spin" style={{ animationDuration: '25s' }}>
                 <div className="absolute -top-2 left-1/2 w-4 h-4 bg-gradient-to-r from-orange-400 to-red-500 rounded-full transform -translate-x-1/2 -translate-y-1/2 shadow-lg border-2 border-white/50"></div>
               </div>
-              
+
               <div className="absolute inset-0 animate-spin" style={{ animationDuration: '35s', animationDirection: 'reverse' }}>
                 <div className="absolute bottom-4 right-1/4 w-3 h-3 bg-gradient-to-r from-green-400 to-blue-500 rounded-full transform translate-x-1/2 translate-y-1/2 shadow-lg border-2 border-white/50"></div>
               </div>
-              
+
               <div className="absolute inset-0 animate-spin" style={{ animationDuration: '40s' }}>
                 <div className="absolute top-1/4 right-2 w-2 h-2 bg-gradient-to-r from-purple-400 to-pink-500 rounded-full transform translate-x-1/2 -translate-y-1/2 shadow-lg border border-white/50"></div>
               </div>
@@ -453,7 +453,7 @@ export default function EnhancedMarkets() {
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
                 transition={{ duration: 0.6, delay: marketIndex * 0.1 }}
-                whileHover={{ 
+                whileHover={{
                   scale: 1.05,
                   rotateY: 5,
                   transition: { duration: 0.3 }
@@ -512,8 +512,8 @@ export default function EnhancedMarkets() {
           </div>
 
           {/* Enhanced Bottom CTA */}
-          <motion.div 
-            className={`text-center mt-20 ${isVisible ? 'animate-slide-in' : 'opacity-0'}`} 
+          <motion.div
+            className={`text-center mt-20 ${isVisible ? 'animate-slide-in' : 'opacity-0'}`}
             style={{ animationDelay: '1000ms' }}
             initial={{ opacity: 0, y: 50 }}
             whileInView={{ opacity: 1, y: 0 }}
