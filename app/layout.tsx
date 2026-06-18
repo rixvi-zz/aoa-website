@@ -22,8 +22,12 @@ export const viewport: Viewport = {
   maximumScale: 1,
 }
 
+// Base canonical URL
+const CANONICAL_BASE_URL = 'https://www.aoafoods.com';
+
 // Global metadata configuration
 export const metadata: Metadata = {
+  metadataBase: new URL(CANONICAL_BASE_URL),
   title: {
     default: 'AOA Foods - Halaal Certified | Premium Halaal Meat & Food Export Company India',
     template: '%s | AOA Foods - Halaal Certified Export Solutions'
@@ -33,7 +37,6 @@ export const metadata: Metadata = {
   authors: [{ name: 'AOA FOODS PRIVATE LIMITED' }],
   creator: 'AOA FOODS PRIVATE LIMITED',
   publisher: 'AOA FOODS PRIVATE LIMITED',
-  metadataBase: new URL('https://www.aoafoods.com'),
   robots: {
     index: true,
     follow: true,
@@ -45,10 +48,18 @@ export const metadata: Metadata = {
       'max-snippet': -1,
     },
   },
+  alternates: {
+    canonical: CANONICAL_BASE_URL,
+    languages: {
+      'en-IN': CANONICAL_BASE_URL,
+      'en-US': CANONICAL_BASE_URL,
+      'en': CANONICAL_BASE_URL,
+    },
+  },
   openGraph: {
     type: 'website',
     locale: 'en_IN',
-    url: 'https://www.aoafoods.com',
+    url: CANONICAL_BASE_URL,
     siteName: 'AOA FOODS PRIVATE LIMITED',
     title: 'AOA FOODS PRIVATE LIMITED - Reliable Import & Export Solutions for Global Markets',
     description: 'IEC and GST registered import and export company in India providing comprehensive global trade solutions for international B2B partnerships.',
@@ -67,16 +78,8 @@ export const metadata: Metadata = {
     description: 'MSME-registered import and export company in India providing comprehensive global trade solutions for international B2B partnerships.',
     images: ['/images/twitter-image.svg'],
   },
-  alternates: {
-    canonical: 'https://www.aoafoods.com',
-    languages: {
-      'en-IN': 'https://www.aoafoods.com',
-      'en-US': 'https://www.aoafoods.com',
-      'en': 'https://www.aoafoods.com',
-    },
-  },
   verification: {
-    google: 'your-google-verification-code',
+    google: process.env.GOOGLE_SITE_VERIFICATION,
   },
   icons: {
     icon: '/favicon.ico',
@@ -94,6 +97,9 @@ export default function RootLayout({
   return (
     <html lang="en" className={inter.variable}>
       <head>
+        {/* Canonical URL - explicitly set */}
+        <link rel="canonical" href={CANONICAL_BASE_URL} />
+        
         {/* DNS prefetch for external resources - with fallbacks */}
         <link rel="dns-prefetch" href="//fonts.googleapis.com" />
         <link rel="dns-prefetch" href="//fonts.gstatic.com" />
@@ -143,7 +149,7 @@ export default function RootLayout({
         )}
 
         {/* Google Search Console Verification */}
-        <meta name="google-site-verification" content="your-google-search-console-verification-code" />
+        <meta name="google-site-verification" content={process.env.GOOGLE_SITE_VERIFICATION} />
 
         {/* Structured Data - Organization Schema */}
         <script
@@ -154,8 +160,8 @@ export default function RootLayout({
               "@type": "Organization",
               "name": "AOA Import Export",
               "description": "MSME-registered import and export company in India providing comprehensive global trade solutions",
-              "url": "https://www.aoafoods.com",
-              "logo": "https://www.aoafoods.com/images/mainlogo.png",
+              "url": CANONICAL_BASE_URL,
+              "logo": `${CANONICAL_BASE_URL}/images/mainlogo.png`,
               "address": {
                 "@type": "PostalAddress",
                 "addressCountry": "IN",

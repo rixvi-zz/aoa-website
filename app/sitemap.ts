@@ -1,78 +1,80 @@
 import { MetadataRoute } from 'next'
 
-export default function sitemap(): MetadataRoute.Sitemap {
-  const baseUrl = 'https://www.aoafoods.com'
+const CANONICAL_BASE_URL = 'https://www.aoafoods.com';
 
+export default function sitemap(): MetadataRoute.Sitemap {
+  const currentDate = new Date().toISOString();
+  
   return [
     {
-      url: baseUrl,
-      lastModified: new Date(),
+      url: CANONICAL_BASE_URL,
+      lastModified: currentDate,
       changeFrequency: 'weekly',
       priority: 1,
     },
     {
-      url: `${baseUrl}/about`,
-      lastModified: new Date(),
+      url: `${CANONICAL_BASE_URL}/about`,
+      lastModified: currentDate,
       changeFrequency: 'monthly',
       priority: 0.8,
     },
     {
-      url: `${baseUrl}/services`,
-      lastModified: new Date(),
+      url: `${CANONICAL_BASE_URL}/services`,
+      lastModified: currentDate,
       changeFrequency: 'monthly',
       priority: 0.8,
     },
     {
-      url: `${baseUrl}/markets`,
-      lastModified: new Date(),
+      url: `${CANONICAL_BASE_URL}/markets`,
+      lastModified: currentDate,
       changeFrequency: 'monthly',
       priority: 0.9,
     },
     {
-      url: `${baseUrl}/contact`,
-      lastModified: new Date(),
+      url: `${CANONICAL_BASE_URL}/contact`,
+      lastModified: currentDate,
       changeFrequency: 'monthly',
       priority: 0.7,
     },
     {
-      url: `${baseUrl}/business-segments`,
-      lastModified: new Date(),
+      url: `${CANONICAL_BASE_URL}/business-segments`,
+      lastModified: currentDate,
       changeFrequency: 'monthly',
       priority: 0.8,
     },
     {
-      url: `${baseUrl}/business-segments/halaal-meat`,
-      lastModified: new Date(),
+      url: `${CANONICAL_BASE_URL}/business-segments/halaal-meat`,
+      lastModified: currentDate,
       changeFrequency: 'monthly',
       priority: 0.7,
     },
     {
-      url: `${baseUrl}/business-segments/basmati-rice`,
-      lastModified: new Date(),
+      url: `${CANONICAL_BASE_URL}/business-segments/basmati-rice`,
+      lastModified: currentDate,
       changeFrequency: 'monthly',
       priority: 0.7,
     },
     {
-      url: `${baseUrl}/business-segments/fruits-vegetables`,
-      lastModified: new Date(),
+      url: `${CANONICAL_BASE_URL}/business-segments/fruits-vegetables`,
+      lastModified: currentDate,
       changeFrequency: 'monthly',
       priority: 0.7,
     },
     {
-      url: `${baseUrl}/business-segments/pulses-cereals`,
-      lastModified: new Date(),
+      url: `${CANONICAL_BASE_URL}/business-segments/pulses-cereals`,
+      lastModified: currentDate,
       changeFrequency: 'monthly',
       priority: 0.7,
     },
     {
-      url: `${baseUrl}/business-segments/animal-feed`,
-      lastModified: new Date(),
+      url: `${CANONICAL_BASE_URL}/business-segments/animal-feed`,
+      lastModified: currentDate,
       changeFrequency: 'monthly',
       priority: 0.7,
     },
     {
-      url: `${baseUrl}/business-segments/bulk-commodities`,
-      lastModified: new Date(),
+      url: `${CANONICAL_BASE_URL}/business-segments/bulk-commodities`,
+      lastModified: currentDate,
       changeFrequency: 'monthly',
       priority: 0.7,
     },

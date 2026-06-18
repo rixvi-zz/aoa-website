@@ -6,10 +6,14 @@ export const metadata: Metadata = {
   title: 'Contact Us - AOA Import & Export Solutions',
   description: 'Get in touch with AOA for your import and export requirements. Our MSME-registered team provides reliable international trade solutions across Asia, Middle East, Europe, and Africa.',
   keywords: ['Contact AOA', 'Import export inquiry', 'International trade contact', 'MSME trade services', 'Global sourcing contact'],
+  alternates: {
+    canonical: 'https://www.aoafoods.com/contact',
+  },
   openGraph: {
     title: 'Contact Us - AOA Import & Export Solutions',
     description: 'Get in touch with AOA for your import and export requirements. Our MSME-registered team provides reliable international trade solutions.',
     images: ['/images/contact-og.svg'],
+    url: 'https://www.aoafoods.com/contact',
   },
 };
 
@@ -44,7 +48,7 @@ export default function ContactPage() {
                     "closes": "18:00"
                   },
                   {
-                    "@type": "OpeningHoursSpecification", 
+                    "@type": "OpeningHoursSpecification",
                     "dayOfWeek": "Saturday",
                     "opens": "09:00",
                     "closes": "14:00"
@@ -67,14 +71,14 @@ export default function ContactPage() {
       <section className="bg-[#0F2A44] text-white py-24 lg:py-32 relative overflow-hidden">
         {/* Background overlay for better contrast */}
         <div className="absolute inset-0 bg-[#0F2A44]"></div>
-        
+
         <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center">
             <h1 className="text-5xl lg:text-6xl font-bold mb-8 text-white">
               Get in <span className="text-white">Touch</span>
             </h1>
             <p className="text-2xl text-gray-200 mb-12 max-w-4xl mx-auto leading-relaxed font-medium">
-              Ready to expand your business globally? Our MSME-registered trade experts 
+              Ready to expand your business globally? Our MSME-registered trade experts
               are here to help you navigate international markets with confidence.
             </p>
             <div className="grid grid-cols-1 md:grid-cols-3 gap-8 max-w-5xl mx-auto">
@@ -111,7 +115,7 @@ export default function ContactPage() {
                 <h3 className="text-2xl font-bold text-gray-900 mb-6">
                   Business Information
                 </h3>
-                
+
                 <div className="space-y-6">
                   {/* Email */}
                   <div className="flex items-start">
@@ -122,7 +126,7 @@ export default function ContactPage() {
                     </div>
                     <div>
                       <h4 className="text-lg font-semibold text-gray-900 mb-1">Email</h4>
-                      <a 
+                      <a
                         href={`mailto:${contactInfo.email}`}
                         className="text-[#0F2A44] hover:text-[#1E40AF] transition-colors"
                       >
@@ -140,7 +144,7 @@ export default function ContactPage() {
                     </div>
                     <div>
                       <h4 className="text-lg font-semibold text-gray-900 mb-1">Phone</h4>
-                      <a 
+                      <a
                         href={`tel:${contactInfo.phone}`}
                         className="text-[#0F2A44] hover:text-[#1E40AF] transition-colors"
                       >
@@ -174,7 +178,7 @@ export default function ContactPage() {
                 <h3 className="text-2xl font-bold text-gray-900 mb-6">
                   Business Hours
                 </h3>
-                
+
                 <div className="space-y-4">
                   <div className="flex justify-between items-center py-2 border-b border-gray-100">
                     <span className="font-medium text-gray-900">Monday - Friday</span>
@@ -192,7 +196,7 @@ export default function ContactPage() {
 
                 <div className="mt-6 p-4 bg-[#1E40AF]/10 rounded-lg">
                   <p className="text-sm text-gray-700">
-                    <strong>Note:</strong> For urgent matters outside business hours, 
+                    <strong>Note:</strong> For urgent matters outside business hours,
                     please send an email and we&apos;ll respond as soon as possible.
                   </p>
                 </div>
@@ -209,12 +213,12 @@ export default function ContactPage() {
                   <h3 className="text-xl font-bold">MSME Certified</h3>
                 </div>
                 <p className="text-blue-100 mb-4">
-                  AOA is a government-recognized MSME (Micro, Small & Medium Enterprise) 
+                  AOA is a government-recognized MSME (Micro, Small & Medium Enterprise)
                   registered company, ensuring credibility and access to special trade benefits.
                 </p>
                 <div className="bg-white/10 rounded-lg p-4">
                   <p className="text-sm text-blue-200">
-                    Our MSME registration provides additional trust and reliability 
+                    Our MSME registration provides additional trust and reliability
                     for your international trade partnerships.
                   </p>
                 </div>
@@ -242,7 +246,7 @@ export default function ContactPage() {
                 How quickly can you respond to my inquiry?
               </h3>
               <p className="text-gray-600">
-                We typically respond to all inquiries within 24 hours during business days. 
+                We typically respond to all inquiries within 24 hours during business days.
                 For urgent matters, please call us directly.
               </p>
             </div>
@@ -252,7 +256,7 @@ export default function ContactPage() {
                 What information should I include in my inquiry?
               </h3>
               <p className="text-gray-600">
-                Please include details about your products, target markets, volume requirements, 
+                Please include details about your products, target markets, volume requirements,
                 and timeline. The more specific information you provide, the better we can assist you.
               </p>
             </div>
@@ -262,7 +266,7 @@ export default function ContactPage() {
                 Do you provide free consultations?
               </h3>
               <p className="text-gray-600">
-                Yes, we offer free initial consultations to understand your requirements 
+                Yes, we offer free initial consultations to understand your requirements
                 and explain how our services can help your business grow internationally.
               </p>
             </div>
@@ -272,8 +276,8 @@ export default function ContactPage() {
                 What makes AOA different from other trade companies?
               </h3>
               <p className="text-gray-600">
-                As an MSME-registered company, we offer government-backed credibility, 
-                personalized service, and deep expertise in international trade regulations 
+                As an MSME-registered company, we offer government-backed credibility,
+                personalized service, and deep expertise in international trade regulations
                 across multiple continents.
               </p>
             </div>

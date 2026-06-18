@@ -7,6 +7,33 @@ const nextConfig = {
     imageSizes: [16, 32, 48, 64, 96, 128, 256, 384],
     qualities: [75, 90],
   },
+  
+  // Security headers (redirects handled by vercel.json)
+  async headers() {
+    return [
+      {
+        source: '/(.*)',
+        headers: [
+          {
+            key: 'Strict-Transport-Security',
+            value: 'max-age=63072000; includeSubDomains; preload'
+          },
+          {
+            key: 'X-Frame-Options',
+            value: 'DENY'
+          },
+          {
+            key: 'X-Content-Type-Options',
+            value: 'nosniff'
+          },
+          {
+            key: 'Referrer-Policy',
+            value: 'strict-origin-when-cross-origin'
+          },
+        ],
+      },
+    ]
+  },
 };
 
 module.exports = nextConfig;
