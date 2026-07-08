@@ -355,7 +355,7 @@ export async function sendContactEmail(
     let result;
     try {
       result = await resendInstance.emails.send({
-        from: 'AOA Foods <noreply@aoafoods.com>', // This will be updated when domain is verified
+        from: 'AOA Foods Contact Form <onboarding@resend.dev>', // Use Resend's verified domain for now
         to: [process.env.CONTACT_EMAIL],
         replyTo: formData.email, // Allow direct reply to customer
         subject: `New Website Enquiry | AOA Foods - ${formData.name}`,
@@ -475,7 +475,7 @@ export async function testEmailConfiguration(): Promise<{
 
     const resendInstance = getResendInstance();
     const testResult = await resendInstance.emails.send({
-      from: 'AOA Foods <noreply@aoafoods.com>',
+      from: 'AOA Foods Test <onboarding@resend.dev>', // Use Resend's verified domain
       to: [process.env.CONTACT_EMAIL],
       subject: 'Email Configuration Test - AOA Foods',
       html: `
