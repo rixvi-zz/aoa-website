@@ -229,9 +229,9 @@ export async function sendContactEmail(
     userAgent?: string;
   } = {}
 ): Promise<{ success: boolean; message: string; error?: any }> {
-  
+
   const isDevelopment = process.env.NODE_ENV === 'development';
-  
+
   // Enhanced logging for email service
   function logEmailError(stage: string, error: any, context?: any) {
     const timestamp = new Date().toISOString();
@@ -249,26 +249,26 @@ export async function sendContactEmail(
         name: error?.name
       }
     });
-    
+
     if (isDevelopment && error?.stack) {
       console.error(`[EMAIL_SERVICE_ERROR] ${stage} - Stack:`, error.stack);
     }
-    
+
     // Log complete Resend error details
     if (error && typeof error === 'object') {
       console.error(`[EMAIL_SERVICE_ERROR] ${stage} - Complete Error:`, JSON.stringify(error, null, 2));
     }
   }
-  
+
   // Validate required environment variables
   if (!process.env.RESEND_API_KEY) {
     const configError = new Error('RESEND_API_KEY environment variable is not configured');
     logEmailError('CONFIG_VALIDATION', configError);
-    
+
     return {
       success: false,
-      message: isDevelopment 
-        ? 'Email service configuration error: Missing RESEND_API_KEY' 
+      message: isDevelopment
+        ? 'Email service configuration error: Missing RESEND_API_KEY'
         : 'Email service is not properly configured.',
       error: 'Missing RESEND_API_KEY'
     };
@@ -277,7 +277,7 @@ export async function sendContactEmail(
   if (!process.env.CONTACT_EMAIL) {
     const configError = new Error('CONTACT_EMAIL environment variable is not configured');
     logEmailError('CONFIG_VALIDATION', configError);
-    
+
     return {
       success: false,
       message: isDevelopment
@@ -302,7 +302,7 @@ export async function sendContactEmail(
       };
     } catch (timestampError) {
       logEmailError('TIMESTAMP_GENERATION', timestampError, { formData, metadata });
-      
+
       // Fallback timestamp
       emailData = {
         ...formData,
@@ -314,13 +314,13 @@ export async function sendContactEmail(
     // Create email templates
     let htmlTemplate: string;
     let textTemplate: string;
-    
+
     try {
       htmlTemplate = createEmailTemplate(emailData);
       textTemplate = createPlainTextTemplate(emailData);
     } catch (templateError) {
       logEmailError('TEMPLATE_GENERATION', templateError, { emailData });
-      
+
       return {
         success: false,
         message: isDevelopment
@@ -339,7 +339,7 @@ export async function sendContactEmail(
       }
     } catch (initError) {
       logEmailError('RESEND_INITIALIZATION', initError);
-      
+
       return {
         success: false,
         message: isDevelopment
@@ -351,7 +351,7 @@ export async function sendContactEmail(
 
     // Send email using Resend
     console.log(`[EMAIL_SERVICE] Attempting to send email to ${process.env.CONTACT_EMAIL} from ${formData.name} (${formData.email})`);
-    
+
     let result;
     try {
       result = await resendInstance.emails.send({
@@ -373,7 +373,7 @@ export async function sendContactEmail(
         senderEmail: formData.email,
         subject: `New Website Enquiry | AOA Foods - ${formData.name}`
       });
-      
+
       return {
         success: false,
         message: isDevelopment
@@ -390,7 +390,7 @@ export async function sendContactEmail(
         senderEmail: formData.email,
         resultData: result.data
       });
-      
+
       return {
         success: false,
         message: isDevelopment
@@ -409,7 +409,7 @@ export async function sendContactEmail(
       customerEmail: formData.email,
       customerCountry: formData.country
     });
-    
+
     return {
       success: true,
       message: 'Thank you for contacting AOA Foods. Our team will get back to you shortly.'
@@ -426,7 +426,7 @@ export async function sendContactEmail(
       },
       metadata
     });
-    
+
     return {
       success: false,
       message: isDevelopment
@@ -444,13 +444,13 @@ export async function testEmailConfiguration(): Promise<{
   details?: any;
 }> {
   const isDevelopment = process.env.NODE_ENV === 'development';
-  
+
   console.log('[EMAIL_TEST] Starting email configuration test...');
-  
+
   if (!process.env.RESEND_API_KEY) {
     const error = 'RESEND_API_KEY environment variable is not set';
     console.error('[EMAIL_TEST_ERROR] Configuration:', error);
-    
+
     return {
       success: false,
       message: error,
@@ -461,7 +461,7 @@ export async function testEmailConfiguration(): Promise<{
   if (!process.env.CONTACT_EMAIL) {
     const error = 'CONTACT_EMAIL environment variable is not set';
     console.error('[EMAIL_TEST_ERROR] Configuration:', error);
-    
+
     return {
       success: false,
       message: error,
@@ -472,7 +472,7 @@ export async function testEmailConfiguration(): Promise<{
   try {
     console.log(`[EMAIL_TEST] Testing connection to Resend API...`);
     console.log(`[EMAIL_TEST] Target email: ${process.env.CONTACT_EMAIL}`);
-    
+
     const resendInstance = getResendInstance();
     const testResult = await resendInstance.emails.send({
       from: 'AOA Foods <noreply@aoafoods.com>',
@@ -514,7 +514,7 @@ If you received this email, your configuration is working correctly!
 
     if (testResult.error) {
       console.error('[EMAIL_TEST_ERROR] Resend API returned error:', testResult.error);
-      
+
       return {
         success: false,
         message: isDevelopment
@@ -544,7 +544,7 @@ If you received this email, your configuration is working correctly!
 
   } catch (error) {
     console.error('[EMAIL_TEST_ERROR] Unexpected error during test:', error);
-    
+
     if (isDevelopment && error instanceof Error && error.stack) {
       console.error('[EMAIL_TEST_ERROR] Stack trace:', error.stack);
     }

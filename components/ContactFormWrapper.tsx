@@ -10,9 +10,9 @@ export default function ContactFormWrapper() {
     data: {
       name: '',
       email: '',
-      phone: '',
+      phone: undefined,
       company: '',
-      subject: '',
+      subject: undefined,
       country: '',
       message: ''
     },
@@ -28,18 +28,23 @@ export default function ContactFormWrapper() {
 
   // Handle input changes with real-time validation
   const handleInputChange = (field: keyof ContactFormData, value: string) => {
+    const processedValue = field === 'phone' || field === 'subject' 
+      ? (value.trim() === '' ? undefined : value)
+      : value;
+      
     setFormState(prev => ({
       ...prev,
-      data: { ...prev.data, [field]: value },
+      data: { ...prev.data, [field]: processedValue },
       errors: {
         ...prev.errors,
-        [field]: validateField(field, value || undefined)
+        [field]: validateField(field, processedValue)
       }
     }));
   };
 
   // Handle form submission with server action
   const handleSubmit = async (e: React.FormEvent) => {
+    console.log("handleSubmit called");
     e.preventDefault();
     
     // Get honeypot value
@@ -48,12 +53,24 @@ export default function ContactFormWrapper() {
     
     // If honeypot is filled, silently fail (bot detection)
     if (honeypot) {
+      console.log("Honeypot triggered, aborting silently");
       setSubmitStatus({ type: 'success', message: 'Thank you for your message!' });
       return;
     }
     
     // Sanitize form data
-    const sanitizedData = sanitizeFormData(formState.data);
+    let sanitizedData;
+    try {
+      sanitizedData = sanitizeFormData(formState.data);
+      console.log("Sanitized data:", sanitizedData);
+    } catch (sanitizeError) {
+      console.log("Sanitization error:", sanitizeError);
+      setSubmitStatus({ 
+        type: 'error', 
+        message: 'Data processing error. Please try again.' 
+      });
+      return;
+    }
     
     // Validate all fields
     const errors: Partial<ContactFormData> = {};
@@ -68,11 +85,16 @@ export default function ContactFormWrapper() {
       }
     });
 
+    console.log("Validation errors:", errors);
+
     // If there are validation errors, update state and return
     if (Object.keys(errors).length > 0) {
+      console.log("Validation failed, returning early");
       setFormState(prev => ({ ...prev, errors }));
       return;
     }
+
+    console.log("Validation passed");
 
     // Set submitting state
     setFormState(prev => ({ ...prev, isSubmitting: true }));
@@ -94,13 +116,18 @@ export default function ContactFormWrapper() {
       formData.append('message', sanitizedData.message);
       formData.append('website', honeypot); // honeypot field
 
+      console.log("Calling /api/contact");
+
       // Submit to server action
       const response = await fetch('/api/contact', {
         method: 'POST',
         body: formData,
       });
 
+      console.log("Fetch completed", response);
+
       const result = await response.json();
+      console.log("Response parsed:", result);
       
       if (result.success) {
         // Track successful form submission
@@ -116,7 +143,7 @@ export default function ContactFormWrapper() {
           ...prev,
           isSubmitted: true,
           isSubmitting: false,
-          data: { name: '', email: '', phone: '', company: '', subject: '', country: '', message: '' },
+          data: { name: '', email: '', phone: undefined, company: '', subject: undefined, country: '', message: '' },
           errors: {}
         }));
       } else {
@@ -131,7 +158,8 @@ export default function ContactFormWrapper() {
         setSubmitStatus({ type: 'error', message: result.message });
         setFormState(prev => ({ ...prev, isSubmitting: false }));
       }
-    } catch {
+    } catch (error) {
+      console.log("Fetch error:", error);
       setSubmitStatus({ 
         type: 'error', 
         message: 'An unexpected error occurred. Please try again.' 
@@ -252,7 +280,7 @@ export default function ContactFormWrapper() {
           <input
             type="tel"
             id="phone"
-            value={formState.data.phone || ''}
+            value={formState.data.phone ?? ''}
             onChange={(e) => handleInputChange('phone', e.target.value)}
             className={cn(
               'w-full px-4 py-3 border-2 rounded-lg focus:ring-2 focus:ring-[#0F2A44] focus:border-[#0F2A44] transition-colors text-[#0F2A44]',
@@ -328,7 +356,7 @@ export default function ContactFormWrapper() {
           <input
             type="text"
             id="subject"
-            value={formState.data.subject || ''}
+            value={formState.data.subject ?? ''}
             onChange={(e) => handleInputChange('subject', e.target.value)}
             className={cn(
               'w-full px-4 py-3 border-2 rounded-lg focus:ring-2 focus:ring-[#0F2A44] focus:border-[#0F2A44] transition-colors text-[#0F2A44]',

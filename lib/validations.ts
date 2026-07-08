@@ -207,12 +207,12 @@ export const validateField = (field: keyof ContactFormData, value: string | unde
 // Form data sanitization
 export const sanitizeFormData = (data: ContactFormData): ContactFormData => {
   return {
-    name: DOMPurify.sanitize(data.name.trim(), { ALLOWED_TAGS: [] }),
-    email: DOMPurify.sanitize(data.email.trim().toLowerCase(), { ALLOWED_TAGS: [] }),
-    phone: data.phone ? DOMPurify.sanitize(data.phone.trim(), { ALLOWED_TAGS: [] }) : undefined,
-    company: DOMPurify.sanitize(data.company.trim(), { ALLOWED_TAGS: [] }),
-    subject: data.subject ? DOMPurify.sanitize(data.subject.trim(), { ALLOWED_TAGS: [] }) : undefined,
-    country: DOMPurify.sanitize(data.country.trim(), { ALLOWED_TAGS: [] }),
-    message: DOMPurify.sanitize(data.message.trim(), { ALLOWED_TAGS: [] })
+    name: DOMPurify.sanitize(data.name?.trim() || '', { ALLOWED_TAGS: [] }),
+    email: DOMPurify.sanitize(data.email?.trim()?.toLowerCase() || '', { ALLOWED_TAGS: [] }),
+    phone: data.phone && data.phone.trim() ? DOMPurify.sanitize(data.phone.trim(), { ALLOWED_TAGS: [] }) : undefined,
+    company: DOMPurify.sanitize(data.company?.trim() || '', { ALLOWED_TAGS: [] }),
+    subject: data.subject && data.subject.trim() ? DOMPurify.sanitize(data.subject.trim(), { ALLOWED_TAGS: [] }) : undefined,
+    country: DOMPurify.sanitize(data.country?.trim() || '', { ALLOWED_TAGS: [] }),
+    message: DOMPurify.sanitize(data.message?.trim() || '', { ALLOWED_TAGS: [] })
   };
 };
