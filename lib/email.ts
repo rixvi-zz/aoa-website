@@ -274,17 +274,17 @@ export async function sendContactEmail(
     };
   }
 
-  if (!process.env.CONTACT_EMAIL) {
-    const configError = new Error('CONTACT_EMAIL environment variable is not configured');
-    logEmailError('CONFIG_VALIDATION', configError);
+  // Get contact email with fallback for testing mode
+  const contactEmail = process.env.CONTACT_EMAIL || 'rizvinajeeb1@gmail.com';
+  
+  // Check if we need to use fallback email for Resend testing mode
+  const isTestMode = !process.env.RESEND_DOMAIN_VERIFIED;
+  const finalContactEmail = isTestMode && !contactEmail.includes('rizvinajeeb1@gmail.com') 
+    ? 'rizvinajeeb1@gmail.com' 
+    : contactEmail;
 
-    return {
-      success: false,
-      message: isDevelopment
-        ? 'Email service configuration error: Missing CONTACT_EMAIL'
-        : 'Email service is not properly configured.',
-      error: 'Missing CONTACT_EMAIL'
-    };
+  if (finalContactEmail !== contactEmail) {
+    console.warn(`[EMAIL_SERVICE] Using fallback email for Resend testing: ${finalContactEmail}`);
   }
 
   try {
@@ -350,13 +350,13 @@ export async function sendContactEmail(
     }
 
     // Send email using Resend
-    console.log(`[EMAIL_SERVICE] Attempting to send email to ${process.env.CONTACT_EMAIL} from ${formData.name} (${formData.email})`);
+    console.log(`[EMAIL_SERVICE] Attempting to send email to ${finalContactEmail} from ${formData.name} (${formData.email})`);
 
     let result;
     try {
       result = await resendInstance.emails.send({
         from: 'AOA Foods Contact Form <onboarding@resend.dev>', // Use Resend's verified domain for now
-        to: [process.env.CONTACT_EMAIL],
+        to: [finalContactEmail],
         replyTo: formData.email, // Allow direct reply to customer
         subject: `New Website Enquiry | AOA Foods - ${formData.name}`,
         html: htmlTemplate,
@@ -369,7 +369,7 @@ export async function sendContactEmail(
       });
     } catch (sendError) {
       logEmailError('EMAIL_SEND_REQUEST', sendError, {
-        recipientEmail: process.env.CONTACT_EMAIL,
+        recipientEmail: finalContactEmail,
         senderEmail: formData.email,
         subject: `New Website Enquiry | AOA Foods - ${formData.name}`
       });
@@ -386,7 +386,7 @@ export async function sendContactEmail(
     // Check for API errors in the response
     if (result.error) {
       logEmailError('RESEND_API_RESPONSE_ERROR', result.error, {
-        recipientEmail: process.env.CONTACT_EMAIL,
+        recipientEmail: finalContactEmail,
         senderEmail: formData.email,
         resultData: result.data
       });
@@ -404,7 +404,7 @@ export async function sendContactEmail(
     console.log(`[EMAIL_SERVICE_SUCCESS] Email sent successfully:`, {
       timestamp: new Date().toISOString(),
       emailId: result.data?.id,
-      recipient: process.env.CONTACT_EMAIL,
+      recipient: finalContactEmail,
       customerName: formData.name,
       customerEmail: formData.email,
       customerCountry: formData.country
@@ -458,25 +458,25 @@ export async function testEmailConfiguration(): Promise<{
     };
   }
 
-  if (!process.env.CONTACT_EMAIL) {
-    const error = 'CONTACT_EMAIL environment variable is not set';
-    console.error('[EMAIL_TEST_ERROR] Configuration:', error);
+  // Get contact email with fallback for testing mode
+  const contactEmail = process.env.CONTACT_EMAIL || 'rizvinajeeb1@gmail.com';
+  const isTestMode = !process.env.RESEND_DOMAIN_VERIFIED;
+  const finalContactEmail = isTestMode && !contactEmail.includes('rizvinajeeb1@gmail.com') 
+    ? 'rizvinajeeb1@gmail.com' 
+    : contactEmail;
 
-    return {
-      success: false,
-      message: error,
-      details: { missingVar: 'CONTACT_EMAIL' }
-    };
+  if (finalContactEmail !== contactEmail) {
+    console.warn(`[EMAIL_TEST] Using fallback email for testing: ${finalContactEmail}`);
   }
 
   try {
     console.log(`[EMAIL_TEST] Testing connection to Resend API...`);
-    console.log(`[EMAIL_TEST] Target email: ${process.env.CONTACT_EMAIL}`);
+    console.log(`[EMAIL_TEST] Target email: ${finalContactEmail}`);
 
     const resendInstance = getResendInstance();
     const testResult = await resendInstance.emails.send({
       from: 'AOA Foods Test <onboarding@resend.dev>', // Use Resend's verified domain
-      to: [process.env.CONTACT_EMAIL],
+      to: [finalContactEmail],
       subject: 'Email Configuration Test - AOA Foods',
       html: `
         <div style="font-family: Arial, sans-serif; padding: 20px;">
@@ -487,7 +487,7 @@ export async function testEmailConfiguration(): Promise<{
             <ul>
               <li>Environment: ${process.env.NODE_ENV || 'unknown'}</li>
               <li>Timestamp: ${new Date().toISOString()}</li>
-              <li>Recipient: ${process.env.CONTACT_EMAIL}</li>
+              <li>Recipient: ${finalContactEmail}</li>
             </ul>
           </div>
           <p>If you received this email, your configuration is working correctly!</p>
@@ -502,7 +502,7 @@ This is a test email to verify your AOA Foods contact form email configuration.
 Test Details:
 - Environment: ${process.env.NODE_ENV || 'unknown'}
 - Timestamp: ${new Date().toISOString()}
-- Recipient: ${process.env.CONTACT_EMAIL}
+- Recipient: ${finalContactEmail}
 
 If you received this email, your configuration is working correctly!
       `,
@@ -529,7 +529,7 @@ If you received this email, your configuration is working correctly!
 
     console.log('[EMAIL_TEST_SUCCESS] Test email sent successfully:', {
       emailId: testResult.data?.id,
-      recipient: process.env.CONTACT_EMAIL
+      recipient: finalContactEmail
     });
 
     return {
@@ -537,7 +537,7 @@ If you received this email, your configuration is working correctly!
       message: 'Email configuration test successful! Check your inbox.',
       details: {
         emailId: testResult.data?.id,
-        recipient: process.env.CONTACT_EMAIL,
+        recipient: finalContactEmail,
         timestamp: new Date().toISOString()
       }
     };

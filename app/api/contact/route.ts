@@ -15,6 +15,23 @@ const securityHeaders = {
 // Helper to determine if we're in development mode
 const isDevelopment = process.env.NODE_ENV === 'development';
 
+// Check if we're using Resend in testing mode
+const isResendTestMode = !process.env.RESEND_DOMAIN_VERIFIED;
+
+// Get appropriate contact email based on Resend configuration
+function getContactEmail(): string {
+  const configuredEmail = process.env.CONTACT_EMAIL;
+  
+  // If Resend is in testing mode and email doesn't match the registered email,
+  // fall back to the registered email to prevent 500 errors
+  if (isResendTestMode && configuredEmail && !configuredEmail.includes('rizvinajeeb1@gmail.com')) {
+    console.warn('[CONTACT_API] Using fallback email for Resend testing mode');
+    return 'rizvinajeeb1@gmail.com'; // Fallback to registered email
+  }
+  
+  return configuredEmail || 'rizvinajeeb1@gmail.com';
+}
+
 // Enhanced error logging utility
 function logError(type: string, message: string, error?: any, context?: any) {
   const timestamp = new Date().toISOString();
