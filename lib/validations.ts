@@ -4,8 +4,60 @@ import DOMPurify from 'isomorphic-dompurify';
 // Email validation regex
 const EMAIL_REGEX = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
 
-// Phone number regex (international format)
-const PHONE_REGEX = /^[\+]?[1-9][\d]{0,15}$/;
+// Phone number validation function (more flexible for international numbers)
+function validatePhoneNumber(phone: string): { isValid: boolean; error?: string } {
+  if (!phone || phone.trim().length === 0) {
+    return { isValid: true }; // Phone is optional
+  }
+
+  const trimmedPhone = phone.trim();
+  
+  // Remove all formatting characters (spaces, hyphens, parentheses)
+  const cleanPhone = trimmedPhone.replace(/[\s\-\(\)\.]/g, '');
+  
+  // Check if it contains only valid characters (digits and optional leading +)
+  if (!/^[\+]?[\d]+$/.test(cleanPhone)) {
+    return { 
+      isValid: false, 
+      error: 'Phone number can only contain digits, spaces, hyphens, parentheses, and an optional leading +' 
+    };
+  }
+  
+  // Extract digits only (remove + sign)
+  const digitsOnly = cleanPhone.replace(/^\+/, '');
+  
+  // Check digit count (7-15 is the international standard range)
+  if (digitsOnly.length < 7) {
+    return { 
+      isValid: false, 
+      error: 'Phone number must have at least 7 digits' 
+    };
+  }
+  
+  if (digitsOnly.length > 15) {
+    return { 
+      isValid: false, 
+      error: 'Phone number cannot have more than 15 digits' 
+    };
+  }
+  
+  // Additional basic checks for common invalid patterns
+  if (/^0{7,}$/.test(digitsOnly)) {
+    return { 
+      isValid: false, 
+      error: 'Phone number cannot be all zeros' 
+    };
+  }
+  
+  if (/^1{7,}$/.test(digitsOnly)) {
+    return { 
+      isValid: false, 
+      error: 'Phone number cannot be all ones' 
+    };
+  }
+  
+  return { isValid: true };
+}
 
 // Validation functions
 export const validateContactForm = (data: ContactFormData): ValidationError[] => {
@@ -39,16 +91,11 @@ export const validateContactForm = (data: ContactFormData): ValidationError[] =>
 
   // Phone validation (optional)
   if (data.phone && data.phone.trim().length > 0) {
-    const cleanPhone = data.phone.replace(/[\s\-\(\)]/g, '');
-    if (!PHONE_REGEX.test(cleanPhone)) {
+    const phoneValidation = validatePhoneNumber(data.phone);
+    if (!phoneValidation.isValid) {
       errors.push({
         field: 'phone',
-        message: 'Please enter a valid phone number'
-      });
-    } else if (cleanPhone.length > 16) {
-      errors.push({
-        field: 'phone',
-        message: 'Phone number is too long'
+        message: phoneValidation.error || 'Please enter a valid phone number'
       });
     }
   }
@@ -151,17 +198,11 @@ export const validateField = (field: keyof ContactFormData, value: string | unde
       return null;
     
     case 'phone':
-      if (!value || trimmedValue.length === 0) {
+      if (!value || value.trim().length === 0) {
         return null; // Phone is optional
       }
-      const cleanPhone = value.replace(/[\s\-\(\)]/g, '');
-      if (!PHONE_REGEX.test(cleanPhone)) {
-        return 'Please enter a valid phone number';
-      }
-      if (cleanPhone.length > 16) {
-        return 'Phone number is too long';
-      }
-      return null;
+      const phoneValidation = validatePhoneNumber(value);
+      return phoneValidation.isValid ? null : (phoneValidation.error || 'Please enter a valid phone number');
     
     case 'company':
       if (trimmedValue.length < 2) {

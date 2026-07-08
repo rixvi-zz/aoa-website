@@ -288,7 +288,7 @@ export default function ContactFormWrapper() {
                 ? 'border-black bg-white' 
                 : 'border-[#0F2A44] hover:border-black bg-white'
             )}
-            placeholder="Enter your phone number with country code"
+            placeholder="Enter your phone number (e.g., +91 9289699646 or 928-969-9646)"
             disabled={formState.isSubmitting}
           />
           {formState.errors.phone && (
