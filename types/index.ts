@@ -2,7 +2,9 @@
 export interface ContactFormData {
   name: string;        // required, min 2 chars
   email: string;       // required, valid email format
+  phone?: string;      // optional
   company: string;     // required, min 2 chars
+  subject?: string;    // optional
   country: string;     // required
   message: string;     // required, min 10 chars
 }

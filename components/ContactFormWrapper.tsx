@@ -10,7 +10,9 @@ export default function ContactFormWrapper() {
     data: {
       name: '',
       email: '',
+      phone: '',
       company: '',
+      subject: '',
       country: '',
       message: ''
     },
@@ -31,7 +33,7 @@ export default function ContactFormWrapper() {
       data: { ...prev.data, [field]: value },
       errors: {
         ...prev.errors,
-        [field]: validateField(field, value)
+        [field]: validateField(field, value || undefined)
       }
     }));
   };
@@ -57,9 +59,12 @@ export default function ContactFormWrapper() {
     const errors: Partial<ContactFormData> = {};
     Object.keys(sanitizedData).forEach(key => {
       const field = key as keyof ContactFormData;
-      const error = validateField(field, sanitizedData[field]);
-      if (error) {
-        errors[field] = error;
+      const value = sanitizedData[field];
+      if (value !== undefined) {
+        const error = validateField(field, value);
+        if (error) {
+          errors[field] = error;
+        }
       }
     });
 
@@ -78,7 +83,13 @@ export default function ContactFormWrapper() {
       const formData = new FormData();
       formData.append('name', sanitizedData.name);
       formData.append('email', sanitizedData.email);
+      if (sanitizedData.phone && sanitizedData.phone.trim()) {
+        formData.append('phone', sanitizedData.phone);
+      }
       formData.append('company', sanitizedData.company);
+      if (sanitizedData.subject && sanitizedData.subject.trim()) {
+        formData.append('subject', sanitizedData.subject);
+      }
       formData.append('country', sanitizedData.country);
       formData.append('message', sanitizedData.message);
       formData.append('website', honeypot); // honeypot field
@@ -105,7 +116,7 @@ export default function ContactFormWrapper() {
           ...prev,
           isSubmitted: true,
           isSubmitting: false,
-          data: { name: '', email: '', company: '', country: '', message: '' },
+          data: { name: '', email: '', phone: '', company: '', subject: '', country: '', message: '' },
           errors: {}
         }));
       } else {
@@ -233,6 +244,30 @@ export default function ContactFormWrapper() {
           )}
         </div>
 
+        {/* Phone Field (Optional) */}
+        <div>
+          <label htmlFor="phone" className="block text-sm font-medium text-[#0F2A44] mb-2">
+            Phone Number <span className="text-gray-500">(Optional)</span>
+          </label>
+          <input
+            type="tel"
+            id="phone"
+            value={formState.data.phone || ''}
+            onChange={(e) => handleInputChange('phone', e.target.value)}
+            className={cn(
+              'w-full px-4 py-3 border-2 rounded-lg focus:ring-2 focus:ring-[#0F2A44] focus:border-[#0F2A44] transition-colors text-[#0F2A44]',
+              formState.errors.phone 
+                ? 'border-black bg-white' 
+                : 'border-[#0F2A44] hover:border-black bg-white'
+            )}
+            placeholder="Enter your phone number with country code"
+            disabled={formState.isSubmitting}
+          />
+          {formState.errors.phone && (
+            <p className="mt-1 text-sm text-black font-medium">{formState.errors.phone}</p>
+          )}
+        </div>
+
         {/* Company Field */}
         <div>
           <label htmlFor="company" className="block text-sm font-medium text-[#0F2A44] mb-2">
@@ -282,6 +317,30 @@ export default function ContactFormWrapper() {
           </select>
           {formState.errors.country && (
             <p className="mt-1 text-sm text-black font-medium">{formState.errors.country}</p>
+          )}
+        </div>
+
+        {/* Subject Field (Optional) */}
+        <div>
+          <label htmlFor="subject" className="block text-sm font-medium text-[#0F2A44] mb-2">
+            Subject <span className="text-gray-500">(Optional)</span>
+          </label>
+          <input
+            type="text"
+            id="subject"
+            value={formState.data.subject || ''}
+            onChange={(e) => handleInputChange('subject', e.target.value)}
+            className={cn(
+              'w-full px-4 py-3 border-2 rounded-lg focus:ring-2 focus:ring-[#0F2A44] focus:border-[#0F2A44] transition-colors text-[#0F2A44]',
+              formState.errors.subject 
+                ? 'border-black bg-white' 
+                : 'border-[#0F2A44] hover:border-black bg-white'
+            )}
+            placeholder="Brief subject line for your inquiry"
+            disabled={formState.isSubmitting}
+          />
+          {formState.errors.subject && (
+            <p className="mt-1 text-sm text-black font-medium">{formState.errors.subject}</p>
           )}
         </div>
 
