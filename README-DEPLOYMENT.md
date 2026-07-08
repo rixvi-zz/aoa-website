@@ -146,18 +146,68 @@ The system sends both HTML and plain text versions of emails with:
 - Replies go directly to the customer's email
 - Tagged for tracking and organization
 
-## Monitoring and Logs
+## Enhanced Error Handling & Logging
 
-### Error Logging
-All errors are logged to the console with appropriate details:
-- Rate limit violations
-- Spam detection events
-- Email sending failures
-- Validation errors
+The contact form API now includes comprehensive error handling and logging:
 
-### Success Tracking
-- Successful submissions are logged (without sensitive data)
-- Google Analytics events are tracked for form interactions
+### Error Categories & Logging:
+
+1. **Rate Limit Errors** - Logged with client details and timing
+2. **Validation Errors** - Logged with field-specific error details  
+3. **Spam Detection** - Logged with spam scores and reasons
+4. **Email Service Errors** - Detailed Resend API error logging
+5. **Unexpected Exceptions** - Full context and stack trace logging
+
+### Development vs Production Responses:
+
+**Development Mode** (NODE_ENV=development):
+- Complete error details in API responses
+- Stack traces in logs
+- Full context information
+- Detailed Resend error messages
+
+**Production Mode** (NODE_ENV=production):
+- Generic user-friendly error messages
+- Detailed server logs (for monitoring)
+- No sensitive information exposed
+- Security-focused responses
+
+### Log Format Examples:
+
+**Rate Limit Error:**
+```log
+[CONTACT_API_ERROR] RATE_LIMIT_EXCEEDED: {
+  "timestamp": "2024-01-15T10:30:00.000Z",
+  "type": "RATE_LIMIT_EXCEEDED", 
+  "clientId": "192.168.1.1",
+  "remaining": 0,
+  "resetTime": 1705314600000
+}
+```
+
+**Email Service Error:**
+```log
+[EMAIL_SERVICE_ERROR] RESEND_API_RESPONSE_ERROR: {
+  "timestamp": "2024-01-15T10:30:00.000Z",
+  "stage": "RESEND_API_RESPONSE_ERROR",
+  "customerEmail": "customer@example.com",
+  "error": {
+    "message": "Domain not verified",
+    "code": "forbidden"
+  }
+}
+```
+
+**Successful Submission:**
+```log
+[CONTACT_API_SUCCESS] Form submitted successfully: {
+  "timestamp": "2024-01-15T10:30:00.000Z",
+  "customerName": "John Doe",
+  "customerEmail": "john@example.com", 
+  "customerCountry": "United States",
+  "spamScore": 5
+}
+```
 
 ## Changing Email Destination
 
@@ -222,6 +272,55 @@ Enable detailed logging by setting:
 ```env
 NODE_ENV=development
 ```
+
+### Testing Email Service
+Test your email configuration:
+```bash
+# Development only - test endpoint  
+curl http://localhost:3000/api/test-email
+
+# Response example:
+{
+  "success": true,
+  "message": "Email configuration test successful! Check your inbox.",
+  "details": {
+    "emailId": "re_abc123",
+    "recipient": "your-email@domain.com"
+  }
+}
+```
+
+### Common Error Scenarios:
+
+1. **Domain Not Verified**:
+```log
+[EMAIL_SERVICE_ERROR] RESEND_API_RESPONSE_ERROR: {
+  "error": {
+    "message": "Domain not verified", 
+    "code": "forbidden"
+  }
+}
+```
+**Solution**: Verify your domain in Resend dashboard
+
+2. **Invalid API Key**:
+```log
+[EMAIL_SERVICE_ERROR] RESEND_INITIALIZATION: {
+  "error": {
+    "message": "Invalid API key"
+  }
+}
+```
+**Solution**: Check RESEND_API_KEY is correctly set
+
+3. **Rate Limit Exceeded**:
+```log
+[CONTACT_API_ERROR] RATE_LIMIT_EXCEEDED: {
+  "remaining": 0,
+  "resetTime": 1705314600000
+}
+```
+**Solution**: Wait for rate limit to reset or adjust limits
 
 ## Support
 

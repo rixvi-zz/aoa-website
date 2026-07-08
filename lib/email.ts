@@ -230,63 +230,185 @@ export async function sendContactEmail(
   } = {}
 ): Promise<{ success: boolean; message: string; error?: any }> {
   
+  const isDevelopment = process.env.NODE_ENV === 'development';
+  
+  // Enhanced logging for email service
+  function logEmailError(stage: string, error: any, context?: any) {
+    const timestamp = new Date().toISOString();
+    console.error(`[EMAIL_SERVICE_ERROR] ${stage}:`, {
+      timestamp,
+      stage,
+      environment: process.env.NODE_ENV,
+      customerEmail: formData.email,
+      customerName: formData.name,
+      context,
+      error: {
+        message: error?.message,
+        code: error?.code,
+        statusCode: error?.statusCode,
+        name: error?.name
+      }
+    });
+    
+    if (isDevelopment && error?.stack) {
+      console.error(`[EMAIL_SERVICE_ERROR] ${stage} - Stack:`, error.stack);
+    }
+    
+    // Log complete Resend error details
+    if (error && typeof error === 'object') {
+      console.error(`[EMAIL_SERVICE_ERROR] ${stage} - Complete Error:`, JSON.stringify(error, null, 2));
+    }
+  }
+  
   // Validate required environment variables
   if (!process.env.RESEND_API_KEY) {
-    console.error('RESEND_API_KEY is not configured');
+    const configError = new Error('RESEND_API_KEY environment variable is not configured');
+    logEmailError('CONFIG_VALIDATION', configError);
+    
     return {
       success: false,
-      message: 'Email service is not properly configured.',
+      message: isDevelopment 
+        ? 'Email service configuration error: Missing RESEND_API_KEY' 
+        : 'Email service is not properly configured.',
       error: 'Missing RESEND_API_KEY'
     };
   }
 
   if (!process.env.CONTACT_EMAIL) {
-    console.error('CONTACT_EMAIL is not configured');
+    const configError = new Error('CONTACT_EMAIL environment variable is not configured');
+    logEmailError('CONFIG_VALIDATION', configError);
+    
     return {
       success: false,
-      message: 'Email service is not properly configured.',
+      message: isDevelopment
+        ? 'Email service configuration error: Missing CONTACT_EMAIL'
+        : 'Email service is not properly configured.',
       error: 'Missing CONTACT_EMAIL'
     };
   }
 
   try {
     // Prepare email data with metadata
-    const emailData: EmailData = {
-      ...formData,
-      ...metadata,
-      timestamp: new Intl.DateTimeFormat('en-IN', {
-        dateStyle: 'full',
-        timeStyle: 'long',
-        timeZone: 'Asia/Kolkata'
-      }).format(new Date())
-    };
+    let emailData: EmailData;
+    try {
+      emailData = {
+        ...formData,
+        ...metadata,
+        timestamp: new Intl.DateTimeFormat('en-IN', {
+          dateStyle: 'full',
+          timeStyle: 'long',
+          timeZone: 'Asia/Kolkata'
+        }).format(new Date())
+      };
+    } catch (timestampError) {
+      logEmailError('TIMESTAMP_GENERATION', timestampError, { formData, metadata });
+      
+      // Fallback timestamp
+      emailData = {
+        ...formData,
+        ...metadata,
+        timestamp: new Date().toISOString()
+      };
+    }
 
-    // Send email using Resend
-    const resendInstance = getResendInstance();
-    const result = await resendInstance.emails.send({
-      from: 'AOA Foods <noreply@aoafoods.com>', // This will be updated when domain is verified
-      to: [process.env.CONTACT_EMAIL],
-      replyTo: formData.email, // Allow direct reply to customer
-      subject: `New Website Enquiry | AOA Foods - ${formData.name}`,
-      html: createEmailTemplate(emailData),
-      text: createPlainTextTemplate(emailData),
-      tags: [
-        { name: 'type', value: 'contact-form' },
-        { name: 'source', value: 'website' },
-        { name: 'country', value: formData.country.toLowerCase().replace(/\s+/g, '-') }
-      ]
-    });
-
-    if (result.error) {
-      console.error('Resend API error:', result.error);
+    // Create email templates
+    let htmlTemplate: string;
+    let textTemplate: string;
+    
+    try {
+      htmlTemplate = createEmailTemplate(emailData);
+      textTemplate = createPlainTextTemplate(emailData);
+    } catch (templateError) {
+      logEmailError('TEMPLATE_GENERATION', templateError, { emailData });
+      
       return {
         success: false,
-        message: 'Failed to send email. Please try again.',
+        message: isDevelopment
+          ? `Email template generation failed: ${templateError instanceof Error ? templateError.message : 'Unknown template error'}`
+          : 'Failed to prepare email. Please try again.',
+        error: templateError
+      };
+    }
+
+    // Get Resend instance
+    let resendInstance: Resend;
+    try {
+      resendInstance = getResendInstance();
+      if (!resendInstance) {
+        throw new Error('Failed to initialize Resend instance');
+      }
+    } catch (initError) {
+      logEmailError('RESEND_INITIALIZATION', initError);
+      
+      return {
+        success: false,
+        message: isDevelopment
+          ? `Resend initialization failed: ${initError instanceof Error ? initError.message : 'Unknown init error'}`
+          : 'Email service initialization failed. Please try again.',
+        error: initError
+      };
+    }
+
+    // Send email using Resend
+    console.log(`[EMAIL_SERVICE] Attempting to send email to ${process.env.CONTACT_EMAIL} from ${formData.name} (${formData.email})`);
+    
+    let result;
+    try {
+      result = await resendInstance.emails.send({
+        from: 'AOA Foods <noreply@aoafoods.com>', // This will be updated when domain is verified
+        to: [process.env.CONTACT_EMAIL],
+        replyTo: formData.email, // Allow direct reply to customer
+        subject: `New Website Enquiry | AOA Foods - ${formData.name}`,
+        html: htmlTemplate,
+        text: textTemplate,
+        tags: [
+          { name: 'type', value: 'contact-form' },
+          { name: 'source', value: 'website' },
+          { name: 'country', value: formData.country.toLowerCase().replace(/\s+/g, '-') }
+        ]
+      });
+    } catch (sendError) {
+      logEmailError('EMAIL_SEND_REQUEST', sendError, {
+        recipientEmail: process.env.CONTACT_EMAIL,
+        senderEmail: formData.email,
+        subject: `New Website Enquiry | AOA Foods - ${formData.name}`
+      });
+      
+      return {
+        success: false,
+        message: isDevelopment
+          ? `Email send request failed: ${sendError instanceof Error ? sendError.message : 'Unknown send error'}`
+          : 'Failed to send email. Please try again.',
+        error: sendError
+      };
+    }
+
+    // Check for API errors in the response
+    if (result.error) {
+      logEmailError('RESEND_API_RESPONSE_ERROR', result.error, {
+        recipientEmail: process.env.CONTACT_EMAIL,
+        senderEmail: formData.email,
+        resultData: result.data
+      });
+      
+      return {
+        success: false,
+        message: isDevelopment
+          ? `Resend API error: ${result.error.message || JSON.stringify(result.error)}`
+          : 'Failed to send email. Please try again.',
         error: result.error
       };
     }
 
-    console.log('Email sent successfully:', result.data?.id);
+    // Log successful email sending
+    console.log(`[EMAIL_SERVICE_SUCCESS] Email sent successfully:`, {
+      timestamp: new Date().toISOString(),
+      emailId: result.data?.id,
+      recipient: process.env.CONTACT_EMAIL,
+      customerName: formData.name,
+      customerEmail: formData.email,
+      customerCountry: formData.country
+    });
     
     return {
       success: true,
@@ -294,59 +416,151 @@ export async function sendContactEmail(
     };
 
   } catch (error) {
-    console.error('Email service error:', error);
+    logEmailError('UNEXPECTED_EMAIL_ERROR', error, {
+      formData: {
+        name: formData.name,
+        email: formData.email,
+        company: formData.company,
+        country: formData.country,
+        messageLength: formData.message?.length || 0
+      },
+      metadata
+    });
+    
     return {
       success: false,
-      message: 'An unexpected error occurred. Please try again.',
+      message: isDevelopment
+        ? `Unexpected email service error: ${error instanceof Error ? error.message : 'Unknown error'}`
+        : 'An unexpected error occurred. Please try again.',
       error: error instanceof Error ? error.message : 'Unknown error'
     };
   }
 }
 
-// Test email configuration (for development)
+// Enhanced test email configuration with detailed error reporting
 export async function testEmailConfiguration(): Promise<{
   success: boolean;
   message: string;
   details?: any;
 }> {
+  const isDevelopment = process.env.NODE_ENV === 'development';
+  
+  console.log('[EMAIL_TEST] Starting email configuration test...');
+  
   if (!process.env.RESEND_API_KEY) {
+    const error = 'RESEND_API_KEY environment variable is not set';
+    console.error('[EMAIL_TEST_ERROR] Configuration:', error);
+    
     return {
       success: false,
-      message: 'RESEND_API_KEY environment variable is not set'
+      message: error,
+      details: { missingVar: 'RESEND_API_KEY' }
     };
   }
 
   if (!process.env.CONTACT_EMAIL) {
+    const error = 'CONTACT_EMAIL environment variable is not set';
+    console.error('[EMAIL_TEST_ERROR] Configuration:', error);
+    
     return {
       success: false,
-      message: 'CONTACT_EMAIL environment variable is not set'
+      message: error,
+      details: { missingVar: 'CONTACT_EMAIL' }
     };
   }
 
   try {
-    // Test with a minimal email
+    console.log(`[EMAIL_TEST] Testing connection to Resend API...`);
+    console.log(`[EMAIL_TEST] Target email: ${process.env.CONTACT_EMAIL}`);
+    
     const resendInstance = getResendInstance();
     const testResult = await resendInstance.emails.send({
       from: 'AOA Foods <noreply@aoafoods.com>',
       to: [process.env.CONTACT_EMAIL],
       subject: 'Email Configuration Test - AOA Foods',
-      html: '<p>This is a test email to verify email configuration.</p>',
-      text: 'This is a test email to verify email configuration.'
+      html: `
+        <div style="font-family: Arial, sans-serif; padding: 20px;">
+          <h2 style="color: #0F2A44;">✅ Email Configuration Test</h2>
+          <p>This is a test email to verify your AOA Foods contact form email configuration.</p>
+          <div style="background: #f0f9ff; padding: 15px; border-radius: 8px; margin: 20px 0;">
+            <p><strong>Test Details:</strong></p>
+            <ul>
+              <li>Environment: ${process.env.NODE_ENV || 'unknown'}</li>
+              <li>Timestamp: ${new Date().toISOString()}</li>
+              <li>Recipient: ${process.env.CONTACT_EMAIL}</li>
+            </ul>
+          </div>
+          <p>If you received this email, your configuration is working correctly!</p>
+        </div>
+      `,
+      text: `
+EMAIL CONFIGURATION TEST - AOA FOODS
+====================================
+
+This is a test email to verify your AOA Foods contact form email configuration.
+
+Test Details:
+- Environment: ${process.env.NODE_ENV || 'unknown'}
+- Timestamp: ${new Date().toISOString()}
+- Recipient: ${process.env.CONTACT_EMAIL}
+
+If you received this email, your configuration is working correctly!
+      `,
+      tags: [
+        { name: 'type', value: 'configuration-test' },
+        { name: 'source', value: 'api-test' }
+      ]
+    });
+
+    if (testResult.error) {
+      console.error('[EMAIL_TEST_ERROR] Resend API returned error:', testResult.error);
+      
+      return {
+        success: false,
+        message: isDevelopment
+          ? `Configuration test failed: ${testResult.error.message || JSON.stringify(testResult.error)}`
+          : 'Email configuration test failed',
+        details: {
+          error: testResult.error,
+          apiResponse: testResult
+        }
+      };
+    }
+
+    console.log('[EMAIL_TEST_SUCCESS] Test email sent successfully:', {
+      emailId: testResult.data?.id,
+      recipient: process.env.CONTACT_EMAIL
     });
 
     return {
-      success: !testResult.error,
-      message: testResult.error 
-        ? `Configuration test failed: ${testResult.error.message}`
-        : 'Email configuration is working correctly',
-      details: testResult
+      success: true,
+      message: 'Email configuration test successful! Check your inbox.',
+      details: {
+        emailId: testResult.data?.id,
+        recipient: process.env.CONTACT_EMAIL,
+        timestamp: new Date().toISOString()
+      }
     };
 
   } catch (error) {
+    console.error('[EMAIL_TEST_ERROR] Unexpected error during test:', error);
+    
+    if (isDevelopment && error instanceof Error && error.stack) {
+      console.error('[EMAIL_TEST_ERROR] Stack trace:', error.stack);
+    }
+
     return {
       success: false,
-      message: `Configuration test error: ${error instanceof Error ? error.message : 'Unknown error'}`,
-      details: error
+      message: isDevelopment
+        ? `Configuration test error: ${error instanceof Error ? error.message : 'Unknown error'}`
+        : 'Email configuration test failed',
+      details: {
+        error: error instanceof Error ? {
+          message: error.message,
+          name: error.name,
+          stack: isDevelopment ? error.stack : undefined
+        } : error
+      }
     };
   }
 }

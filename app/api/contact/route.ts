@@ -12,45 +12,126 @@ const securityHeaders = {
   'Referrer-Policy': 'strict-origin-when-cross-origin'
 };
 
+// Helper to determine if we're in development mode
+const isDevelopment = process.env.NODE_ENV === 'development';
+
+// Enhanced error logging utility
+function logError(type: string, message: string, error?: any, context?: any) {
+  const timestamp = new Date().toISOString();
+  const logData = {
+    timestamp,
+    type,
+    message,
+    environment: process.env.NODE_ENV,
+    ...context
+  };
+
+  console.error(`[CONTACT_API_ERROR] ${type}:`, logData);
+
+  if (error) {
+    console.error(`[CONTACT_API_ERROR] ${type} - Error Details:`, error);
+
+    // Log stack trace in development
+    if (isDevelopment && error.stack) {
+      console.error(`[CONTACT_API_ERROR] ${type} - Stack:`, error.stack);
+    }
+  }
+}
+
+// Helper to create error response with environment-specific details
+function createErrorResponse(
+  type: string,
+  userMessage: string,
+  statusCode: number,
+  headers: Record<string, string> = {},
+  error?: any,
+  context?: any
+): NextResponse {
+  const response: any = {
+    success: false,
+    message: userMessage,
+    code: type,
+    timestamp: new Date().toISOString()
+  };
+
+  // Include detailed error information in development
+  if (isDevelopment && error) {
+    response.development = {
+      error: error.message || error,
+      stack: error.stack,
+      context
+    };
+  }
+
+  return NextResponse.json(response, {
+    status: statusCode,
+    headers: { ...securityHeaders, ...headers }
+  });
+}
+
 export async function POST(request: NextRequest) {
+  let clientId = 'unknown';
+  let userAgent = 'unknown';
+  let ip = 'unknown';
+
   try {
     // Get client information for rate limiting and logging
-    const clientId = getClientId(request);
-    const userAgent = request.headers.get('user-agent') || 'Unknown';
-    const ip = request.headers.get('x-forwarded-for')?.split(',')[0] || 
-               request.headers.get('x-real-ip') || 
-               clientId;
+    clientId = getClientId(request);
+    userAgent = request.headers.get('user-agent') || 'Unknown';
+    ip = request.headers.get('x-forwarded-for')?.split(',')[0] ||
+      request.headers.get('x-real-ip') ||
+      clientId;
+
+    const requestContext = { clientId, userAgent, ip };
 
     // Check rate limiting
     const rateLimitResult = checkRateLimit(clientId);
-    
+
     if (!rateLimitResult.allowed) {
-      console.warn(`Rate limit exceeded for client: ${clientId}`);
-      
-      return NextResponse.json(
-        { 
-          success: false, 
-          message: rateLimitResult.message || 'Too many requests. Please try again later.',
-          code: 'RATE_LIMITED'
-        }, 
-        { 
-          status: 429,
-          headers: {
-            ...securityHeaders,
-            ...getRateLimitHeaders(rateLimitResult),
-            'Retry-After': Math.ceil((rateLimitResult.resetTime - Date.now()) / 1000).toString()
-          }
+      logError('RATE_LIMIT_EXCEEDED', `Client exceeded rate limit`, null, {
+        ...requestContext,
+        remaining: rateLimitResult.remaining,
+        resetTime: rateLimitResult.resetTime
+      });
+
+      return createErrorResponse(
+        'RATE_LIMITED',
+        rateLimitResult.message || 'Too many requests. Please try again later.',
+        429,
+        {
+          ...getRateLimitHeaders(rateLimitResult),
+          'Retry-After': Math.ceil((rateLimitResult.resetTime - Date.now()) / 1000).toString()
         }
       );
     }
 
-    // Parse form data
-    const formData = await request.formData();
-    
+    // Parse form data with error handling
+    let formData: FormData;
+    try {
+      formData = await request.formData();
+    } catch (parseError) {
+      logError('FORM_PARSE_ERROR', 'Failed to parse form data', parseError, requestContext);
+
+      return createErrorResponse(
+        'PARSE_ERROR',
+        isDevelopment
+          ? 'Failed to parse form data: ' + (parseError as Error).message
+          : 'Invalid form data. Please try again.',
+        400,
+        {},
+        parseError,
+        requestContext
+      );
+    }
+
     // Check honeypot field for basic bot detection
     const honeypot = formData.get('website') as string;
     if (honeypot && honeypot.trim().length > 0) {
-      console.warn(`Honeypot triggered by client: ${clientId}`);
+      logError('HONEYPOT_TRIGGERED', 'Bot detected via honeypot field', null, {
+        ...requestContext,
+        honeypotValue: honeypot
+      });
+
       // Return success to not reveal to bots that we detected them
       return NextResponse.json(
         { success: true, message: 'Thank you for your message!' },
@@ -74,12 +155,31 @@ export async function POST(request: NextRequest) {
     if (data.subject === '') data.subject = undefined;
 
     // Sanitize form data to prevent XSS and injection attacks
-    const sanitizedData = sanitizeFormData(data);
+    let sanitizedData: ContactFormData;
+    try {
+      sanitizedData = sanitizeFormData(data);
+    } catch (sanitizeError) {
+      logError('SANITIZATION_ERROR', 'Failed to sanitize form data', sanitizeError, {
+        ...requestContext,
+        formDataKeys: Object.keys(data)
+      });
+
+      return createErrorResponse(
+        'SANITIZATION_ERROR',
+        isDevelopment
+          ? 'Data sanitization failed: ' + (sanitizeError as Error).message
+          : 'Invalid form data. Please try again.',
+        400,
+        {},
+        sanitizeError,
+        requestContext
+      );
+    }
 
     // Validate all required fields
     const errors: Partial<ContactFormData> = {};
     const requiredFields: (keyof ContactFormData)[] = ['name', 'email', 'company', 'country', 'message'];
-    
+
     for (const field of requiredFields) {
       const error = validateField(field, sanitizedData[field] || '');
       if (error) {
@@ -102,93 +202,147 @@ export async function POST(request: NextRequest) {
       }
     }
 
-    // If there are validation errors, return them
+    // If there are validation errors, log and return them
     if (Object.keys(errors).length > 0) {
-      console.warn(`Validation errors for client ${clientId}:`, errors);
-      
-      return NextResponse.json(
-        { 
-          success: false, 
-          message: 'Please correct the errors in your form.',
-          errors,
-          code: 'VALIDATION_ERROR'
-        }, 
-        { 
-          status: 400,
-          headers: {
-            ...securityHeaders,
-            ...getRateLimitHeaders(rateLimitResult)
+      logError('VALIDATION_ERROR', 'Form validation failed', null, {
+        ...requestContext,
+        validationErrors: errors,
+        fieldCount: Object.keys(errors).length
+      });
+
+      const response: any = {
+        success: false,
+        message: 'Please correct the errors in your form.',
+        errors,
+        code: 'VALIDATION_ERROR',
+        timestamp: new Date().toISOString()
+      };
+
+      // Add debug info in development
+      if (isDevelopment) {
+        response.development = {
+          context: requestContext,
+          sanitizedData: {
+            ...sanitizedData,
+            message: sanitizedData.message.substring(0, 100) + '...' // Truncate for logs
           }
+        };
+      }
+
+      return NextResponse.json(response, {
+        status: 400,
+        headers: {
+          ...securityHeaders,
+          ...getRateLimitHeaders(rateLimitResult)
         }
-      );
+      });
     }
 
     // Advanced spam detection
-    const spamCheck = detectSpam({
-      name: sanitizedData.name,
-      email: sanitizedData.email,
-      message: sanitizedData.message,
-      company: sanitizedData.company,
-      honeypot: honeypot
-    });
+    let spamCheck;
+    try {
+      spamCheck = detectSpam({
+        name: sanitizedData.name,
+        email: sanitizedData.email,
+        message: sanitizedData.message,
+        company: sanitizedData.company,
+        honeypot: honeypot
+      });
+    } catch (spamError) {
+      logError('SPAM_DETECTION_ERROR', 'Spam detection failed', spamError, requestContext);
+
+      // Continue processing if spam detection fails
+      spamCheck = { isSpam: false, score: 0 };
+    }
 
     if (spamCheck.isSpam) {
-      console.warn(`Spam detected for client ${clientId}: ${spamCheck.reason} (score: ${spamCheck.score})`);
-      
+      logError('SPAM_DETECTED', `Spam detected in form submission`, null, {
+        ...requestContext,
+        spamScore: spamCheck.score,
+        spamReason: spamCheck.reason,
+        customerEmail: sanitizedData.email,
+        customerName: sanitizedData.name
+      });
+
       // For high-confidence spam, return an error
       if (spamCheck.score >= 75) {
-        return NextResponse.json(
-          { 
-            success: false, 
-            message: 'Your message appears to be spam. Please contact us directly if this is an error.',
-            code: 'SPAM_DETECTED'
-          }, 
-          { 
-            status: 400,
-            headers: securityHeaders
-          }
+        return createErrorResponse(
+          'SPAM_DETECTED',
+          'Your message appears to be spam. Please contact us directly if this is an error.',
+          400
         );
       }
-      
+
       // For lower-confidence spam, silently flag but still process
-      console.warn(`Potential spam (score: ${spamCheck.score}) from ${clientId}, but processing anyway`);
+      console.warn(`[CONTACT_API] Potential spam (score: ${spamCheck.score}) from ${clientId}, processing anyway`);
     }
 
     // Attempt to send email
-    const emailResult = await sendContactEmail(sanitizedData, {
-      ip: ip,
-      userAgent: userAgent
-    });
+    let emailResult;
+    try {
+      emailResult = await sendContactEmail(sanitizedData, {
+        ip: ip,
+        userAgent: userAgent
+      });
+    } catch (emailError) {
+      logError('EMAIL_SERVICE_ERROR', 'Email service threw exception', emailError, {
+        ...requestContext,
+        customerEmail: sanitizedData.email,
+        customerName: sanitizedData.name,
+        customerCountry: sanitizedData.country
+      });
+
+      return createErrorResponse(
+        'EMAIL_ERROR',
+        isDevelopment
+          ? 'Email service error: ' + (emailError as Error).message
+          : 'We encountered an issue sending your message. Please try again or contact us directly.',
+        500,
+        getRateLimitHeaders(rateLimitResult),
+        emailError,
+        requestContext
+      );
+    }
 
     if (!emailResult.success) {
-      console.error(`Email sending failed for client ${clientId}:`, emailResult.error);
-      
-      return NextResponse.json(
-        { 
-          success: false, 
-          message: 'We encountered an issue sending your message. Please try again or contact us directly.',
-          code: 'EMAIL_ERROR'
-        }, 
-        { 
-          status: 500,
-          headers: {
-            ...securityHeaders,
-            ...getRateLimitHeaders(rateLimitResult)
-          }
-        }
+      logError('EMAIL_SENDING_FAILED', 'Email sending returned failure', emailResult.error, {
+        ...requestContext,
+        customerEmail: sanitizedData.email,
+        customerName: sanitizedData.name,
+        customerCountry: sanitizedData.country,
+        emailResultMessage: emailResult.message
+      });
+
+      return createErrorResponse(
+        'EMAIL_ERROR',
+        isDevelopment
+          ? `Email sending failed: ${emailResult.message}${emailResult.error ? ' - ' + emailResult.error : ''}`
+          : 'We encountered an issue sending your message. Please try again or contact us directly.',
+        500,
+        getRateLimitHeaders(rateLimitResult),
+        emailResult.error,
+        requestContext
       );
     }
 
     // Log successful submission (without sensitive data)
-    console.log(`Successful contact form submission from ${sanitizedData.name} (${sanitizedData.email}) - ${sanitizedData.country}`);
+    console.log(`[CONTACT_API_SUCCESS] Form submitted successfully`, {
+      timestamp: new Date().toISOString(),
+      customerName: sanitizedData.name,
+      customerEmail: sanitizedData.email,
+      customerCountry: sanitizedData.country,
+      clientId,
+      spamScore: spamCheck.score
+    });
 
     // Return success response
     return NextResponse.json(
-      { 
-        success: true, 
-        message: emailResult.message
+      {
+        success: true,
+        message: emailResult.message,
+        timestamp: new Date().toISOString()
       },
-      { 
+      {
         headers: {
           ...securityHeaders,
           ...getRateLimitHeaders(rateLimitResult)
@@ -197,18 +351,25 @@ export async function POST(request: NextRequest) {
     );
 
   } catch (error) {
-    console.error('Contact form API error:', error);
-    
-    return NextResponse.json(
-      { 
-        success: false, 
-        message: 'An unexpected error occurred. Please try again later.',
-        code: 'INTERNAL_ERROR'
-      }, 
-      { 
-        status: 500,
-        headers: securityHeaders
-      }
+    // Log unexpected exceptions with full context
+    logError('UNEXPECTED_ERROR', 'Unhandled exception in contact API', error, {
+      clientId,
+      userAgent,
+      ip,
+      url: request.url,
+      method: request.method,
+      headers: isDevelopment ? Object.fromEntries(request.headers.entries()) : undefined
+    });
+
+    return createErrorResponse(
+      'INTERNAL_ERROR',
+      isDevelopment
+        ? 'Internal server error: ' + (error as Error).message
+        : 'An unexpected error occurred. Please try again later.',
+      500,
+      {},
+      error,
+      { clientId, userAgent, ip }
     );
   }
 }
